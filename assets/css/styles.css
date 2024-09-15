@@ -1,0 +1,76 @@
+/* Basic styling for navigation */
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+nav .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav .nav-links li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+nav .nav-links li a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+/* Menu icon for mobile */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+.menu-icon i {
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    nav .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav .nav-links.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    nav .nav-links li a {
+        display: block;
+        padding: 15px;
+        background-color: #333;
+        border-top: 1px solid #444;
+    }
+
+    nav .nav-links li a:hover {
+        background-color: #444;
+    }
+}
