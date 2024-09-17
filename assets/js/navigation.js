@@ -1,11 +1,12 @@
 // Navigation data - dynamically populate
 const navigationData = [
-  { name: 'Home', link: '/index.html', icon: 'fa-home' },
-  { name: 'About', link: '/pages/about/index.html', icon: 'fa-info-circle' },
-  { name: 'Data Visualisation', link: '/pages/data-visualisation/index.html', icon: 'fa-chart-bar' },
-  { name: 'Design', link: '/pages/design/index.html', icon: 'fa-palette' },
-  { name: 'More Info', link: '/pages/more-information/index.html', icon: 'fa-info' }
+  { name: 'Home', link: './index.html', icon: 'fa-home' },
+  { name: 'About', link: './pages/about/index.html', icon: 'fa-info-circle' },
+  { name: 'Data Visualisation', link: './pages/data-visualisation/index.html', icon: 'fa-chart-bar' },
+  { name: 'Design', link: './pages/design/index.html', icon: 'fa-palette' },
+  { name: 'More Info', link: './pages/more-information/index.html', icon: 'fa-info' }
 ];
+
 
 // Function to create the navigation bar dynamically
 function createNavbar() {
