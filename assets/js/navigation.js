@@ -1,17 +1,32 @@
-// Navigation data - dynamically populate
-const navigationData = [
-  { name: 'Home', link: './index.html', icon: 'fa-home' },
-  { name: 'About', link: './pages/about/index.html', icon: 'fa-info-circle' },
-  { name: 'Data Visualisation', link: './pages/data-visualisation/index.html', icon: 'fa-chart-bar' },
-  { name: 'Design', link: './pages/design/index.html', icon: 'fa-palette' },
-  { name: 'More Info', link: './pages/more-information/index.html', icon: 'fa-info' }
-];
+// Detect current page depth (how many directories deep)
+const currentDepth = (window.location.pathname.match(/\//g) || []).length - 1;
 
+// Function to adjust the link paths dynamically based on current page location
+function adjustPath(link) {
+  // If we are at the root level (index.html), no need to adjust
+  if (currentDepth === 1) {
+    return link;
+  }
+
+  // Otherwise, adjust the link path based on the current depth
+  let adjustedPath = '';
+  for (let i = 1; i < currentDepth; i++) {
+    adjustedPath += '../';
+  }
+  return adjustedPath + link;
+}
+
+// Navigation data - dynamically populate with relative paths
+const navigationData = [
+  { name: 'Home', link: 'index.html', icon: 'fa-home' },
+  { name: 'About', link: 'pages/about/index.html', icon: 'fa-info-circle' },
+  { name: 'Data Visualisation', link: 'pages/data-visualisation/index.html', icon: 'fa-chart-bar' },
+  { name: 'Design', link: 'pages/design/index.html', icon: 'fa-palette' },
+  { name: 'More Info', link: 'pages/more-information/index.html', icon: 'fa-info' }
+];
 
 // Function to create the navigation bar dynamically
 function createNavbar() {
-  console.log("Navbar is being created...");
-
   const navbar = document.createElement('nav');
   navbar.classList.add('navbar');
 
@@ -19,8 +34,8 @@ function createNavbar() {
   const logo = document.createElement('div');
   logo.classList.add('navbar-logo');
   const logoLink = document.createElement('a');
-  logoLink.href = '/index.html';
-  logoLink.textContent = 'Logo';  // Modern logo text
+  logoLink.href = adjustPath('index.html');
+  logoLink.textContent = 'CoolBrand';  // Modern logo text
   logo.appendChild(logoLink);
   navbar.appendChild(logo);
 
@@ -29,11 +44,11 @@ function createNavbar() {
   navLinks.classList.add('navbar-links');
   const navList = document.createElement('ul');
 
-  // Loop through the navigationData to create links dynamically
+  // Loop through the navigationData to create links dynamically with adjusted paths
   navigationData.forEach(item => {
     const listItem = document.createElement('li');
     const linkItem = document.createElement('a');
-    linkItem.href = item.link;
+    linkItem.href = adjustPath(item.link);  // Adjust path dynamically
     linkItem.innerHTML = `<i class="fas ${item.icon}"></i> ${item.name}`;  // Add icon here
     listItem.appendChild(linkItem);
     navList.appendChild(listItem);
@@ -62,7 +77,6 @@ function createNavbar() {
 
 // Inject the navigation on page load
 document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM fully loaded and parsed.");
   createNavbar();
 });
 
