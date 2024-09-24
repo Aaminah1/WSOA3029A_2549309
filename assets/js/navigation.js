@@ -22,7 +22,7 @@ const navigationData = [
   { name: 'About', link: 'pages/about/index.html', icon: 'fa-info-circle' },
   { name: 'Data Visualisation', link: 'pages/data-visualisation/index.html', icon: 'fa-chart-bar' },
   { name: 'Design', link: 'pages/design/index.html', icon: 'fa-palette' },
-  { name: 'More Info', link: 'pages/more-information/index.html', icon: 'fa-info' }
+  { name: 'Gallery', link: 'pages/gallery/index.html', icon: 'fa-info' }
 ];
 
 // Function to create the navigation bar dynamically
@@ -35,7 +35,7 @@ function createNavbar() {
   logo.classList.add('navbar-logo');
   const logoLink = document.createElement('a');
   logoLink.href = adjustPath('index.html');
-  logoLink.textContent = 'CoolBrand';  // Modern logo text
+  logoLink.textContent = 'Logo';  // Modern logo text
   logo.appendChild(logoLink);
   navbar.appendChild(logo);
 
@@ -57,12 +57,12 @@ function createNavbar() {
   navLinks.appendChild(navList);
   navbar.appendChild(navLinks);
 
-  // Mobile Toggle Button (Hamburger)
+  // Mobile Toggle Button (Hamburger/Close)
   const toggleButton = document.createElement('div');
   toggleButton.classList.add('navbar-toggle');
   const toggleIcon = document.createElement('span');
   toggleIcon.classList.add('toggle-icon');
-  toggleIcon.innerHTML = '&#9776;';  // Hamburger icon
+  toggleIcon.innerHTML = '&#9776;';  // Hamburger icon initially
   toggleButton.appendChild(toggleIcon);
   navbar.appendChild(toggleButton);
 
@@ -72,6 +72,12 @@ function createNavbar() {
   // Toggle menu functionality for mobile view
   toggleButton.addEventListener('click', () => {
     navLinks.classList.toggle('active');
+    // Toggle between hamburger (open) and close (close) icons
+    if (navLinks.classList.contains('active')) {
+      toggleIcon.innerHTML = '&times;'; // Show close icon
+    } else {
+      toggleIcon.innerHTML = '&#9776;'; // Show hamburger icon
+    }
   });
 }
 
@@ -88,4 +94,39 @@ window.addEventListener('scroll', () => {
   } else {
     navbar.classList.remove('scrolled');
   }
+});
+// Function to create the footer dynamically
+function createFooter() {
+  const footer = document.createElement('footer');
+  footer.classList.add('footer');
+
+  // Footer content
+  const footerContent = `
+    <div class="footer-content">
+      <div class="footer-logo">
+        <a href="${adjustPath('index.html')}">Logo</a>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="${adjustPath('pages/about/index.html')}">About</a></li>
+          
+        </ul>
+      </div>
+      <div class="footer-social">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p class="footer-copyright">&copy; ${new Date().getFullYear()} CoolBrand. All rights reserved.</p>
+    </div>
+  `;
+
+  // Inject footer content
+  footer.innerHTML = footerContent;
+  document.body.appendChild(footer);
+}
+
+// Inject the footer on page load
+document.addEventListener("DOMContentLoaded", function () {
+  createFooter();
 });

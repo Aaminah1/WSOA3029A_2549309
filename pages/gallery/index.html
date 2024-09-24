@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="../../assets/css/gallery-styles.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <!-- Font Awesome for icons (optional) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+     <!-- Navbar will be injected here -->
+     <header id="navbar"></header>
+     <main>
+    <div class="header">
+        <h1>Astronomy Picture of the Day (APOD) Gallery</h1>
+        <div class="filter-controls">
+            <div class="date-filter-group">
+                <label for="date-picker">Select Date: </label>
+                <input type="date" id="date-picker" min="1995-06-16">
+                <button id="filter-btn" onclick="fetchAPODByDate()" disabled>Get APOD</button>
+            </div>
+            <button class="show-all-btn" onclick="showAll()">Show All</button>
+        </div>
+    </div>
+    <div id="loading" class="loading">Loading...</div>
+    <div id="gallery-container" class="gallery-container">
+        <!-- Images will be injected here by JavaScript -->
+    </div>
+
+    <!-- Modal for detailed view -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="">
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+</main>
+<script src="../../assets/js/gallery.js" ></script>
+      <!-- JS file for navigation -->
+      <script src="../../assets/js/navigation.js" ></script>
+</body>
+</html>
