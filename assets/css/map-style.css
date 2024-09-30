@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-top: 20px;
+}
+#main-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff; /* Adjust for better readability */
+    margin-top: 20px;
+    padding: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a slight shadow for better visibility */
+    background-color: rgba(0, 0, 0, 0.7); /* Background behind heading */
+    border-radius: 8px;
+    width: 80%;
+    margin: 20px auto; /* Center it and give some space around */
+}
+
+
+#map-container {
+    width: 75%; /* Reduced to allow space for info panels */
+    height: 80vh;
+    background-color: #000;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+#star-map {
+    width: 100%;
+    height: 100%;
+    position: relative; /* To position elements inside */
+    overflow: hidden; /* Prevents the content from overflowing */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers content within the container */
+}
+#legend-container {
+    position: absolute;
+    top: 80px;
+    left: 20px; /* Aligned to the left */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    z-index: 10;
+}
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-symbol {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+button#select-all {
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button#select-all:hover {
+    background-color: #555;
+}
+#tooltip {
+    position: absolute;
+    background-color: white;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    pointer-events: none;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #333;
+    display: none;
+    z-index: 10;
+}
+#search-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%); /* Center it horizontally */
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+#search-input, #planet-dropdown, #search-button {
+    margin: 5px;
+}
+
+#search-button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+#planet-info-panel {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 350px;
+    height: calc(100% - 50px);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    display: none; /* Hidden until an exoplanet is clicked */
+    z-index: 100; /* Ensure it appears above other elements */
+    overflow-y: auto;
+}
+
+#planet-info-panel h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #FFD700;
+}
+
+#planet-details {
+    margin-top: 20px;
+}
+
+#planet-details p {
+    font-size: 16px;
+    line-height: 1.4;
+}
