@@ -161,6 +161,31 @@ p a:hover {
   color: #00ffff; /* Lighter hover effect for interaction */
 }
 
+/* Global Button Style */
+.button {
+  background-color: #48cae4;
+  color: white;
+  padding: 10px 20px; /* Reduced padding */
+  border-radius: 20px; /* Slightly smaller radius */
+  font-size: 1rem; /* Reduced font size */
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(72, 202, 228, 0.5); /* Smaller shadow */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  margin-top: 15px; /* Reduced margin */
+  display: inline-block;
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: 0 0 20px rgba(72, 202, 228, 1);
+  transform: translateY(-3px);
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 8px rgba(72, 202, 228, 0.8);
+}
 
 /* Navbar Styles */
 /* Navbar Logo Styles */

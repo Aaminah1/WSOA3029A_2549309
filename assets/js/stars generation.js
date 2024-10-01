@@ -51,3 +51,6 @@ function generateStarsAndPlanets(starCount, planetCount) {
 document.addEventListener('DOMContentLoaded', () => {
     generateStarsAndPlanets(100, 3);  // Generate 100 stars and 3 planets
 });
+
+
+

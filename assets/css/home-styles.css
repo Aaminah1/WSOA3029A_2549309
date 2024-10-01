@@ -112,23 +112,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Call to Action Button */
-.cta-button {
-    background-color: #48cae4;
-    color: white;
-    padding: 15px 30px;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    box-shadow: 0 0 15px rgba(72, 202, 228, 0.5);
-    transition: box-shadow 0.3s ease;
-    margin-top: 20px;
-}
 
-.cta-button:hover {
-    box-shadow: 0 0 25px rgba(72, 202, 228, 1);
-}
 
 /* Quote Styling */
 .quote {
