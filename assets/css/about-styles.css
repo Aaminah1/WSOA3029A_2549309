@@ -1,17 +1,18 @@
 
 
-/* Section layout styling */
+/* Section layout styling for larger screens (default) */
 .section {
     display: flex;
     padding: 100px 50px;
     align-items: center;
     justify-content: space-between;
 }
+
 .section.reverse {
     flex-direction: row-reverse;
 }
 
-/* Text Content Styling */
+/* Section Text */
 .section-text {
     max-width: 600px;
     animation: fadeIn 2s ease-in-out;
@@ -24,29 +25,18 @@
 }
 
 .section-text p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-/* Image or Icon sections */
+/* Section Images */
 .section-image img {
     max-width: 400px;
     animation: slideIn 2s ease-in-out;
 }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { transform: translateX(-50px); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-/* Heading for Timeline */
+/* Timeline Introduction Styling */
 .timeline-intro {
     text-align: center;
     padding: 50px 20px;
@@ -67,79 +57,7 @@
     margin: 0 auto;
 }
 
-/* General Card Styling */
-.milestone {
-    padding: 25px;
-    background: linear-gradient(145deg, #1a252f, #0d1b2a);
-    position: relative;
-    width: 40%;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    margin-bottom: 50px;
-    transition: all 0.3s ease; /* No hover zoom */
-    cursor: default; /* No pointer cursor, since it's not clickable */
-}
-
-/* Left and Right Positioning */
-.milestone.left {
-    left: 0;
-}
-
-.milestone.right {
-    left: 50%;
-    transform: translateX(50px);
-}
-
-/* Image in Cards */
-.milestone img {
-    display: block;
-    max-width: 50px;
-    margin: 10px auto;
-    border-radius: 50%;
-    border: 2px solid #48cae4;
-}
-
-/* Button hidden initially */
-.milestone .button {
-    display: none;
-    opacity: 0;
-    margin-top: 15px;
-}
-
-/* Hover over card to reveal button */
-.milestone:hover .button {
-    display: inline-block;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-    animation: fadeIn 1s ease;
-}
-
-/* Animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .timeline::after {
-        left: 15px;
-    }
-
-    .milestone {
-        width: 100%;
-        padding: 20px;
-        text-align: left;
-        margin-left: 0;
-    }
-
-    .milestone.left, .milestone.right {
-        left: 0;
-        transform: translateX(0);
-    }
-}
-
-/* Timeline Container */
+/* Timeline Styling */
 .timeline {
     position: relative;
     max-width: 900px;
@@ -148,7 +66,6 @@
 }
 
 /* Central Line */
-
 .timeline::after {
     content: '';
     position: absolute;
@@ -161,7 +78,7 @@
     border-radius: 2px; /* Rounded timeline */
 }
 
-/* Timeline Card */
+/* Timeline Card Styling */
 .milestone {
     padding: 25px;
     background: linear-gradient(145deg, #1a252f, #0d1b2a);
@@ -175,8 +92,9 @@
     cursor: pointer;
 }
 
+/* Hover effect on card */
 .milestone:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.05); /* Slight zoom */
 }
 
 .milestone h2 {
@@ -211,7 +129,7 @@
     border: 2px solid #48cae4;
 }
 
-/* Hover Effect on Image */
+/* Hover effect on image */
 .milestone img:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(72, 202, 228, 0.7);
@@ -229,23 +147,81 @@
     }
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .timeline::after {
-        left: 15px;
+/* Responsive Adjustments for Tablets */
+@media (max-width: 1024px) {
+    .section {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .section-text {
+        margin-bottom: 20px;
+    }
+
+    .section-image img {
+        max-width: 300px;
     }
 
     .milestone {
-        width: 100%;
-        padding: 20px;
-        text-align: left;
-        margin-left: 0;
+        width: 80%;
+        margin: 20px auto;
     }
 
     .milestone.left, .milestone.right {
         left: 0;
         transform: translateX(0);
     }
+
+    .timeline::after {
+        left: 50%;
+    }
 }
 
+/* Responsive Adjustments for Mobile */
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
 
+    .section-image img {
+        max-width: 250px;
+    }
+
+    .section-text h2 {
+        font-size: 2rem;
+    }
+
+    .section-text p {
+        font-size: 1rem;
+    }
+
+    .milestone {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .milestone.left, .milestone.right {
+        left: 0;
+        transform: none;
+    }
+
+    .timeline::after {
+        left: 20px;
+    }
+
+    .milestone img {
+        max-width: 40px;
+    }
+
+    /* Adjust font size for cards */
+    .milestone h2 {
+        font-size: 1.2rem;
+    }
+
+    .milestone p {
+        font-size: 0.9rem;
+    }
+}
