@@ -18,7 +18,7 @@ function initializeZoomPan() {
 
     // Load the galaxy image and append it to the group
     g.append('image')
-        .attr('xlink:href', '/WSOA3029A_2549309/assets/images/galaxybg.jpg') // Update this path to the actual image file path
+        .attr('xlink:href', '/WSOA3029A_2549309/assets/images/galaxybg.jpg')
         .attr('x', 0)
         .attr('y', 0)
         .attr('width', imgWidth)
