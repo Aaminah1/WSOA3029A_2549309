@@ -14,17 +14,27 @@
     <header id="navbar"></header>
 
     <main id="content">
-        <h1>Explore Potential Life Beyond Earth</h1>
 
-        <!-- Search bar above the map -->
+<div id="map-info">
+    <h1>Explore the Wonders of Distant Exoplanets</h1>
+    <h2>A Journey Through the Stars to Discover Potentially Habitable Worlds and Mysterious Giants</h2>
+  
+    <p>
+        Use this interactive map to explore these distant planets, filter by type, and discover key details such as their distance 
+        from Earth, size, and year of discovery. Whether you're searching for habitable worlds or exploring gas giants, this map 
+        offers a glimpse into the unknown regions of space.
+    </p>
+    
+</div>    
+
+        <!-- Container for the legend and map -->
+        <div id="map-section">   
+             <!-- Search bar above the map -->
         <div id="search-container">
             <input type="text" id="search-input" placeholder="Search exoplanets...">
             <select id="planet-dropdown"></select>
             <button id="search-button">Search</button>
         </div>
-
-        <!-- Container for the legend and map -->
-        <div id="map-section">
             <!-- Legend container -->
             <div id="legend-container">
                 <!-- Legend items -->
@@ -55,12 +65,7 @@
                 </div>
                 <button id="select-all">Deselect All</button>
             </div>
-
-            <!-- Map container -->
-            <div id="map-container"></div>
-        </div>
-
-        <!-- Info panel for planet details -->
+ <!-- Info panel for planet details -->
         <div id="planet-info-panel">
             <h3 id="planet-name">Planet Name</h3>
             <div id="planet-details"></div>
@@ -68,6 +73,11 @@
 
         <!-- Tooltip for displaying exoplanet info on hover -->
         <div id="tooltip"></div>
+            <!-- Map container -->
+            <div id="map-container"></div>
+        </div>
+
+       
     </main>
 
     <!-- JS file for navigation -->

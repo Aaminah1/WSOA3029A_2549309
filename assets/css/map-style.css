@@ -1,8 +1,4 @@
-/* General Styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
+
 
 /* Container for search bar and map */
 #map-section {
@@ -26,12 +22,13 @@ body {
     border: 2px solid #333;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     margin-right: 300px; /* Leave space for the info panel */
+    border-radius: 8px;
 }
 
 /* Search bar at the top */
 #search-container {
     position: absolute;
-    top: 190px; /* Move it above the map */
+    top: 20px; /* Move it above the map */
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.7);
@@ -91,7 +88,7 @@ body {
 #planet-info-panel {
     position: absolute;
     right: 0;
-    top: 188px; /* Move it slightly down so it doesn't overlap the navbar */
+    top: 20px; /* Move it slightly down so it doesn't overlap the navbar */
     width: 250px; /* Reduce width to make it more compact */
     max-height: 85vh; /* Limit height */
     background-color: rgba(0, 0, 0, 0.85);
@@ -100,6 +97,7 @@ body {
     box-sizing: border-box;
     border-left: 2px solid #333;
     overflow-y: auto;
+    border-radius: 8px;
 }
 
 #planet-info-panel h3 {
@@ -192,6 +190,7 @@ body {
 
     #search-input, #planet-dropdown, #search-button {
         padding: 6px; /* Slightly smaller padding on mobile */
+        
     }
 
     #tooltip {
