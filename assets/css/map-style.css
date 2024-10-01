@@ -1,82 +1,119 @@
+/* General Styles */
 body {
     margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
 }
 
-
-#main-heading {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #fff; /* Adjust for better readability */
-    margin-top: 20px;
-    padding: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds a slight shadow for better visibility */
-    background-color: rgba(0, 0, 0, 0.7); /* Background behind heading */
-    border-radius: 8px;
-    width: 80%;
-    margin: 20px auto; /* Center it and give some space around */
+/* Container for search bar and map */
+#map-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px; /* Space between map and legend */
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; /* To place the search bar above the map */
 }
 
-
+/* Map container styling */
 #map-container {
-    width: 75%; /* Reduced to allow space for info panels */
+    width: 75%; /* Adjusted width to allow space for the legend and info panel */
     height: 80vh;
     background-color: #000;
-    margin: auto;
     position: relative;
     overflow: hidden;
     border: 2px solid #333;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin-right: 300px; /* Leave space for the info panel */
 }
-#star-map {
-    width: 100%;
-    height: 100%;
-    position: relative; /* To position elements inside */
-    overflow: hidden; /* Prevents the content from overflowing */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Centers content within the container */
-}
-#legend-container {
+
+/* Search bar at the top */
+#search-container {
     position: absolute;
-    top: 80px;
-    left: 20px; /* Aligned to the left */
+    top: 190px; /* Move it above the map */
+    left: 50%;
+    transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.7);
     padding: 10px;
     border-radius: 8px;
     color: #fff;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
     z-index: 10;
+    display: flex;
+    gap: 10px;
 }
+
+#search-input, #planet-dropdown, #search-button {
+    padding: 8px;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+
+#search-button {
+    background-color: #48cae4;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #45a049;
+}
+
+/* Legend container */
+#legend-container {
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    color: #fff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between legend items */
+    width: 220px;
+    margin-right: 20px;
+}
+
 .legend-item {
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
 }
 
 .legend-symbol {
-    display: inline-block;
     width: 25px;
     height: 25px;
-    border-radius: 50%;
     margin-right: 10px;
 }
 
-button#select-all {
-    margin-top: 10px;
-    padding: 5px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
+/* Info panel styling */
+#planet-info-panel {
+    position: absolute;
+    right: 0;
+    top: 188px; /* Move it slightly down so it doesn't overlap the navbar */
+    width: 250px; /* Reduce width to make it more compact */
+    max-height: 85vh; /* Limit height */
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-left: 2px solid #333;
+    overflow-y: auto;
 }
 
-button#select-all:hover {
-    background-color: #555;
+#planet-info-panel h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #FFD700;
 }
+
+#planet-details p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Tooltip styling */
 #tooltip {
     position: absolute;
     background-color: white;
@@ -84,63 +121,93 @@ button#select-all:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
     pointer-events: none;
-    font-family: Arial, sans-serif;
     font-size: 12px;
     color: #333;
     display: none;
-    z-index: 10;
-}
-#search-container {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%); /* Center it horizontally */
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    border-radius: 8px;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    z-index: 10;
-    display: flex;
-    gap: 10px;
-}
-#search-input, #planet-dropdown, #search-button {
-    margin: 5px;
 }
 
-#search-button {
-    padding: 5px 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-#planet-info-panel {
-    position: absolute;
-    right: 0;
-    top: 50px;
-    width: 350px;
-    height: calc(100% - 50px);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 15px;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    display: none; /* Hidden until an exoplanet is clicked */
-    z-index: 100; /* Ensure it appears above other elements */
-    overflow-y: auto;
+/* ======= Responsive Design ======= */
+
+/* Tablet: 768px to 1024px */
+@media (max-width: 1024px) {
+    #map-section {
+        flex-direction: column; /* Stack the map and legend on smaller screens */
+    }
+
+    #map-container {
+        width: 100%; /* Make map full width */
+        height: 60vh; /* Reduce height for smaller screens */
+    }
+
+    #legend-container {
+        width: 100%; /* Make the legend full width on tablet */
+        margin-right: 0;
+    }
+
+    #planet-info-panel {
+        position: static; /* Let it follow the normal flow of the page */
+        width: 100%;
+        max-height: none; /* Let it grow as needed */
+        border-left: none;
+    }
+
+    #search-container {
+        position: static; /* Remove absolute positioning for mobile and tablet */
+        margin-bottom: 10px; /* Add some space */
+        width: 100%; /* Make it full width */
+        justify-content: center;
+    }
 }
 
-#planet-info-panel h3 {
-    margin-top: 0;
-    font-size: 20px;
-    color: #FFD700;
+/* Mobile: 767px and below */
+@media (max-width: 767px) {
+    #map-section {
+        flex-direction: column;
+    }
+
+    #map-container {
+        width: 100%;
+        height: 50vh; /* Smaller height for mobile */
+    }
+
+    #planet-info-panel {
+        position: static; /* Remove fixed position */
+        width: 100%;
+        max-height: 40vh; /* Limit height for smaller screens */
+        overflow-y: auto;
+        padding: 10px; /* Reduce padding */
+    }
+
+    #legend-container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    #search-container {
+        position: static;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    #search-input, #planet-dropdown, #search-button {
+        padding: 6px; /* Slightly smaller padding on mobile */
+    }
+
+    #tooltip {
+        font-size: 10px;
+    }
 }
 
-#planet-details {
-    margin-top: 20px;
-}
+/* Large Desktop: > 1024px */
+@media (min-width: 1200px) {
+    #map-container {
+        width: 75%; /* Maintain the map size for large desktop */
+        height: 80vh; /* Keep full view height */
+    }
 
-#planet-details p {
-    font-size: 16px;
-    line-height: 1.4;
+    #planet-info-panel {
+        width: 300px; /* Increase the panel width on larger screens */
+        padding: 25px;
+    }
 }

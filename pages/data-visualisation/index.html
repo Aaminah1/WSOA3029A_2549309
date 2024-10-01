@@ -3,73 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data visualisation</title>
+    <title>Data Visualization</title>
     <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/map-style.css">
-        <!-- Font Awesome for icons (optional) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </head>
 <body>
-
     <!-- Navbar will be injected here -->
     <header id="navbar"></header>
 
     <main id="content">
         <h1>Explore Potential Life Beyond Earth</h1>
-        <!-- Search Bar & Dropdown -->
-<div id="tooltip" ></div>
-<div id="search-container">
-    <input type="text" id="search-input" placeholder="Search for an exoplanet...">
-    <button id="search-button">Search</button>
-    <select id="planet-dropdown">
-        <option value="">-- Select an exoplanet --</option>
-        <!-- Options will be dynamically added -->
-    </select>
-</div>
 
-    <!-- Map Container -->
-<div id="map-container"></div>
+        <!-- Search bar above the map -->
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search exoplanets...">
+            <select id="planet-dropdown"></select>
+            <button id="search-button">Search</button>
+        </div>
 
-<!-- Legend Container -->
-    <div id="legend-container">
-        <h3>Exoplanet Categories</h3>
-        <div class="legend-item">
-            <input type="checkbox" id="filter-habitable" checked> 
-            <svg class="legend-symbol" width="40" height="40"></svg> Potentially Habitable
-        </div>
-        <div class="legend-item">
-            <input type="checkbox" id="filter-hot-jupiter" checked> 
-            <svg class="legend-symbol" width="20" height="20"></svg> Hot Jupiter
-        </div>
-        <div class="legend-item">
-            <input type="checkbox" id="filter-cold-giant" checked> 
-            <svg class="legend-symbol" width="20" height="20"></svg> Cold Giant
-        </div>
-        <div class="legend-item">
-            <input type="checkbox" id="filter-rocky" checked> 
-            <svg class="legend-symbol" width="20" height="20"></svg> Rocky Planet
-        </div>
-        <div class="legend-item">
-            <input type="checkbox" id="filter-other" checked> 
-            <svg class="legend-symbol" width="20" height="20"></svg> Other
-        </div>
-        <button id="select-all">Select All</button>
-    </div>
-   <!-- Exoplanet Information Panel -->
-   <div id="planet-info-panel">
-    <h3 id="planet-name">Exoplanet Information</h3>
-    <div id="planet-details"></div>
-</div>
-  
+        <!-- Container for the legend and map -->
+        <div id="map-section">
+            <!-- Legend container -->
+            <div id="legend-container">
+                <!-- Legend items -->
+                <div class="legend-item">
+                    <svg class="legend-symbol"></svg>
+                    <label for="filter-habitable">Potentially Habitable</label>
+                    <input type="checkbox" id="filter-habitable" checked>
+                </div>
+                <div class="legend-item">
+                    <svg class="legend-symbol"></svg>
+                    <label for="filter-hot-jupiter">Hot Jupiter</label>
+                    <input type="checkbox" id="filter-hot-jupiter" checked>
+                </div>
+                <div class="legend-item">
+                    <svg class="legend-symbol"></svg>
+                    <label for="filter-cold-giant">Cold Giant</label>
+                    <input type="checkbox" id="filter-cold-giant" checked>
+                </div>
+                <div class="legend-item">
+                    <svg class="legend-symbol"></svg>
+                    <label for="filter-rocky">Rocky Planet</label>
+                    <input type="checkbox" id="filter-rocky" checked>
+                </div>
+                <div class="legend-item">
+                    <svg class="legend-symbol"></svg>
+                    <label for="filter-other">Other</label>
+                    <input type="checkbox" id="filter-other" checked>
+                </div>
+                <button id="select-all">Deselect All</button>
+            </div>
 
+            <!-- Map container -->
+            <div id="map-container"></div>
+        </div>
+
+        <!-- Info panel for planet details -->
+        <div id="planet-info-panel">
+            <h3 id="planet-name">Planet Name</h3>
+            <div id="planet-details"></div>
+        </div>
+
+        <!-- Tooltip for displaying exoplanet info on hover -->
+        <div id="tooltip"></div>
     </main>
 
     <!-- JS file for navigation -->
-    <script src="../../assets/js/navigation.js" ></script>
-    <script src="../../assets/js/map.js" ></script>
- 
+    <script src="../../assets/js/navigation.js"></script>
+    <script src="../../assets/js/map.js"></script>
 </body>
 </html>
