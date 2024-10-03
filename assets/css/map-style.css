@@ -10,6 +10,7 @@
     width: 100%;
     box-sizing: border-box;
     position: relative; /* To place the search bar above the map */
+    
 }
 
 /* Map container styling */
@@ -23,6 +24,7 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     margin-right: 300px; /* Leave space for the info panel */
     border-radius: 8px;
+    cursor: pointer; 
 }
 
 /* Search bar at the top */
@@ -38,6 +40,7 @@
     z-index: 10;
     display: flex;
     gap: 10px;
+
 }
 
 #search-input, #planet-dropdown, #search-button {
@@ -55,7 +58,7 @@
 }
 
 #search-button:hover {
-    background-color: #45a049;
+    background-color: #FFD700;
 }
 
 /* Legend container */
@@ -76,6 +79,7 @@
 .legend-item {
     display: flex;
     align-items: center;
+     cursor: pointer; 
 }
 
 .legend-symbol {

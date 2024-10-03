@@ -23,6 +23,7 @@ const navigationData = [
   { name: 'Discoveries', link: 'pages/data-visualisation/index.html', icon: 'fa-rocket' },
   { name: 'Design', link: 'pages/design/index.html', icon: 'fa-palette' },
   { name: 'Gallery', link: 'pages/gallery/index.html', icon: 'fa-image' }
+  
 ];
 
 
@@ -192,3 +193,4 @@ window.addEventListener('scroll', function() {
       }
   });
 });
+

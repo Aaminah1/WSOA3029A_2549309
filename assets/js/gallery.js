@@ -1,4 +1,4 @@
-const apiKey = 'rtOADqVbWXtfwq6MGQrwMV8EJe7k2aP2vGF7wtAi'; // Replace 'YOUR_API_KEY' with your actual NASA API key
+const apiKey = 'rtOADqVbWXtfwq6MGQrwMV8EJe7k2aP2vGF7wtAi'; 
 const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&count=50`;
 
 const galleryContainer = document.getElementById('gallery-container');
