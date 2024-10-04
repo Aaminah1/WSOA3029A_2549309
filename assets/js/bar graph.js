@@ -1,21 +1,17 @@
-// URL for the API
-const API_URL = 'https://raw.githubusercontent.com/OpenExoplanetCatalogue/oec_tables/master/comma_separated/open_exoplanet_catalogue.txt';
+// bubbleChart.js
+import { fetchExoplanets } from './dataManager.js';
 
 let originalData = [];
 let maxRadius = 0;
 let maxTemperature = 0;
 
-// Fetch the data using Papa.parse
-fetch(API_URL)
-    .then(response => response.text())
-    .then(data => {
-        const parsedData = Papa.parse(data, { header: true, dynamicTyping: true }).data;
-        originalData = prepareDataset(parsedData); // Save original data
-        maxRadius = d3.max(originalData, d => d.radius); // Get the maximum radius for x-axis
-        maxTemperature = d3.max(originalData, d => d.temperature); // Get the maximum temperature for y-axis
-        createBubbleChart(originalData); // Create the initial chart
-    })
-    .catch(error => console.error('Error fetching data:', error));
+// Fetch data from the centralized script (dataManager.js)
+fetchExoplanets().then((data) => {
+    originalData = prepareDataset(data); // Prepare the dataset
+    maxRadius = d3.max(originalData, d => d.radius); // Get max radius for x-axis
+    maxTemperature = d3.max(originalData, d => d.temperature); // Get max temperature for y-axis
+    createBubbleChart(originalData); // Create the initial chart
+}).catch(error => console.error('Error fetching data:', error));
 
 // Function to categorize planets based on given attributes
 function categorizePlanet(planet) {

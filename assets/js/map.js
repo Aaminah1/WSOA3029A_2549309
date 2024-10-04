@@ -1,9 +1,10 @@
+import { fetchExoplanets } from './dataManager.js';
+
 // Function to initialize the D3 zoomable and pannable container
 function initializeZoomPan() {
     const mapContainer = document.getElementById('map-container');
     const containerWidth = mapContainer.clientWidth;
     const containerHeight = mapContainer.clientHeight;
-    
 
     const svg = d3.select('#map-container').append('svg')
         .attr('width', '100%')
@@ -58,7 +59,6 @@ function adjustClusterBehavior(g, zoomLevel) {
         .attr('display', d => zoomLevel < 1 ? 'block' : 'none'); // Hide clusters earlier at a smaller zoom level
 
     // Show exoplanets more rapidly after zoom level 1
-    // Modify the scale factor for larger symbols
     g.selectAll('.planet-marker')
         .attr('transform', d => `translate(${d.x}, ${d.y}) scale(${zoomLevel >= 1 ? Math.min((zoomLevel - 1) * 12, maxExoplanetSize) / 8 : 0})`)
         .attr('display', d => zoomLevel >= 1 ? 'block' : 'none') // Show exoplanets earlier
@@ -67,90 +67,20 @@ function adjustClusterBehavior(g, zoomLevel) {
         .attr('stroke-width', 1.5); // Thicker stroke for clearer distinction
 }
 
-// Global variable to store exoplanet data
-let exoplanetData = [];
+// Function to fetch the exoplanet data and add cluster/exoplanet markers
+fetchExoplanets().then((data) => {
+    initializeZoomPan();
+    addClusterMarkers();
+    addExoplanetMarkers(data); // Pass fetched data to addExoplanetMarkers
+});
 
-// Function to fetch and parse exoplanet data from the API
-async function fetchExoplanets() {
-    const API_URL = 'https://raw.githubusercontent.com/OpenExoplanetCatalogue/oec_tables/master/comma_separated/open_exoplanet_catalogue.txt';
-
-    try {
-        const response = await fetch(API_URL); // Fetch the data from the API
-        const csvData = await response.text(); // Get the CSV data as text
-        const parsedData = Papa.parse(csvData, { header: true, dynamicTyping: true }).data; // Parse the CSV data
-        exoplanetData = parsedData; // Store the parsed data in the global variable
-        console.log("Exoplanet data fetched successfully:", exoplanetData); // Log the data to the console
-
-        addClusterMarkers(); // Call function to add cluster markers after data is fetched
-        addExoplanetMarkers(); // Call function to add exoplanet markers
-        populateDropdown(); // Call function to populate dropdown after data is fetched
-    } catch (error) {
-        console.error("Error fetching or parsing data:", error);
-    }
-    // Attach event listeners for search functionality
-    document.getElementById('search-button').addEventListener('click', handleSearch);
-    document.getElementById('planet-dropdown').addEventListener('change', handleDropdownSelect);
-}
-
-function populateDropdown() {
-    const dropdown = document.getElementById('planet-dropdown');
-    exoplanetData.forEach((planet) => {
-        const option = document.createElement('option');
-        option.value = planet.name || 'Unknown';
-        option.text = planet.name || 'Unknown';
-        dropdown.appendChild(option);
-    });
-}
-
-function highlightExoplanet(planetName) {
-    const g = d3.select('#map-container svg g'); // The SVG group element
-
-    // Reset previous highlights
-    g.selectAll('.planet-marker')
-        .attr('stroke', '#fff')
-        .attr('stroke-width', 1.5);
-
-    // Find and highlight the selected planet
-    const planet = exoplanetData.find(p => p.name === planetName);
-
-    if (planet) {
-        const { x, y } = planet; // Use the stored x, y coordinates
-
-        // Pan the map to the selected exoplanet
-        d3.select('#map-container svg')
-            .transition()
-            .duration(1000)
-            .call(d3.zoom().transform, d3.zoomIdentity.translate(-x + 1500, -y + 750).scale(2));
-
-        // Highlight the selected planet
-        g.selectAll('.planet-marker')
-            .filter(d => d.name === planetName)
-            .attr('stroke', '#FFD700')  // Highlight with a gold stroke
-            .attr('stroke-width', 3);
-    }
-}
-
-function handleSearch() {
-    const searchInput = document.getElementById('search-input').value.trim();
-    if (searchInput) {
-        highlightExoplanet(searchInput);
-    }
-}
-
-function handleDropdownSelect() {
-    const selectedPlanet = document.getElementById('planet-dropdown').value;
-    if (selectedPlanet) {
-        highlightExoplanet(selectedPlanet);
-    }
-}
-
-// Function to add cluster markers to the map (RE-INTEGRATING THIS FUNCTION)
+// Function to add cluster markers to the map
 function addClusterMarkers() {
-    const g = d3.select('#map-container svg g'); // Select the group element where the galaxy image is added
-    const imgWidth = 3000; // Image width used in initializeZoomPan
-    const imgHeight = 1500; // Image height used in initializeZoomPan
+    const g = d3.select('#map-container svg g');
+    const imgWidth = 3000;
+    const imgHeight = 1500;
 
-    // Create cluster data by grouping exoplanets (for simplicity, using random positions here)
+    // Create cluster data by grouping exoplanets (random positions for simplicity)
     const clusters = d3.range(30).map(() => ({
         x: Math.random() * imgWidth,
         y: Math.random() * imgHeight,
@@ -163,72 +93,49 @@ function addClusterMarkers() {
         .enter()
         .append('circle')
         .attr('class', 'cluster-marker')
-        .attr('cx', d => d.x) // Cluster position
-        .attr('cy', d => d.y) // Cluster position
-        .attr('r', d => d.size) // Cluster size
-        .attr('fill', '#808080') // Cluster color
+        .attr('cx', d => d.x)
+        .attr('cy', d => d.y)
+        .attr('r', d => d.size)
+        .attr('fill', '#808080')
         .attr('stroke', '#fff')
         .attr('stroke-width', 2)
-        .attr('display', 'block'); // Initially displayed
+        .attr('display', 'block');
 }
 
-// Function to show exoplanet information in the side panel
-function showExoplanetInfo(planet) {
-    const panel = document.getElementById('planet-info-panel');
-    const planetDetails = document.getElementById('planet-details');
-
-    // Fill the panel with exoplanet information
-    document.getElementById('planet-name').textContent = planet.name || 'Unknown';
-    planetDetails.innerHTML = `
-      
-        <p>Category: ${categorizePlanet(planet)}</p>
-       
-        <p>Distance: ${planet['system_distance'] || 'Unknown'} light-years</p>
-        <p>Discovery Year: ${planet['discoveryyear']}</p>
-        <p>Temperature: ${planet['temperature'] || planet['hoststar_temperature']} K</p>
-        <p>Radius: ${planet['radius']} Earth radii</p>
-        <p>Mass: ${planet['mass']} Jupiter masses</p>
-    `;
-
-    // Show the panel
-    panel.style.display = 'block';
-}
-
-// Function to add exoplanet markers to the map with custom shapes
-function addExoplanetMarkers() {
-    const g = d3.select('#map-container svg g'); // Select the group element where the galaxy image is added
-    const imgWidth = 3000; // Image width used in initializeZoomPan
-    const imgHeight = 1500; // Image height used in initializeZoomPan
+// Function to add exoplanet markers to the map
+function addExoplanetMarkers(data) {
+    const g = d3.select('#map-container svg g');
+    const imgWidth = 3000;
+    const imgHeight = 1500;
 
     const tooltip = d3.select("#tooltip");
 
     // Add exoplanet markers with custom shapes
     g.selectAll('.planet-marker')
-        .data(exoplanetData)
+        .data(data)
         .enter()
         .append('path')
         .attr('class', 'planet-marker')
-        .attr('d', d => getCustomShape(d)) // Pass the data object `d`
+        .attr('d', d => getCustomShape(d))
         .attr('transform', d => {
-            d.x = Math.random() * imgWidth; // Store random x position for exoplanets
-            d.y = Math.random() * imgHeight; // Store random y position for exoplanets
-            return `translate(${d.x}, ${d.y})`; // Translate to the correct position
+            d.x = Math.random() * imgWidth;
+            d.y = Math.random() * imgHeight;
+            return `translate(${d.x}, ${d.y})`;
         })
-        .attr('fill', d => adjustMarkerColor(d)) // Use color adjustment function
+        .attr('fill', d => adjustMarkerColor(d))
         .attr('stroke', '#fff')
         .attr('stroke-width', 1)
-        .attr('display', 'none') // Initially hidden, will reveal on zoom
-        .attr('data-category', d => categorizePlanet(d)) // Add a data attribute for filtering
+        .attr('display', 'none')
         .on('mouseover', (event, d) => {
-            tooltip
-                .style("display", "block")
-                .html(`<strong>Exoplanet:</strong> ${d['name'] || 'Unknown'}`);
+            tooltip.style("display", "block").html(`<strong>Exoplanet:</strong> ${d.name || 'Unknown'}`);
         })
         .on('mousemove', (event) => {
             tooltip
-                .style('top', (event.pageY + 15) + 'px') // Positioning the tooltip slightly below the mouse pointer
-                .style('left', (event.pageX + 15) + 'px');
+                .style('top', (event.clientY + 15) + 'px') // Position relative to the window
+                .style('left', (event.clientX + 15) + 'px'); // Position relative to the window
         })
+        
+        
         .on('mouseout', () => {
             tooltip.style("display", "none");
         })
@@ -389,6 +296,24 @@ function createLegendSymbols() {
             .attr('stroke', '#fff')
             .attr('stroke-width', 1.5);  // Ensure a clear border
     });
+}
+function showExoplanetInfo(planet) {
+    const panel = document.getElementById('planet-info-panel');
+    const planetDetails = document.getElementById('planet-details');
+
+    // Fill the panel with exoplanet information
+    document.getElementById('planet-name').textContent = planet.name || 'Unknown';
+    planetDetails.innerHTML = `
+        <p><strong>Category:</strong> ${categorizePlanet(planet)}</p>
+        <p><strong>Distance:</strong> ${planet['system_distance'] || 'Unknown'} light-years</p>
+        <p><strong>Discovery Year:</strong> ${planet['discoveryyear']}</p>
+        <p><strong>Temperature:</strong> ${planet['temperature'] || planet['hoststar_temperature']} K</p>
+        <p><strong>Radius:</strong> ${planet['radius']} Earth radii</p>
+        <p><strong>Mass:</strong> ${planet['mass']} Jupiter masses</p>
+    `;
+
+    // Show the panel
+    panel.style.display = 'block';
 }
 
 

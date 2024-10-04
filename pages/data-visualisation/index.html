@@ -68,10 +68,12 @@
         <!-- Tooltip for displaying exoplanet info on hover -->
         <div id="tooltip"></div>
             <!-- Map container -->
-            <div id="map-container"></div>
+            <div id="map-container">
+
+            </div>
         </div>
  <!-- BAR GRAPH-->
-        <div id="barGraph">
+        <div id="chart-section">
             <h1>Explore Exoplanets: Radius, Temperature, and Mass</h1>
     <p class="key-insights">Hover over the bubbles to learn more about each exoplanet. Larger bubbles represent planets with more mass, while the position corresponds to radius and temperature.</p>
     
@@ -83,14 +85,16 @@
         <label><input type="checkbox" id="other-filter" checked> Other</label>
     </div>
 
-    <div id="chart"></div> <!-- D3 Bubble Chart will render here -->
+    <div id="chart">
+        
+    </div> <!-- D3 Bubble Chart will render here -->
         </div>
     </main>
 
     <!-- JS file for navigation -->
     <script src="../../assets/js/navigation.js"></script>
-    <script src="../../assets/js/map.js"></script>
-
-    
+    <script type="module" src="../../assets/js/map.js"></script>
+    <script type="module" src="../../assets/js/bar graph.js"></script>
+    <script type="module" src="../../assets/js/dataManager.js"></script>
 </body>
 </html>
