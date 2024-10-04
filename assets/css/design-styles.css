@@ -111,7 +111,7 @@ dd {
 }
 
 .scroll-arrow:hover, .scroll-arrow:focus {
-    color: #5cb1d6; /* Lighter shade for hover */
+    color: #a5c2ce; /* Lighter shade for hover */
     transform: scale(1.5); /* Enlarges the arrow */
 }
 
@@ -411,4 +411,6 @@ dd {
     color: #00ffff;
     text-shadow: 0 0 10px #00ffff;
   }
-      
+
+
+  

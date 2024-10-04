@@ -278,7 +278,7 @@ function adjustMarkerColor(data) {
     }
 }
 
-// Dummy categorizePlanet function (replace this with your actual logic)
+//  categorizePlanet function 
 function categorizePlanet(data) {
     const radius = data['radius'] || 1; // Default to 1 Earth radius if missing
     const temperature = data['temperature'] || data['hoststar_temperature'] || 300; // Use host star temperature or default to 300K
@@ -406,3 +406,4 @@ initializeZoomPan();
 
 // Call the function to fetch exoplanet data
 fetchExoplanets();
+

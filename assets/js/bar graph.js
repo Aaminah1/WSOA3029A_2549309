@@ -1,0 +1,187 @@
+// URL for the API
+const API_URL = 'https://raw.githubusercontent.com/OpenExoplanetCatalogue/oec_tables/master/comma_separated/open_exoplanet_catalogue.txt';
+
+let originalData = [];
+let maxRadius = 0;
+let maxTemperature = 0;
+
+// Fetch the data using Papa.parse
+fetch(API_URL)
+    .then(response => response.text())
+    .then(data => {
+        const parsedData = Papa.parse(data, { header: true, dynamicTyping: true }).data;
+        originalData = prepareDataset(parsedData); // Save original data
+        maxRadius = d3.max(originalData, d => d.radius); // Get the maximum radius for x-axis
+        maxTemperature = d3.max(originalData, d => d.temperature); // Get the maximum temperature for y-axis
+        createBubbleChart(originalData); // Create the initial chart
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+// Function to categorize planets based on given attributes
+function categorizePlanet(planet) {
+    const radius = planet.radius || 1; // Default to 1 Earth radius if missing
+    const temperature = planet.temperature || planet.hoststar_temperature || 300; // Use host star temperature or default to 300K
+    const mass = planet.mass || 1; // Default to 1 Jupiter mass
+
+    // Define categories based on attributes
+    if (radius < 1.5 && temperature > 250 && temperature < 350) {
+        return 'Potentially Habitable';
+    } else if (mass > 5 && temperature > 500) {
+        return 'Hot Jupiter';
+    } else if (mass > 10 && temperature < 100) {
+        return 'Cold Giant';
+    } else if (radius < 2) {
+        return 'Rocky Planet';
+    } else {
+        return 'Other';
+    }
+}
+
+// Function to filter and prepare the dataset (radius, temperature, and mass)
+function prepareDataset(data) {
+    return data
+        .filter(planet => planet.radius && planet.hoststar_temperature && planet.mass) // Only include planets with valid radius, temp, and mass
+        .map(planet => ({
+            name: planet.name || 'Unknown',
+            radius: planet.radius || 1, // Apply default value for radius
+            temperature: planet.temperature || planet.hoststar_temperature || 300, // Apply default temperature
+            mass: planet.mass || 1, // Apply default value for mass
+            category: categorizePlanet(planet) // Categorize the planet
+        }));
+}
+
+// Function to create the D3 interactive bubble chart with transition support
+function createBubbleChart(data) {
+    const margin = { top: 40, right: 30, bottom: 40, left: 60 };
+    const width = document.getElementById('chart').clientWidth - margin.left - margin.right;
+    const height = 500 - margin.top - margin.bottom;
+
+    const svg = d3.select("#chart").html("") // Clear previous chart
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Create fixed scales for x (radius), y (temperature), and bubble size (mass)
+    const x = d3.scaleLinear()
+        .domain([0, maxRadius]).nice()  // Fixed scale for radius based on the max value in the dataset
+        .range([0, width]);
+
+    const y = d3.scaleLinear()
+        .domain([0, maxTemperature]).nice()  // Fixed scale for temperature based on the max value in the dataset
+        .range([height, 0]);
+
+    const bubbleSize = d3.scaleSqrt()
+        .domain([0, d3.max(data, d => d.mass)])
+        .range([5, 50]);
+
+    // Create axes
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x))
+        .append("text")
+        .attr("y", 30)
+        .attr("x", width / 2)
+        .attr("text-anchor", "middle")
+        .attr("stroke", "black")
+        .text("Radius (Earth radii)");
+
+    svg.append("g")
+        .call(d3.axisLeft(y))
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -50)
+        .attr("x", -height / 2)
+        .attr("dy", "1em")
+        .attr("text-anchor", "middle")
+        .attr("stroke", "black")
+        .text("Temperature (K)");
+
+    // Tooltip for bubbles
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    // Bind data to bubbles, apply transition effects
+    const bubbles = svg.selectAll(".bubble")
+        .data(data, d => d.name); // Use planet name as the key for smooth transitions
+
+    // Enter selection: append new bubbles
+    bubbles.enter().append("circle")
+        .attr("class", "bubble")
+        .attr("cx", d => x(d.radius))
+        .attr("cy", d => y(d.temperature))
+        .attr("r", 0) // Start with radius 0 for smooth appearance
+        .attr("fill", d => d3.interpolateCool(d.temperature / maxTemperature))  // Color based on temperature
+        .attr("stroke", "#333")
+        .attr("stroke-width", 1)
+        .attr("opacity", 0) // Start with 0 opacity
+        .on("mouseover", (event, d) => {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html(`<strong>Exoplanet:</strong> ${d.name}<br>
+                <strong>Category:</strong> <b>${d.category}</b><br>
+                <strong>Radius:</strong> <b>${d.radius.toFixed(2)}</b> Earth radii<br>
+                <strong>Temperature:</strong> <b>${d.temperature}</b> K<br>
+                <strong>Mass:</strong> ${d.mass} Jupiter masses`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", () => {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        })
+        .transition()
+        .duration(750)
+        .delay((d, i) => i * 3) // Delays for each bubble for cascading effect
+        .attr("r", d => bubbleSize(d.mass)) // Animate radius growth
+        .attr("opacity", 0.8);
+
+    // Add hover behavior to the legend items
+    d3.selectAll('#filters label').on('mouseover', function () {
+        const hoveredCategory = d3.select(this).text().trim();
+        
+        // Highlight the bubbles of the hovered category
+        svg.selectAll(".bubble")
+            .transition()
+            .duration(200)
+            .style("opacity", d => d.category === hoveredCategory ? 1 : 0.1) // Highlight matching, fade others
+            .attr("stroke", d => d.category === hoveredCategory ? "#FFD700" : "#333") // Highlight border
+            .attr("stroke-width", d => d.category === hoveredCategory ? 2 : 1); // Increase border width for highlight
+    })
+    .on('mouseout', function () {
+        // Reset bubble appearance on mouseout
+        svg.selectAll(".bubble")
+            .transition()
+            .duration(200)
+            .style("opacity", 0.8)
+            .attr("stroke", "#333")
+            .attr("stroke-width", 1);
+    });
+}
+
+// Filter logic
+function applyFilters() {
+    const showHabitable = document.getElementById("habitable-filter").checked;
+    const showHotJupiter = document.getElementById("hot-jupiter-filter").checked;
+    const showRocky = document.getElementById("rocky-filter").checked;
+    const showOther = document.getElementById("other-filter").checked;
+
+    const filteredData = originalData.filter(d => 
+        (showHabitable && d.category === 'Potentially Habitable') ||
+        (showHotJupiter && d.category === 'Hot Jupiter') ||
+        (showRocky && d.category === 'Rocky Planet') ||
+        (showOther && d.category === 'Other')
+    );
+
+    createBubbleChart(filteredData); // Update chart with filtered data
+}
+
+// Attach event listeners for filter checkboxes
+document.getElementById("habitable-filter").addEventListener("change", applyFilters);
+document.getElementById("hot-jupiter-filter").addEventListener("change", applyFilters);
+document.getElementById("rocky-filter").addEventListener("change", applyFilters);
+document.getElementById("other-filter").addEventListener("change", applyFilters);
