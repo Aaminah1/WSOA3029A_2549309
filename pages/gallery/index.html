@@ -18,9 +18,15 @@
         <h1>Astronomy Picture of the Day (APOD) Gallery</h1>
         <div class="filter-controls">
             <div class="date-filter-group">
-                <label for="date-picker">Select Date: </label>
-                <input type="date" id="date-picker" min="1995-06-16">
-                <button id="filter-btn" onclick="fetchAPODByDate()" disabled>Get APOD</button>
+<!-- Example: Date Picker -->
+<label for="date-picker">Pick a date:</label>
+<input type="date" id="date-picker">
+
+<!-- Dynamic message area -->
+<p id="message">Please select a date to view by date</p>
+
+<!-- Get APOD button -->
+<button id="filter-btn" onclick="fetchAPODByDate()" disabled>Get APOD</button>
             </div>
             <button class="show-all-btn" onclick="showAll()">Show All</button>
         </div>
@@ -39,6 +45,8 @@
             <p id="modal-description"></p>
         </div>
     </div>
+    <!-- Back to Top Button -->
+<button id="back-to-top" title="Go to top">↑</button>
 </main>
 <script src="../../assets/js/gallery.js" ></script>
       <!-- JS file for navigation -->

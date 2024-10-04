@@ -30,7 +30,7 @@
 #chart {
     width: 75%; /* Adjusted width to allow space for the legend and info panel */
     height: 80vh;
-    background-color: #000;
+    background-color: #212121;
     position: relative;
     overflow: hidden;
     border: 2px solid #333;
@@ -229,14 +229,124 @@
     }
 }
 /*CHART STYLES*/
+/* Chart Wrapper Styling */
+#chart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+    background-color: #111; /* Darker background to separate the section */
+}
 
-
-/* Chart styling */
-#chart {
-    width: 100%;
-    height: 500px;
+/* Chart Section */
+#chart-section {
+    width: 80%; /* Adjust the width of the chart section */
+    max-width: 1200px; /* Maximum width to prevent it from getting too large */
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    
     margin: 0 auto;
 }
+
+/* Center the Chart Container */
+#chart-container {
+    margin: 0 auto;
+    width: 100%; /* Make chart responsive */
+    height: 500px; /* Fixed height, can adjust for larger/smaller screens */
+}
+
+/* Adjust Margins for Chart to Display Axis Properly */
+#chart {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+/* Axis Labels */
+.axis-label {
+    font-size: 16px; /* Increase to 16px for better visibility */
+    font-family: 'Roboto', sans-serif;
+    fill: #fff;;
+}
+/* Tooltip for Axis Titles */
+#axis-tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Tooltip for bubbles */
+.tooltip {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity 0.3s ease;
+}
+
+/* Chart filters styling */
+#filters {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#filters label {
+    margin-right: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    #chart-section {
+        width: 90%;
+    }
+
+    #chart-container {
+        height: 400px; /* Smaller height for tablet */
+    }
+
+    .key-insights {
+        font-size: 1em;
+    }
+
+    #filters {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #filters label {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    #chart-container {
+        height: 300px; /* Smaller height for mobile */
+    }
+
+    .axis-label {
+        font-size: 12px;
+    }
+}
+
 
 
 

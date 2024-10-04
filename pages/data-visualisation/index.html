@@ -75,23 +75,26 @@
         </div>
         
  <!-- BAR GRAPH-->
-
 <!-- Chart Section -->
-<div id="chart-section">
-<h2 >Explore Exoplanets: Radius, Temperature, and Mass</h2>
-<p class="key-insights">Hover over the bubbles to learn more about each exoplanet. Larger bubbles represent planets with more mass, while the position corresponds to radius and temperature.</p>
+<div id="chart-wrapper">
+    <div id="chart-section">
+        <h2>Explore Exoplanets: Radius, Temperature, and Mass</h2>
+        <p class="key-insights">Hover over the bubbles to learn more about each exoplanet. Larger bubbles represent planets with more mass, while the position corresponds to radius and temperature.</p>
 
-<!-- Filters -->
-<div id="filters">
-<label><input type="checkbox" id="habitable-filter" checked> Potentially Habitable</label>
-<label><input type="checkbox" id="hot-jupiter-filter" checked> Hot Jupiter</label>
-<label><input type="checkbox" id="rocky-filter" checked> Rocky Planet</label>
-<label><input type="checkbox" id="other-filter" checked> Other</label>
+        <!-- Filters -->
+        <div id="filters">
+            <label><input type="checkbox" id="habitable-filter" checked> Potentially Habitable</label>
+            <label><input type="checkbox" id="hot-jupiter-filter" checked> Hot Jupiter</label>
+            <label><input type="checkbox" id="rocky-filter" checked> Rocky Planet</label>
+            <label><input type="checkbox" id="other-filter" checked> Other</label>
+        </div>
+
+        <div id="chart-container">
+            <div id="chart"></div> <!-- D3 Bubble Chart will render here -->
+        </div>
+    </div>
 </div>
 
-<div id="chart">
-
-</div> <!-- D3 Bubble Chart will render here -->
 
     </main>
 

@@ -9,6 +9,7 @@ const modalDescription = document.getElementById('modal-description');
 const loadingIndicator = document.getElementById('loading');
 const filterBtn = document.getElementById('filter-btn');
 const datePicker = document.getElementById('date-picker');
+const message = document.getElementById('message'); // Add message for user feedback
 
 let allImages = []; // Global variable to store all images
 
@@ -120,9 +121,17 @@ function openModal(image) {
     modal.style.display = 'block';
 }
 
-// Close the modal
+// Close modal and remove the 'active' class from any open cards
 function closeModal() {
     modal.style.display = 'none';
+    modalImg.src = ''; // Reset image source
+    modalTitle.textContent = ''; // Clear title
+    modalDescription.textContent = ''; // Clear description
+
+    // Remove 'active' class from any cards
+    document.querySelectorAll('.card.active').forEach(card => {
+        card.classList.remove('active');
+    });
 }
 
 // Close modal on click outside
@@ -134,7 +143,13 @@ window.onclick = function(event) {
 
 // Enable/Disable filter button based on date picker value
 datePicker.addEventListener('input', () => {
-    filterBtn.disabled = !datePicker.value;
+    if (datePicker.value) {
+        filterBtn.disabled = false; // Enable button if a date is selected
+        message.textContent = "Click 'Get APOD' to view the image."; // Inform user to click the button
+    } else {
+        filterBtn.disabled = true; // Disable button if no date is selected
+        message.textContent = "Please select a date to view the APOD."; // Prompt user to pick a date
+    }
 });
 
 // Call the fetchAPOD function on page load

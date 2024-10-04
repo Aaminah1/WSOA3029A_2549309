@@ -48,7 +48,7 @@ function prepareDataset(data) {
 
 // Function to create the D3 interactive bubble chart with transition support
 function createBubbleChart(data) {
-    const margin = { top: 40, right: 30, bottom: 40, left: 60 };
+    const margin = { top: 40, right: 30, bottom: 80, left: 80 }; // Adjusted margins for axis titles
     const width = document.getElementById('chart').clientWidth - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;
 
@@ -77,17 +77,18 @@ function createBubbleChart(data) {
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x))
         .append("text")
-        .attr("y", 30)
+        .attr("y", 40)
         .attr("x", width / 2)
         .attr("text-anchor", "middle")
         .attr("stroke", "black")
         .text("Radius (Earth radii)");
+        
 
     svg.append("g")
         .call(d3.axisLeft(y))
         .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", -50)
+        .attr("y", -60)
         .attr("x", -height / 2)
         .attr("dy", "1em")
         .attr("text-anchor", "middle")
@@ -157,6 +158,61 @@ function createBubbleChart(data) {
             .attr("stroke", "#333")
             .attr("stroke-width", 1);
     });
+    // Add x-axis with hover for additional info
+const xAxis = svg.append("g")
+.attr("transform", `translate(0,${height})`)
+.call(d3.axisBottom(x));
+
+xAxis.append("text")
+.attr("y", 40) // Position it below the axis
+.attr("x", width / 2)
+.attr("text-anchor", "middle")
+
+.attr("class", "axis-label")
+.text("Radius (Earth radii)")
+.on("mouseover", function(event) {
+    d3.select("#axis-tooltip")
+        .style("left", `${event.pageX + 5}px`)
+        .style("top", `${event.pageY - 28}px`)
+        .style("opacity", 1)
+        .html("Radius of the exoplanet in Earth radii. The larger the radius, the bigger the planet.");
+})
+.on("mouseout", function() {
+    d3.select("#axis-tooltip")
+        .style("opacity", 0);
+});
+
+// Add y-axis with hover for additional info
+const yAxis = svg.append("g")
+.call(d3.axisLeft(y));
+
+yAxis.append("text")
+.attr("transform", "rotate(-90)")
+.attr("y", -60) // Move the label further away
+.attr("x", -height / 2)
+.attr("dy", "1em")
+.attr("text-anchor", "middle")
+
+.attr("class", "axis-label")
+.text("Temperature (K)")
+.on("mouseover", function(event) {
+    d3.select("#axis-tooltip")
+        .style("left", `${event.pageX + 5}px`)
+        .style("top", `${event.pageY - 28}px`)
+        .style("opacity", 1)
+        .html("Temperature of the exoplanet in Kelvin. Higher values indicate hotter planets.");
+})
+.on("mouseout", function() {
+    d3.select("#axis-tooltip")
+        .style("opacity", 0);
+});
+
+// Tooltip container for the axis information
+d3.select("body").append("div")
+.attr("id", "axis-tooltip")
+.attr("class", "tooltip")
+.style("opacity", 0);
+
 }
 
 // Filter logic

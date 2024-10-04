@@ -194,3 +194,27 @@ window.addEventListener('scroll', function() {
   });
 });
 
+//back to top button 
+// Get the button
+const backToTopBtn = document.getElementById("back-to-top");
+
+// When the user scrolls down 100px from the top, show the button
+window.onscroll = function() {
+    scrollFunction();
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        backToTopBtn.classList.add("show");
+    } else {
+        backToTopBtn.classList.remove("show");
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the page
+backToTopBtn.addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth" // Smooth scroll effect
+    });
+});
