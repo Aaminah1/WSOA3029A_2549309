@@ -14,7 +14,18 @@ body {
   margin: 0;
   padding: 0;
 }
+/* Ensure the main layout takes up the full height of the page */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
+/* The main content should take up all available space, pushing the footer to the bottom */
+#content {
+  flex: 1;
+}
 /* Main Heading (H1) */
 h1 {
   font-family: 'Exo 2', sans-serif; /* Futuristic and soft */
@@ -563,7 +574,7 @@ html {
     font-size: 1.4rem; /* Adjust social icon size for smaller screens */
   }
 }
-/* Back to Top Button */
+
 /* Back to Top Button */
 #back-to-top {
   display: none; /* Hidden by default */
@@ -578,7 +589,7 @@ html {
   outline: none;
   width: 50px;
   height: 50px;
-  border-radius: 50%; /* Round button */
+  border-radius: 40%; /* Round button */
   cursor: pointer;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Optional shadow */
   transition: opacity 0.3s ease;

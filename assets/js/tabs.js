@@ -1,29 +1,44 @@
-function openTab(evt, tabName) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tab-content" and hide them
-    tabcontent = document.getElementsByClassName("tab-content");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tab-link" and remove the class "active"
-    tablinks = document.getElementsByClassName("tab-link");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-    // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the 'tab' parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabParam = urlParams.get('tab');
     
+    // If 'tab' parameter exists, open the corresponding tab
+    if (tabParam) {
+        openTab(null, tabParam); // Pass the tab name from URL
+    } else {
+        // Default to the first tab (Style Guide) if no parameter is present
+        document.querySelector(".tab-link").click();
+    }
+});
+
+// Function to open specific tab
+function openTab(event, tabName) {
+    // Hide all tab-content elements
+    var tabContent = document.getElementsByClassName("tab-content");
+    for (var i = 0; i < tabContent.length; i++) {
+        tabContent[i].style.display = "none"; // Hide all content
+    }
+
+    // Remove the active class from all tab links
+    var tabLinks = document.getElementsByClassName("tab-link");
+    for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].className = tabLinks[i].className.replace(" active", ""); // Remove active class
+    }
+
+    // Show the selected tab's content
+    document.getElementById(tabName).style.display = "block"; 
+
+    // Add active class to the clicked tab link (if an event exists)
+    if (event) {
+        event.currentTarget.className += " active";
+    } else {
+        // Automatically add the active class to the tab in URL
+        document.querySelector(`[onclick*="${tabName}"]`).className += " active";
+    }
 }
 
-// Optional: Add code here to automatically click the first tab on page load
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementsByClassName("tab-link")[0].click();
-});
+
 
 // wireframes slideshow
 document.addEventListener('DOMContentLoaded', function() {

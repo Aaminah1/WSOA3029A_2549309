@@ -218,3 +218,71 @@ backToTopBtn.addEventListener("click", function() {
         behavior: "smooth" // Smooth scroll effect
     });
 });
+
+//breadcrumbs navigation 
+document.addEventListener('DOMContentLoaded', function() {
+  // Blog titles mapping based on URL or identifier
+  const blogPages = {
+      'blog1.html': 'Critical Analysis Essay',
+      'blog2.html': 'Predesign decision',
+      'blog3.html': 'Getting started',
+      'blog4.html': 'Design decisions',
+      'blog5.html': 'Reflection',
+      // Add more blog pages and their titles as needed
+  };
+
+  // Get the current URL to extract the page name
+  const currentUrl = window.location.pathname;
+  const pageName = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+
+  // Get the blog title from the mapping
+  const blogTitle = blogPages[pageName] || 'Unknown Blog';
+
+  // Generate breadcrumb HTML
+  const breadcrumbHtml = `
+      <ul>
+          <li><a href="/WSOA3029A_2549309/pages/design/index.html">Design</a></li>
+<li><a href="/WSOA3029A_2549309/pages/design/index.html?tab=Theory">Theory</a></li>
+          <li>${blogTitle}</li>
+      </ul>
+  `;
+
+  // Insert the breadcrumb into the breadcrumb container
+  document.getElementById('breadcrumb').innerHTML = breadcrumbHtml;
+});
+
+//next and previous page for blogs
+const blogPosts = [
+  { title: "Critical Analysis Essay", url: "/WSOA3029A_2549309/pages/design/theory/blog1.html" },
+  { title: "Predesign decision", url: "/WSOA3029A_2549309/pages/design/theory/blog2.html" },
+  { title: "Getting started", url: "/WSOA3029A_2549309/pages/design/theory/blog3.html" },
+  { title: "Design decisions", url: "/WSOA3029A_2549309/pages/design/theory/blog4.html" },
+  { title: "Reflection", url: "/WSOA3029A_2549309/pages/design/theory/blog5.html" }
+];
+
+const currentPath = window.location.pathname;
+let currentIndex = blogPosts.findIndex(post => post.url === currentPath);
+
+function generateNavButtons() {
+  const navContainer = document.getElementById('blog-nav');
+
+  if (currentIndex > 0) {
+      // Create Previous button
+      const prevButton = document.createElement('a');
+      prevButton.href = blogPosts[currentIndex - 1].url;
+      prevButton.textContent = `←  ${blogPosts[currentIndex - 1].title}`;
+      prevButton.classList.add('nav-button', 'prev-button');
+      navContainer.appendChild(prevButton);
+  }
+
+  if (currentIndex < blogPosts.length - 1) {
+      // Create Next button
+      const nextButton = document.createElement('a');
+      nextButton.href = blogPosts[currentIndex + 1].url;
+      nextButton.textContent = ` ${blogPosts[currentIndex + 1].title} →`;
+      nextButton.classList.add('nav-button', 'next-button');
+      navContainer.appendChild(nextButton);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', generateNavButtons);

@@ -16,53 +16,56 @@
 
     <!-- Navbar will be injected here -->
     <header id="navbar"></header>
-
+    <nav id="breadcrumb" class="breadcrumb"></nav>
     <main id="content">
-        <h1>Getting started with the plan</h1>
-      <p>The first step and challenge were to figure out the appropriate folder structure to ensure that the site is organized well so that it makes the development process easier and efficient for maintenance and scalability, as well as SEO and Performance. I also learned about the naming conventions to become more familiar with how to work and design in more professional contexts. </p>
-      <p>I did some research on the best practices and considered them in relation to my design. Here is my starting folder structure: </p>
-      <img src="/WSOA3029A_2549309/assets/images/folderStructre.png" class="my-image" alt="A brief description of what the image represents">
-      <section>
-        <h2>Why This Structure Works</h2>
-        
-        <h3>Keeps the Root Directory Clean</h3>
-        <p>By only keeping essential files in the root (such as index.html), the root directory stays organized and easy to navigate. All other files are stored in relevant subfolders, avoiding clutter.</p>
-        
-        <h3>Logical Grouping</h3>
-        <p>Storing CSS, JavaScript, and images within an /assets folder ensures that all non-HTML resources are grouped together logically, making it easier to manage these files as the project scales.</p>
-        
-        <h3>Index Files for Folders and Clean URLs</h3>
-        <p>Each section has its own folder with an index.html file. This not only keeps the structure organized but also allows for clean URLs (e.g., website.com/about/ instead of website.com/about.html).</p>
-    
-        <h4>Clean URLs Matter because:</h4>
-        <ul>
-            <li>
-                <strong>SEO Benefits:</strong>
-                Clean URLs, which are concise and free of unnecessary characters (like .html or query strings), are better for search engines. They improve rankings because they are easier for search engine crawlers to understand and index. For example, website.com/about/ clearly indicates the page content, helping search engines better categorize and rank it.
-            </li>
-            <li>
-                <strong>Improved User Experience:</strong>
-                Clean URLs are more readable and user-friendly. They give users a clear indication of the page’s content and purpose without clutter or technical file extensions. This makes the website feel more professional and accessible, and users are more likely to trust and navigate a site that is simple and clear.
-            </li>
-        </ul>
-        
-        <h3>Scalability and Maintenance</h3>
-        <p>This structure easily supports the addition of new sections or pages without major restructuring.</p>
-    </section>
-    
+     <h2>Predesign decision</h2>
+      <h3>Target Audience</h3>
+      <ul>
+        <li><strong>Curious Learners: </strong> <p>This group includes students, hobbyists, and those with a general curiosity about space and science but who may not have an advanced understanding of astronomy. They are looking for accessible, easy-to-digest information that sparks their interest in space exploration.</p> </li>
+        <li><strong>General Public: </strong> <p>Casual visitors who may not have a deep knowledge of space but are drawn to visually compelling and interactive content.</p> </li>
+        <li><strong>Space Enthusiasts: </strong><p>Individuals who are passionate about space exploration, exoplanet research, and the search for extraterrestrial life. They may already have a solid understanding of space-related topics and are looking for detailed, interactive content to deepen their knowledge.</p></li> 
+</ul>
+      <h3>Story/Purpose</h3>
+      <p>The purpose of this website is to shift users' focus away from the materialistic, self-centered concerns that overwhelm much of modern life. In a world consumed by social media and shallow, material pursuits, this website aims to redirect attention to the vast possibilities of the universe and life beyond Earth. By providing accessible, interactive information about exoplanets and space exploration, it encourages users to step outside their small, Earth-bound realities and immerse themselves in the wonder of the cosmos.</p>
+      <h4>End goal</h4>
+      <p>Basically, the end goal is to <strong>Educate and Inspire </strong> through broadening users' perspectives by showing them the vastness of the universe and the possibilities beyond the confines of materialism, self-centeredness, and the distractions of daily life. The site aims to open their minds to the awe-inspiring potential of space exploration and the wonders of life beyond our planet.</p>
       
-      
-      
-      
-      <div class="navigation-buttons">
-            <a id="prevButton" aria-label="Previous"href="#">Previous</a>
-            <a id="nextButton" aria-label="Next" href="#">Next</a>
-        </div>
-        
-    </main>
+      <h3>Content Requirements</h3>
+     <ul>
+<li><strong>Data Visualization of Exoplanets (Priority):</strong><p>This is the central feature of the site, providing an interactive experience where users can explore exoplanet data.
+    The visualization should allow users to uncover details like size, distance from Earth, potential habitability, and other key factors.
+    Interactive elements should encourage exploration, with options to filter and zoom in on specific categories or planets.
+    </p></li>
+<li><strong>Information About Exoplanets:</strong><p>Provide a section that offers a general introduction to exoplanets, explaining what they are, how they are discovered, and why they are important for understanding space.
+    This section should be clear and accessible, aimed at curious learners and general visitors who might need some context before diving into the data.
+    </p></li>
+<li><strong>Gallery of Space Images:</strong><p>A visually captivating gallery showcasing high-quality images of space, exoplanets, and related celestial bodies.
+    This gallery would serve to enhance the aesthetic appeal of the site and keep users engaged visually. It can act as a complementary feature to the data visualizations, reinforcing the theme of space exploration.
+    </p></li>
 
-    <!-- JS file for navigation -->
-    <script src="../../assets/js/navigation.js" ></script>
-    <script src="../../assets/js/tabs.js" ></script>
+     </ul>
+      <p>Note: Prioritizing Data Visualization first, while the Information and Gallery sections provide supplementary content that enriches the overall experience.</p>
+      <h3>Technical and Time Constraints</h3>
+      <ul>
+        <li><strong>Limited Technologies:</strong><p>The project is restricted to using HTML, CSS, JavaScript, and the D3.js library for data visualizations. This limits the range of advanced features like making 3D planet models using three.js, or better maps using Leaflet.js which could have made the visuals more outstanding.</p></li>
+        <li><strong>Data Source Limitations:</strong><p> The project relies on live data from APIs, these could lead to unexpected problems in general.</p></li>
+        <li><strong>Time for Research:</strong><p>Integrating live data from APIs involves time spent understanding the API documentation, testing data retrieval, and working out how to implement the data in an interactive way.</p></li>
+        <li><strong>Time for Testing and Debugging:</strong><p> Testing the interactive elements, visualizations, and responsiveness across multiple devices and browsers will require time. Debugging issues that arise from API calls, data visualization, or layout inconsistencies may consume a significant portion of the project timeline.</p></li>
+       
+      </ul>
+      
+    
+
+
+         <!-- Blog navigation container for Next/Previous buttons -->
+     <div id="blog-nav"></div>
+        
+            <!-- Back to Top Button -->
+<button id="back-to-top" title="Go to top">↑</button>
+</main>
+
+<!-- JS file for navigation -->
+<script src="../../../assets/js/navigation.js" ></script>
+<script src="../../../assets/js/tabs.js" ></script>
 </body>
 </html>

@@ -1,3 +1,131 @@
+/*BLOGS ON THEORY TAB STYLES*/
+.breadcrumb {
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212; /* Matches the background theme */
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.breadcrumb li {
+  color: #ccc; /* General breadcrumb text color */
+}
+
+.breadcrumb a {
+  color: #48cae4;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.breadcrumb a:hover {
+  color: #00ffff;
+}
+
+.breadcrumb li::after {
+  content: ">";
+  margin: 0 10px;
+  color: #666; /* Separator color */
+}
+
+.breadcrumb li:last-child::after {
+  content: ""; /* Remove the arrow from the last item */
+}
+
+.nav-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #48cae4;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #36b0c2;
+}
+
+.prev-button {
+  float: left;
+}
+
+.next-button {
+  float: right;
+}
+
+#blog-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+@media (max-width: 768px) {
+  #blog-nav {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .nav-button {
+      width: 80%;
+      margin: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-button {
+      width: 90%;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+  }
+}
+
+/* Container for centering images */
+.centered-image-container {
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center;     /* Centers the image vertically (optional) */
+  margin: 20px 0;          /* Adds spacing above and below the image */
+}
+
+.centered-image-container img {
+  max-width: 100%;         /* Makes the image responsive */
+  height: auto;            /* Maintains the image aspect ratio */
+  display: block;          /* Removes any inline spacing issues */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: Adds shadow for depth */
+  border-radius: 8px;      /* Optional: Rounds the corners */
+  max-height: 400px;       /* Limit the height for large images */
+}
+
+/* Make sure this works well across different screen sizes */
+@media (max-width: 768px) { /* For tablets */
+  .centered-image-container img {
+      max-width: 90%;      /* Adjusts the width on smaller screens */
+  }
+}
+
+@media (max-width: 480px) { /* For mobile */
+  .centered-image-container img {
+      max-width: 100%;     /* Full width on mobile */
+  }
+}
+
+
+
+
+
+
+
+
+
+
 /* Style the tab container and links */
 .tab-content {
     display: none; /* Hide content that is not active */
@@ -9,8 +137,6 @@
     border-top: none; /* Remove top border to merge with the tab */
     border-radius: 8px;
 }
-
-
 
 
 .tab-links button {
@@ -187,7 +313,7 @@ dd {
 #style-guide {
     font-family: 'Roboto', sans-serif;
     color: #eeeeee;
-    background-color: #121212;
+    
     padding: 2rem;
     line-height: 1.6;
     max-width: 900px;
@@ -247,7 +373,7 @@ dd {
   #color-palette {
     font-family: 'Roboto', sans-serif;
     color: #eeeeee;
-    background-color: #121212;
+   
     padding: 2rem;
     max-width: 900px;
     margin: 0 auto;
@@ -293,7 +419,7 @@ dd {
   #branding {
     font-family: 'Roboto', sans-serif;
     color: #eeeeee;
-    background-color: #121212;
+
     padding: 2rem;
     max-width: 900px;
     margin: 0 auto;
