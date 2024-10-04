@@ -13,8 +13,9 @@
     
 }
 
+
 /* Map container styling */
-#map-container, #chart-container  {
+#map-container {
     width: 75%; /* Adjusted width to allow space for the legend and info panel */
     height: 80vh;
     background-color: #000;
@@ -26,7 +27,18 @@
     border-radius: 8px;
     cursor: pointer; 
 }
-
+#chart {
+    width: 75%; /* Adjusted width to allow space for the legend and info panel */
+    height: 80vh;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #333;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    margin-right: 300px; /* Leave space for the info panel */
+    border-radius: 8px;
+    cursor: pointer; 
+}
 /* Search bar at the top */
 #search-container {
     position: absolute;

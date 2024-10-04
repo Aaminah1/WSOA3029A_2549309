@@ -16,7 +16,8 @@
     <main id="content">
 <!-- INTERACTIVE MAP-->
 <div id="map-info">
-    <h1>Explore the Wonders of Distant Exoplanets</h1>
+    <h1>Discoveries</h1>
+    <h2>Explore the Wonders of Distant Exoplanets</h2>
   
     
 </div>    
@@ -72,23 +73,26 @@
 
             </div>
         </div>
- <!-- BAR GRAPH-->
-        <div id="chart-section">
-            <h1>Explore Exoplanets: Radius, Temperature, and Mass</h1>
-    <p class="key-insights">Hover over the bubbles to learn more about each exoplanet. Larger bubbles represent planets with more mass, while the position corresponds to radius and temperature.</p>
-    
-    <!-- Filters -->
-    <div id="filters">
-        <label><input type="checkbox" id="habitable-filter" checked> Potentially Habitable</label>
-        <label><input type="checkbox" id="hot-jupiter-filter" checked> Hot Jupiter</label>
-        <label><input type="checkbox" id="rocky-filter" checked> Rocky Planet</label>
-        <label><input type="checkbox" id="other-filter" checked> Other</label>
-    </div>
-
-    <div id="chart">
         
-    </div> <!-- D3 Bubble Chart will render here -->
-        </div>
+ <!-- BAR GRAPH-->
+
+<!-- Chart Section -->
+<div id="chart-section">
+<h2 >Explore Exoplanets: Radius, Temperature, and Mass</h2>
+<p class="key-insights">Hover over the bubbles to learn more about each exoplanet. Larger bubbles represent planets with more mass, while the position corresponds to radius and temperature.</p>
+
+<!-- Filters -->
+<div id="filters">
+<label><input type="checkbox" id="habitable-filter" checked> Potentially Habitable</label>
+<label><input type="checkbox" id="hot-jupiter-filter" checked> Hot Jupiter</label>
+<label><input type="checkbox" id="rocky-filter" checked> Rocky Planet</label>
+<label><input type="checkbox" id="other-filter" checked> Other</label>
+</div>
+
+<div id="chart">
+
+</div> <!-- D3 Bubble Chart will render here -->
+
     </main>
 
     <!-- JS file for navigation -->
