@@ -48,6 +48,9 @@ function prepareDataset(data) {
 
 // Function to create the D3 interactive bubble chart with transition support
 function createBubbleChart(data) {
+
+
+    
     const margin = { top: 40, right: 30, bottom: 80, left: 80 }; // Adjusted margins for axis titles
     const width = document.getElementById('chart').clientWidth - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;

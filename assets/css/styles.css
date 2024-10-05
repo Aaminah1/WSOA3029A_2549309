@@ -9,10 +9,11 @@
 
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #121212; /* Space-like dark background */
+  background-color: #121212; /* #282828 Space-like dark background */
   color: #bfbfbf;
   margin: 0;
   padding: 0;
+  line-height: 1.6; 
 }
 /* Ensure the main layout takes up the full height of the page */
 html, body {

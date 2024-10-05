@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design</title>
+    <meta name="description" content="Explore the possibilities of life beyond Earth with our interactive data visualizations and insights into space research.">
+    <meta name="author" content="Aaminah Habib">
+    <meta name="keywords" content="space, exoplanets, life beyond earth, universe, space research">
+    <meta property="og:title" content="Life Beyond">
+    <meta property="og:description" content="Discover life beyond earth with interactive content and in-depth analysis.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="../../../assets/css/styles.css">
     <link rel="stylesheet" href="../../../assets/css/design-styles.css">
     <link rel="stylesheet" href="../../../assets/css/about-styles.css">
@@ -17,21 +23,23 @@
 
     <!-- Navbar will be injected here -->
     <header id="navbar"></header>
-    <nav id="breadcrumb" class="breadcrumb"></nav>
+    <nav id="breadcrumb" aria-label="Breadcrumb"  class="breadcrumb"></nav>
     <main id="content">
+        <article>
+            <section>
   <h2>Reflection</h2>
     
     <p>There was a lot that can be improved because I feel like the website seem a little incomplete, like some stuff seem out of place, like the footer. The pure black background agains pure white text is so high in contrast that is hurts the eyes. The data visuals have some functionality not working correctly, like the tooltip is not appear in the same place as the mouse for the map, which makes it hard to see as if goes out of the screen. Th search is not working properly due to coding issues so i had to remove it, for now. I also realsied that the zoom and panning had more complexity that I thought, becuase of the zooming the position of the mouse relative to the SVG may not align with those viewport coordinates, which affects other functionality like the postioning of the tooltips. Same issue for the bubble chart, so now there are bubbles overlapping each other and the user are limited to the complete information</p>
       
-      
-      
+      </section>
+      </article>
       
     <!-- Blog navigation container for Next/Previous buttons -->
-    <div id="blog-nav"></div>
+    <div id="blog-nav" aria-label="Blogs Navigation"></div>
         
             <!-- Back to Top Button -->
-<button id="back-to-top" title="Go to top">↑</button>
-</main>
+            <button id="back-to-top" title="Go to top" aria-label="Scroll back to top">↑</button>
+        </main>
 
 <!-- JS file for navigation -->
 <script src="../../../assets/js/navigation.js" ></script>

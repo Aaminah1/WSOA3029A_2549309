@@ -488,48 +488,47 @@ input[type="checkbox"]:active {
     font-size: 14px;
     cursor: pointer;
 }
-/* Responsive Design */
+/* Responsive Design 
+
+did in js since the axis kept cutting off*/
+/* Tablet and below */
 @media (max-width: 1024px) {
     #chart-section {
-        width: 90%;
+        width: 95%;
+        padding: 10px;
     }
 
     #chart-container {
-        height: 400px; /* Smaller height for tablet */
+        height: 300px;  
     }
 
-    .key-insights {
-        font-size: 1em;
-    }
-
-    #filters {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #filters label {
-        margin-right: 0;
-        margin-bottom: 10px;
+    .axis-label {
+        font-size: 14px; 
     }
 }
 
+/* Mobile */
 @media (max-width: 767px) {
-    #chart-container {
-        height: 300px; /* Smaller height for mobile */
+    #chart-section {
+        width: 100%;
     }
+
+    #chart-container {
+        height: 200px;  
 
     .axis-label {
         font-size: 12px;
     }
 }
 
+/* Large Desktop */
+@media (min-width: 1200px) {
+    #chart-section {
+        max-width: 1200px; 
+    }
 
-
-
-
-
-
-
-
-
-
+    #chart-container {
+        height: 500px; 
+    }
+}
+}

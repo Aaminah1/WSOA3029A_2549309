@@ -1,55 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
+    <meta name="description"
+        content="Explore the possibilities of life beyond Earth with our interactive data visualizations and insights into space research.">
+    <meta name="author" content="Aaminah Habib">
+    <meta name="keywords" content="space, exoplanets, life beyond earth, universe, space research">
+    <meta property="og:title" content="Life Beyond">
+    <meta property="og:description"
+        content="Discover life beyond earth with interactive content and in-depth analysis.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="../../assets/css/gallery-styles.css">
     <link rel="stylesheet" href="../../assets/css/styles.css">
-    <!-- Font Awesome for icons (optional) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Font Awesome for icons  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
-     <!-- Navbar will be injected here -->
-     <header id="navbar"></header>
-     <main>
-    <div class="header">
-        <h1>Astronomy Picture of the Day (APOD) Gallery</h1>
-        <div class="filter-controls">
-            <div class="date-filter-group">
-<!-- Example: Date Picker -->
-<label for="date-picker">Pick a date:</label>
-<input type="date" id="date-picker">
+    <!-- Navbar will be injected here -->
+    <header id="navbar"></header>
 
-<!-- Dynamic message area -->
-<p id="message">Please select a date to view by date</p>
+    <main>
+        <div>
+            <h1>Astronomy Picture of the Day (APOD) Gallery</h1>
+            <div class="filter-controls">
+                <div class="date-filter-group">
+                    <!-- Example: Date Picker -->
+                    <label for="date-picker">Pick a date:</label>
+                    <input type="date" id="date-picker">
 
-<!-- Get APOD button -->
-<button id="filter-btn" onclick="fetchAPODByDate()" disabled>Get APOD</button>
+                    <!-- Dynamic message area -->
+                    <p id="message">Please select a date to view by date</p>
+
+                    <!-- Get APOD button -->
+                    <button id="filter-btn" onclick="fetchAPODByDate()" disabled
+                        aria-label="Fetch picture of the day">Get APOD</button>
+                </div>
+                <button class="show-all-btn" onclick="showAll()" aria-label="Show all pictures">Show All</button>
             </div>
-            <button class="show-all-btn" onclick="showAll()">Show All</button>
         </div>
-    </div>
-    <div id="loading" class="loading">Loading...</div>
-    <div id="gallery-container" class="gallery-container">
-        <!-- Images will be injected here by JavaScript -->
-    </div>
+        <div id="loading" class="loading">Loading...</div>
+        <div id="gallery-container" class="gallery-container">
+            <!-- Images will be injected here by JavaScript -->
+        </div>
 
-    <!-- Modal for detailed view -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modal-img" src="" alt="">
-            <h3 id="modal-title"></h3>
-            <p id="modal-description"></p>
+        <!-- Modal for detailed view -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <img id="modal-img" src="" alt="">
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+            </div>
         </div>
-    </div>
-    <!-- Back to Top Button -->
-<button id="back-to-top" title="Go to top">↑</button>
-</main>
-<script src="../../assets/js/gallery.js" ></script>
-      <!-- JS file for navigation -->
-      <script src="../../assets/js/navigation.js" ></script>
+        <!-- Back to Top Button -->
+        <button id="back-to-top" title="Go to top" aria-label="Scroll back to top">↑</button>
+
+    </main>
+
+
+    <script src="../../assets/js/gallery.js"></script>
+    <!-- JS file for navigation -->
+    <script src="../../assets/js/navigation.js"></script>
 </body>
+
 </html>
