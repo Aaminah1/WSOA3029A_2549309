@@ -32,13 +32,13 @@ h1 {
   font-family: 'Exo 2', sans-serif; /* Futuristic and soft */
   font-size: 3rem; /* Largest heading */
   color: #48cae4; /* Teal color */
-  text-transform: uppercase;
+  
   text-align: center;
   letter-spacing: 2px; /* Spaced out for emphasis */
   margin: 1.5rem 0;
   line-height: 1.2;
   transition: color 0.3s ease-in-out;
-  
+  text-transform: uppercase;
   /* Subtle Glow Effect */
   text-shadow: 
     0 0 5px rgba(72, 202, 228, 0.4), 

@@ -8,12 +8,21 @@ main {
   }
   
   /* Headings */
-  main h2, main h3, main h4 {
+  main h2 {
     font-family: 'Exo 2', sans-serif;
     color: #48cae4;
+   
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
+  main h3, main h4 {
+    font-family: 'Exo 2', sans-serif;
+    color: #fff8e7;
+   
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
   
   /* List Styling */
   main ul {
