@@ -52,5 +52,20 @@ document.addEventListener('DOMContentLoaded', () => {
     generateStarsAndPlanets(100, 3);  // Generate 100 stars and 3 planets
 });
 
+//for theory section 
+document.addEventListener('DOMContentLoaded', function() {
+    const starsContainer = document.querySelector('.planet-container .stars'); // Target only the stars in planet-container
+    if (starsContainer) {
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            starsContainer.appendChild(star);
+        }
+    }
+});
+
 
 

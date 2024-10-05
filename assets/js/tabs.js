@@ -80,6 +80,59 @@ document.addEventListener('DOMContentLoaded', function() {
     updateImageDisplay();
 });
 
+//fucntion for line on under headings for blogs
+function createSparkles(lineElement) {
+    const width = window.innerWidth; // Get the viewport width
+    let count;
+  
+    if (width < 480) {
+      count = 20; // Less sparkle for smaller screens
+    } else if (width < 1024) {
+      count = 30; // Moderate sparkle for tablets
+    } else {
+      count = 40; // More sparkle for larger screens
+    }
+  
+    for (let i = 0; i < count; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = `${Math.random() * 100}%`;
+      sparkle.style.top = '50%';
+      sparkle.style.transform = 'translateY(-50%)'; // Center sparkles vertically
+      sparkle.style.animationDelay = `${Math.random() * 3}s`; // Stagger the animation start
+      lineElement.appendChild(sparkle);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const starryLine = document.querySelector('.starry-line');
+    createSparkles(starryLine);
+    window.onresize = () => { // Re-create sparkles on resize to adjust count
+      starryLine.innerHTML = ''; // Clear existing sparkles
+      createSparkles(starryLine);
+    };
+  });
 
+  //theory blog section interaction stuff
+  //for theory section 
+  document.addEventListener('DOMContentLoaded', function() {
+    const starsContainer = document.querySelector('#stars-theory');
+    
+    if (starsContainer) {
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+            starsContainer.appendChild(star);
+        }
+    }
+});
+
+
+
+
+  
     
 

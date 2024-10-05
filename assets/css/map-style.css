@@ -103,7 +103,7 @@ input[type="checkbox"]:active {
 /* Button styling */
 #select-all {
     background-color: #48cae4;
-    color: #fff;
+    color: #fff8e7;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -128,7 +128,7 @@ input[type="checkbox"]:active {
 /* Align checkboxes with labels */
 .legend-item label {
     flex-grow: 1;
-    color: #fff;
+    color: #fff8e7;
     cursor: pointer;
     font-size: 1rem;
 }
@@ -226,7 +226,7 @@ input[type="checkbox"]:active {
     width: 280px; /* Slightly wider for better readability */
     max-height: 85vh;
     background-color: rgba(30, 30, 30, 0.95); /* Darker background for better contrast */
-    color: white;
+    color: #fff8e7;
     padding: 25px; /* Increase padding */
     box-sizing: border-box;
     border-left: 3px solid #FFD700; /* Brighter border to enhance focus */
@@ -259,7 +259,7 @@ input[type="checkbox"]:active {
 
 /* Add custom styling for each section */
 #planet-details p span {
-    color: #ffffff; /* Keep data text white for readability */
+    color: #fff8e7; /* Keep data text white for readability */
     font-weight: normal;
 }
 
@@ -283,7 +283,7 @@ input[type="checkbox"]:active {
 #more-info-btn {
     display: block;
     background-color: #48cae4;
-    color: white;
+    color: #fff8e7;
     padding: 10px 15px;
     text-align: center;
     font-size: 14px;

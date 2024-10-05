@@ -1,3 +1,225 @@
+
+/*THEORY SECTION REDESIGN STYLES (need to remove old one soon)*/
+.planet-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;  /*Allows items to wrap if not enough space*/ 
+  margin: 100px ;
+  /*background-image: url('/WSOA3029A_2549309/assets/images/spaceBg.jpeg');*/
+  position: relative;
+  height: 100%; /* Adjust as needed */
+  background-size: cover; /* Make sure the background covers the entire area */
+  background-position: center;
+  background-repeat: no-repeat; /* Prevent the background from repeating */
+  padding: 50px 0; /* Optional, adjust the padding as needed to space out planets */
+   
+}
+
+.planet {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  margin-bottom: 20px; 
+  z-index: 1;
+  
+}
+
+.planet img {
+  width: 100px; 
+  transition: transform 0.5s ease;
+}
+
+.planet-title {
+  
+  text-align: center;
+  
+  display: block; 
+  margin-top: 10px; 
+
+  font-family: 'Exo 2', sans-serif;
+  font-size: 1.4rem;
+  color: #48cae4; /* Teal color */
+
+  text-align: center;
+  letter-spacing: 0.8px;
+  
+  line-height: 1.3;
+  text-transform: uppercase;
+  /* Subtle Glow Effect */
+  text-shadow: 
+    0 0 5px rgba(72, 202, 228, 0.4), 
+    0 0 8px rgba(0, 255, 255, 0.2);
+
+}
+
+.planet:hover img {
+  transform: scale(2); 
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -60px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333; 
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  display: none; 
+  text-align: center;
+  white-space: normal; 
+  z-index: 10; 
+  width: auto; 
+  max-width: 300px; 
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.planet:hover .tooltip {
+  display: block; 
+  visibility: visible; 
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s linear;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -1; /* Ensure the stars stay in the background */
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 5s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+      opacity: 0.2;
+  }
+  50% {
+      opacity: 1;
+  }
+}
+
+/* Keyframes for up and down motion */
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0); /* Initial position */
+  }
+  50% {
+    transform: translateY(-50px); /* Move slightly up */
+  }
+}
+
+@keyframes floatDown {
+  0%, 100% {
+    transform: translateY(0); /* Initial position */
+  }
+  50% {
+    transform: translateY(50px); /* Move slightly down */
+  }
+}
+
+/* Apply alternating animations */
+.planet-container .planet:nth-child(odd) {
+  animation: floatUp 5s ease-in-out infinite; /* Planets in odd positions go up */
+}
+
+.planet-container .planet:nth-child(even) {
+  animation: floatDown 5s ease-in-out infinite; /* Planets in even positions go down */
+}
+
+/* Keyframes for up and down motion */
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0); /* Initial position */
+  }
+  50% {
+    transform: translateY(-50px); /* Move slightly up */
+  }
+}
+
+@keyframes floatDown {
+  0%, 100% {
+    transform: translateY(0); /* Initial position */
+  }
+  50% {
+    transform: translateY(50px); /* Move slightly down */
+  }
+}
+
+/* Apply alternating animations */
+.planet-container .planet:nth-child(odd) {
+  animation: floatUp 5s ease-in-out infinite; /* Planets in odd positions go up */
+}
+
+.planet-container .planet:nth-child(even) {
+  animation: floatDown 5s ease-in-out infinite; /* Planets in even positions go down */
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .planet-container {
+    flex-direction: column; /* Stack planets vertically on tablet and mobile */
+    margin: 20px;
+  }
+
+  .planet {
+    width: 120px;
+  }
+
+  .planet img {
+    width: 80px;
+  }
+
+  .planet-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .planet-container {
+    flex-direction: column;
+    margin: 10px;
+  }
+
+  .planet {
+    width: 100px;
+  }
+
+  .planet img {
+    width: 70px;
+  }
+
+  .planet-title {
+    font-size: 1rem;
+  }
+
+  .tooltip {
+    bottom: -40px;
+    max-width: 250px;
+  }
+}
 .grid-container {
   display: flex;
   justify-content: space-around;
@@ -191,8 +413,19 @@
     border: 1px solid #444; /* Add borders for definition */
     border-top: none; /* Remove top border to merge with the tab */
     border-radius: 8px;
+    height: auto;
 }
-
+.tab-content-theory {
+  display: none; /* Hide content that is not active */
+  padding: 20px; /* Adjust padding to give more space inside the container */
+ 
+  color: #ccc; /* Ensuring text color is readable */
+  margin-top: -1px; /* Pull the content area up to close any gap under the tabs */
+  border: 1px solid #444; /* Add borders for definition */
+  border-top: none; /* Remove top border to merge with the tab */
+  border-radius: 8px;
+  height: auto;
+}
 
 .tab-links button {
     background-color: #333;  /* Darker background for better contrast */
@@ -265,7 +498,8 @@ dd {
     height: auto; /* Maintains aspect ratio */
     padding: 10px; /* Adds space around images */
     box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: Adds shadow for depth */
-    border-radius: 4px; /* Optional: Rounds the corners */
+    border-radius: 10px;
+    border: 1px solid #48cae4;
     margin-bottom: 20px; /* Space between images */
 }
 .wireframe-gallery {
