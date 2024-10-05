@@ -218,49 +218,117 @@ input[type="checkbox"]:active {
 
 
 
-
 /* Info panel styling */
 #planet-info-panel {
     position: absolute;
     right: 0;
-    top: 20px; /* Move it slightly down so it doesn't overlap the navbar */
-    width: 250px; /* Reduce width to make it more compact */
-    max-height: 85vh; /* Limit height */
-    background-color: rgba(0, 0, 0, 0.85);
+    top: 20px;
+    width: 280px; /* Slightly wider for better readability */
+    max-height: 85vh;
+    background-color: rgba(30, 30, 30, 0.95); /* Darker background for better contrast */
     color: white;
-    padding: 20px;
+    padding: 25px; /* Increase padding */
     box-sizing: border-box;
-    border-left: 2px solid #333;
+    border-left: 3px solid #FFD700; /* Brighter border to enhance focus */
     overflow-y: auto;
-    border-radius: 8px;
+    border-radius: 10px; /* Smoother corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Add shadow for more depth */
 }
 
+/* Planet name styling */
 #planet-info-panel h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #FFD700;
+    font-size: 22px; /* Larger font size */
+    margin-bottom: 15px;
+    color: #FFD700; /* Keep the golden color */
+    text-align: center; /* Center-align for focus */
+    letter-spacing: 1px; /* Add letter-spacing for readability */
 }
 
+/* Planet details styling */
 #planet-details p {
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: 16px; /* Slightly larger font */
+    line-height: 1.8; /* Increase line height for better spacing */
+    margin-bottom: 10px;
 }
+
+/* Planet details strong (category titles) */
+#planet-details strong {
+    color: #FFD700; /* Highlight category titles */
+    font-weight: bold;
+}
+
+/* Add custom styling for each section */
+#planet-details p span {
+    color: #ffffff; /* Keep data text white for readability */
+    font-weight: normal;
+}
+
+/* Add better spacing between details */
+#planet-details p {
+    margin-bottom: 12px;
+}
+
+/* Tooltip style adjustment */
+#tooltip {
+    background-color: rgba(30, 30, 30, 0.9); /* Match the panel's background */
+    padding: 10px;
+    border: 1px solid #FFD700; /* Consistent with panel border */
+    border-radius: 5px;
+    color: #fff;
+    font-size: 13px;
+    z-index: 1000;
+}
+
+/* Button styling inside the info panel */
+#more-info-btn {
+    display: block;
+    background-color: #48cae4;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    display: none;
+}
+
+/* Button hover effect */
+#more-info-btn:hover {
+    background-color: #36b0c2;
+    box-shadow: 0 4px 10px rgba(72, 202, 228, 0.8);
+}
+
+
 
 /* Tooltip styling */
 #tooltip {
     position: absolute;
-    background-color: white;
+    background-color: rgba(239, 234, 234, 0.8);
     padding: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
     pointer-events: none;
     font-size: 12px;
     color: #333;
-    display: none;
-    z-index: 100;
-     pointer-events: none; 
+    display: none;  /* This should only be 'block' when hovering */
+    z-index: 1000;  /* Ensure it's on top */
 }
 
+/* Tooltip for bubbles */
+.tooltip {
+    position: absolute;
+    background: rgba(239, 234, 234, 0.8);
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    pointer-events: none;
+    z-index: 100;
+    transition: opacity 0.3s ease;
+}
 /* ======= Responsive Design ======= */
 
 /* Tablet: 768px to 1024px */
@@ -388,7 +456,7 @@ input[type="checkbox"]:active {
 .axis-label {
     font-size: 16px; /* Increase to 16px for better visibility */
     font-family: 'Roboto', sans-serif;
-    fill: #fff;;
+    fill: #ddd;
 }
 /* Tooltip for Axis Titles */
 #axis-tooltip {
@@ -404,18 +472,7 @@ input[type="checkbox"]:active {
     transition: opacity 0.2s;
 }
 
-/* Tooltip for bubbles */
-.tooltip {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    pointer-events: none;
-    z-index: 100;
-    transition: opacity 0.3s ease;
-}
+
 
 /* Chart filters styling */
 #filters {
@@ -424,13 +481,13 @@ input[type="checkbox"]:active {
     margin-bottom: 20px;
 }
 
+
+/* Chart filters styling */
 #filters label {
-    margin-right: 15px;
+    margin-right: 20px;
     font-size: 14px;
     cursor: pointer;
-    color: #fff;
 }
-
 /* Responsive Design */
 @media (max-width: 1024px) {
     #chart-section {
@@ -469,42 +526,10 @@ input[type="checkbox"]:active {
 
 
 
-/* Axis Labels */
-.axis-label {
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    fill: #ddd;
-}
-/* Tooltip for Axis Titles */
-#axis-tooltip {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 8px;
-    border-radius: 5px;
-    font-size: 12px;
-    pointer-events: none;
-    z-index: 10;
-}
-
-/* Tooltip for bubbles */
-.tooltip {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    pointer-events: none;
-    z-index: 100;
-    transition: opacity 0.3s ease;
-}
 
 
 
-/* Chart filters styling */
-#filters label {
-    margin-right: 20px;
-    font-size: 14px;
-    cursor: pointer;
-}
+
+
+
+

@@ -127,13 +127,22 @@ function addExoplanetMarkers(data) {
         .attr('stroke-width', 1)
         .attr('display', 'none')
         .on('mouseover', (event, d) => {
-            tooltip.style("display", "block").html(`<strong>Exoplanet:</strong> ${d.name || 'Unknown'}`);
+            tooltip.style("display", "block").html(`<strong>  ${d.name || 'Unknown'}</strong>`);
         })
         .on('mousemove', (event) => {
+            const zoomTransform = d3.zoomTransform(g.node());
+        
+            // Adjust the tooltip position based on the current transformation scale and offset
+            const adjustedX = (event.pageX - zoomTransform.x) / zoomTransform.k;
+            const adjustedY = (event.pageY - zoomTransform.y) / zoomTransform.k;
+        
             tooltip
-                .style('top', (event.clientY + 15) + 'px') // Position relative to the window
-                .style('left', (event.clientX + 15) + 'px'); // Position relative to the window
+                .style('top', (event.pageY + 15) + 'px')  // Use pageY for positioning relative to the document
+                .style('left', (event.pageX + 15) + 'px') // Use pageX for positioning relative to the document
+                .style('display', 'block');
         })
+        
+        
         
         
         .on('mouseout', () => {
@@ -300,6 +309,7 @@ function createLegendSymbols() {
 function showExoplanetInfo(planet) {
     const panel = document.getElementById('planet-info-panel');
     const planetDetails = document.getElementById('planet-details');
+    const moreInfoBtn = document.getElementById('more-info-btn'); // The button
 
     // Fill the panel with exoplanet information
     document.getElementById('planet-name').textContent = planet.name || 'Unknown';
@@ -314,7 +324,11 @@ function showExoplanetInfo(planet) {
 
     // Show the panel
     panel.style.display = 'block';
+
+    // Show the button when a planet is selected
+    moreInfoBtn.style.display = 'block';
 }
+
 
 
 
@@ -334,4 +348,11 @@ initializeZoomPan();
 
 // Call the function to fetch exoplanet data
 fetchExoplanets();
+
+window.addEventListener('DOMContentLoaded', function() {
+    // Make the function globally accessible
+    window.scrollToChart = function() {
+        document.getElementById('chart-section').scrollIntoView({ behavior: 'smooth' });
+    };
+});
 

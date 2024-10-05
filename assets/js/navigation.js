@@ -290,3 +290,4 @@ function generateNavButtons() {
 }
 
 document.addEventListener('DOMContentLoaded', generateNavButtons);
+
