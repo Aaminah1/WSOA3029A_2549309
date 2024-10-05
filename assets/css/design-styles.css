@@ -367,7 +367,7 @@
   color: #ccc; /* Ensuring text color is readable */
   margin-top: -1px; /* Pull the content area up to close any gap under the tabs */
   border: 1px solid #444; /* Add borders for definition */
-  border-top: none; /* Remove top border to merge with the tab */
+  border: 1px solid #444; /* Add borders for definition */
   border-radius: 8px;
   height: auto;
 }

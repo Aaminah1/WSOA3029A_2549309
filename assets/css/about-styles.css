@@ -81,7 +81,7 @@
 /* Timeline Card Styling */
 .milestone {
     padding: 25px;
-    background: linear-gradient(145deg, #1a252f, #0d1b2a);
+    background: #222;
     position: relative;
     width: 40%;
     border-radius: 15px;
