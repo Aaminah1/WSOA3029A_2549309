@@ -318,6 +318,9 @@ function showExoplanetInfo(planet) {
 
 
 
+
+
+
 // Ensure this function runs after rendering the legend elements
 createLegendSymbols();
 

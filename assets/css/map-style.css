@@ -1,3 +1,39 @@
+/* Style the dropdown for exoplanet names */
+#planet-dropdown {
+    max-width: 200px;
+    width: 100%;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #48cae4;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+/* Style the search input */
+#search-input {
+    max-width: 200px;
+    width: 100%;
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #48cae4;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+/* Style for the dropdown arrow */
+#planet-dropdown:after {
+    content: '⮟'; /* Custom arrow */
+    font-size: 1.2rem;
+    color: #48cae4;
+    margin-left: 10px;
+}
+
+
+
+
+
 /* Legend container styling */
 #legend-container {
     background-color: rgba(0, 0, 0, 0.7);
