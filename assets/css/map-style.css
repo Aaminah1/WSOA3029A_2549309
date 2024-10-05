@@ -1,3 +1,101 @@
+/* Legend container styling */
+#legend-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    color: #fff;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 220px;
+}
+
+/* Legend item styling */
+.legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Custom checkboxes */
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #222;
+    border: 2px solid #fff;
+    padding: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    border-radius: 3px;
+    position: relative;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="checkbox"]:hover {
+    background-color: #FFC700; /* Slight hover glow effect */
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.8); /* Glow effect when checked */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #FFD700;
+    
+}
+
+input[type="checkbox"]:checked::before {
+    content: '✓';
+    position: absolute;
+    left: 3px;
+    top: 1px;
+    font-size: 12px;
+    color: #fff;
+}
+
+input[type="checkbox"]:active {
+    transform: scale(0.95); /* Slight shrink effect when clicked */
+}
+
+/* Legend symbol */
+.legend-symbol {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+/* Button styling */
+#select-all {
+    background-color: #48cae4;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s;
+}
+
+#select-all:hover {
+    background-color: #36b0c2;
+    box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8);
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+#select-all:active {
+    transform: scale(0.98); /* Slight shrink effect on click */
+    background-color: #2a8ca1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Align checkboxes with labels */
+.legend-item label {
+    flex-grow: 1;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1rem;
+}
 
 
 /* Container for search bar and map */
@@ -82,32 +180,8 @@
     box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
   }
 
-/* Legend container */
-#legend-container,#chart-legend-container  {
-    position: relative;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 15px;
-    border-radius: 8px;
-    color: #fff;
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Space between legend items */
-    width: 220px;
-    margin-right: 20px;
-}
 
-.legend-item {
-    display: flex;
-    align-items: center;
-     cursor: pointer; 
-}
 
-.legend-symbol {
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-}
 
 /* Info panel styling */
 #planet-info-panel {
