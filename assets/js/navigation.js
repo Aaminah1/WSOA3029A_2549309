@@ -124,59 +124,63 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Function to create the footer dynamically
+//Function to create the footer dynamically 
 function createFooter() {
   const footer = document.createElement('footer');
   footer.classList.add('footer');
 
-  // Create footer content container
+  // Footer content container
   const footerContent = document.createElement('div');
   footerContent.classList.add('footer-content');
 
-  // Create logo container with the same modern font style
+  // Footer logo
   const footerLogo = document.createElement('div');
   footerLogo.classList.add('footer-logo');
   
-  // Create the anchor element for the footer logo with the icon
+  // Footer logo link
   const footerLogoLink = document.createElement('a');
   footerLogoLink.href = adjustPath('index.html');  // Adjust path for footer logo
-  
-  // Add FontAwesome icon and brand name to the innerHTML of the anchor
-  footerLogoLink.innerHTML = ' Life Beyond';  // Using FontAwesome icon
-  
-  // Add same class for consistent styling with the navbar
+  footerLogoLink.innerHTML = ' Life Beyond';  // Logo text
   footerLogoLink.classList.add('logo-link');
-  
-  // Append the logo link to the footer logo container
   footerLogo.appendChild(footerLogoLink);
-  footerContent.appendChild(footerLogo);
-
-  // Social icons (same as before)
+  
+  // Social media icons
   const footerSocial = document.createElement('div');
   footerSocial.classList.add('footer-social');
   footerSocial.innerHTML = `
-    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
   `;
   
-  // Append social icons and logo to footer content
-  footerContent.appendChild(footerSocial);
+  // Footer navigation links
+  const footerLinks = document.createElement('nav');
+  footerLinks.classList.add('footer-links');
+  footerLinks.innerHTML = `
+    <ul>
+      <li><a href="/WSOA3029A_2549309/pages/about/index.html">| About</a></li>
+      <li><a href="/WSOA3029A_2549309/pages/data-visualisation/index.html">| Discoveries</a></li>
+      <li><a href="/WSOA3029A_2549309/pages/gallery/index.html">| Gallery</a></li>
+    </ul>
+  `;
 
   // Copyright text
   const copyright = document.createElement('p');
   copyright.classList.add('footer-copyright');
   copyright.innerHTML = `&copy; ${new Date().getFullYear()} Life Beyond. All rights reserved.`;
-
-  // Append all footer elements to the footer
+  
+  // Append elements to footer
+  footerContent.appendChild(footerLogo);
+  footerContent.appendChild(footerLinks);
+  footerContent.appendChild(footerSocial);
   footer.appendChild(footerContent);
   footer.appendChild(copyright);
-  
-  // Append the footer to the body
+
+  // Append footer to body
   document.body.appendChild(footer);
 }
 
-// Inject the footer on page load
+// Inject footer on page load
 document.addEventListener("DOMContentLoaded", function () {
   createFooter();
 });

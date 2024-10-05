@@ -1,3 +1,52 @@
+.grid-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.grid-item {
+  flex: 1;
+  margin: 10px;
+  max-width: 300px;
+}
+
+.color-grid {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.color-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.color-swatch {
+  width: 100px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.button-sample a {
+  padding: 10px 20px;
+  background-color: #48cae4;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.button-sample a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(72, 202, 228, 0.8);
+}
+
+
+
+
+
 /*BLOGS ON THEORY TAB STYLES*/
 /*NAVIGATIONAL RELATED STYLES*/
 .breadcrumb {
