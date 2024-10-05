@@ -31,7 +31,8 @@
                <!-- Tab content: Style Guide -->
             <div id="StyleGuide" class="tab-content">
                 <section id="style-guide">
-                    <h2>Typography</h2>
+                 
+                    <h3>Typography</h3>
                   
                     <div class="style-card">
                       <h4>Font Family</h4>
@@ -150,7 +151,67 @@
                         <p> Social media icons fit within the futuristic design while providing an easy way for users to connect beyond the website.</p>
                       </div>
                     </section>
-                  </section>
+                    <!-- New Section: Navigational Elements -->
+    <section id="navigational-elements">
+      <h3>Navigational Elements</h3>
+      <div class="color-card">
+        <h4>Sticky Navigation Bar</h4>
+        <p><strong>Purpose-</strong>The sticky navigation bar keeps the main menu accessible at all times, allowing users to easily switch between sections of the site.</p>
+        <p>This improves user experience by reducing the need for excessive scrolling and ensuring users can explore all parts of the site without interruption, particularly helpful for large content-rich sections.</p>
+      </div>
+
+      <div class="color-card">
+        <h4>Back to Top Button</h4>
+       
+        <p><strong>Purpose-</strong>The back-to-top button lets users quickly navigate to the top of long-scrolling pages.</p>
+        <p>It aids navigation, particularly on pages with long content, improving user efficiency and reducing frustration. The design includes rounded edges, echoing the space theme, with a glow effect for visual feedback.</p>
+      </div>
+
+      <div class="color-card">
+        <h4>Breadcrumb Navigation</h4>
+        <p><strong>Purpose-</strong>Breadcrumbs help users keep track of their location on the site and easily return to previous pages.</p>
+        <p>This feature improves site wayfinding, especially in the blog section. It helps users better understand the structure of the site and navigate efficiently, supporting an exploration-driven experience.</p>
+      </div>
+
+      <div class="color-card">
+        <h4>Next/Previous Blog Navigation</h4>
+        <p><strong>Purpose-</strong>Provides seamless navigation between blog posts.</p>
+        <p>This encourages users to explore more content without having to return to the blog index. The buttons feature rounded corners and icons to match the space theme, ensuring consistency.</p>
+      </div>
+
+      <div class="color-card">
+        <h4>Tabs for Section Navigation</h4>
+        <p> <strong>Purpose-</strong>Tabs organize content into manageable sections, making it easy for users to navigate large pages.</p>
+        <p>This is especially useful for pages with multiple sections, such as the style guide, theory, and wireframes, allowing users to focus on one section at a time. Active tabs are highlighted to indicate user position.</p>
+      </div>
+    </section>
+
+    <!-- New Section: Interactivity Elements -->
+    <section id="interactivity-elements">
+      <h3>Interactivity Elements</h3>
+      <div class="color-card">
+        <h4>Buttons with Rounded Corners</h4>
+        <div class="button-sample">
+          <a href="" class="button">
+            <i class="fas fa-rocket"></i> buttton preview
+          </a>
+        </div>
+        <p><strong>Purpose-</strong>Buttons have rounded corners to reflect the roundness of planets, aligning with the site’s space theme.</p>
+        <p> Rounded buttons provide a softer, more approachable interface. The glow effect on hover enhances user engagement, giving a responsive feel while visually reinforcing the futuristic aesthetic.</p>
+   
+
+     
+        <h4>Icons Paired with Buttons</h4>
+        <p><strong>Purpose-</strong>Icons are paired with buttons to provide clear visual cues and enhance accessibility.</p>
+        <p>Icons make buttons more intuitive and accessible, improving usability by providing additional visual context. This aligns with the goal of making the site easy to navigate, even for users with varying technical skills.</p>
+      <h4>Data visuals</h4>
+        <p>These will have a lot more specialised interactivity. Visit the <a href="/WSOA3029A_2549309/pages/design/theory/blog4.html">Design decisions blog</a> for details.</p>
+      
+      
+      </div>
+    </section>
+  </section>
+               
             </div>
 
            <!-- Tab content: Wireframes -->
@@ -171,39 +232,45 @@
         
             </div>
             <div id="Theory" class="tab-content">
-                <h3>Theory</h3>
-             
-                <div class="timeline-intro">
-                   
-                    <p>Explore the key concepts and frameworks that have shaped my project.</p>
+              <h3>Theory</h3>
+              <div class="timeline-intro">
+                <p>Explore the key concepts and frameworks that have shaped my project.</p>
+              </div>
+            
+              <div class="timeline">
+                <!-- Central line automatically added by CSS -->
+                <div class="milestone left" onclick="location.href='theory/blog1.html';">
+                  <h4>Critical Analysis Essay</h4>
+                  <p>Learn how merging powerful storytelling with thoughtful design can create an emotionally impactful and educational experience.</p>
+                  <button aria-label="Read more button" class="button cta-button" onclick="location.href='theory/blog1.html';">Read More</button>
                 </div>
-                
-                <div class="timeline">
-                    <!-- Central line automatically added by CSS -->
-                    <div class="milestone left"  onclick="location.href='theory/blog1.html';" >
-                        <h4>Critical Analysis Essay</h4>
-                        <p>Learn how merging powerful storytelling with thoughtful design can create an emotionally impactful and educational experience.</p>
-                    
-                      </div>
-                    <div class="milestone right"   onclick="location.href='theory/blog2.html';">
-                        <h4>Predesign decision</h4>
-                        <p>Defining the purpose, target audience, requirements and constraints. </p>
-                    </div>
-                    <div class="milestone left" onclick="location.href='theory/blog3.html';">
-                        <h4>Getting started</h4>
-                        <p>Setting up the folder structure.</p>
-                    </div>
-                    <div class="milestone right" onclick="location.href='theory/blog4.html';">
-                        <h4>Design decisions</h4>
-                        <p>Planning the data visualisations and more design considerations.</p>
-                    </div>
-                    <div class="milestone left" onclick="location.href='theory/blog5.html';">
-                        <h4>Reflection</h4>
-                        <p>Outcome of all this work.</p>
-                    </div>
+            
+                <div class="milestone right" onclick="location.href='theory/blog2.html';">
+                  <h4>Predesign Decision</h4>
+                  <p>Defining the purpose, target audience, requirements, and constraints.</p>
+                  <button aria-label="Read more button" class="button cta-button" onclick="location.href='theory/blog2.html';">Read More</button>
                 </div>
-                
+            
+                <div class="milestone left" onclick="location.href='theory/blog3.html';">
+                  <h4>Getting Started</h4>
+                  <p>Setting up the folder structure.</p>
+                  <button aria-label="Read more button" class="button cta-button" onclick="location.href='theory/blog3.html';">Read More</button>
+                </div>
+            
+                <div class="milestone right" onclick="location.href='theory/blog4.html';">
+                  <h4>Design Decisions</h4>
+                  <p>Planning the data visualisations and more design considerations.</p>
+                  <button aria-label="Read more button" class="button cta-button" onclick="location.href='theory/blog4.html';">Read More</button>
+                </div>
+            
+                <div class="milestone left" onclick="location.href='theory/blog5.html';">
+                  <h4>Reflection</h4>
+                  <p>Outcome of all this work.</p>
+                  <button aria-label="Read more button" class="button cta-button" onclick="location.href='theory/blog5.html';">Read More</button>
+                </div>
+              </div>
             </div>
+            
         </div>
         
         <!-- Back to Top Button -->

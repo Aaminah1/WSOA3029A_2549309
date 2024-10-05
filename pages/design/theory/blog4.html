@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="../../../assets/css/styles.css">
     <link rel="stylesheet" href="../../../assets/css/design-styles.css">
     <link rel="stylesheet" href="../../../assets/css/about-styles.css">
-        <!-- Font Awesome for icons (optional) -->
+    <!-- Font Awesome for icons (optional) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 <body>
 
@@ -19,19 +18,69 @@
     <nav id="breadcrumb" class="breadcrumb"></nav>
     <main id="content">
          <h2>Design decisions</h2>
-    
-      
-      
-      
+         
+         <!-- Data Visual 1: Interactive Map -->
+         <h3>Data Visual 1: Interactive Map</h3>
+         <div class="centered-image-container">
+             <img src="/WSOA3029A_2549309/assets/images/wireframes/D1.png" alt="Wireframe of data visual one on design page">
+         </div>
+        
+         <p>
+            <strong>Map as the Core Visualization:</strong> The map serves as the primary visual representation of exoplanets, placing the user in a familiar, explorative interface akin to real-world map tools. Maps are a universally recognizable form of data visualization that invite exploration. Given the theme/ story of my site (focused on space exploration and exoplanets), the map metaphor helps users visualize the vastness of space, with exoplanets as points of interest. The map creates a narrative of discovery, which aligns with the site’s purpose: shifting attention from mundane, Earth-bound concerns to the broader universe. Additionally, based on the principle that form follows function, the map format allows users to explore space as they would a terrestrial map, making navigation intuitive and functional. This also ties into the concept of creating an experience that accommodates a diverse audience, ensuring that even users with varying technical skills can engage with the data.
+         </p>
+         <p>
+            <strong>Search Functionality:</strong> A search bar, along with a drop-down list of all the exoplanets, allows users to input specific exoplanet names to quickly locate them on the map. The search function provides ease of access for users who have specific knowledge or interests. For example, a space enthusiast or someone familiar with exoplanets may want to jump directly to a planet they’ve read about. This feature streamlines their journey and makes the data more approachable by offering direct access rather than forcing users to manually navigate the map.
+         </p>
+         <p>
+            <strong>Filter Options:</strong> Filters allow users to toggle between different categories of exoplanets (rocky, icy, potentially habitable). Filters help declutter the map and allow users to control the data they view. This prevents cognitive overload, aligning with the principle of eliminating clutter and allowing users to focus on digestible chunks of information.
+         </p>
+         <p>
+            <strong>Hover Tooltips:</strong> When users hover over an exoplanet on the map, a tooltip appears, showing key details like the exoplanet’s name. Tooltips allow for progressive disclosure of information, providing just enough detail to satisfy initial curiosity. This aligns with the idea of giving users 3–8 seconds to understand the core data without overwhelming them with too much information at once.
+         </p>
+         <p>
+            <strong>Click to Reveal More Information:</strong> Clicking on an exoplanet opens a panel with more detailed information, including discovery data, orbital characteristics, and potential habitability. This feature provides users with control over how much detail they explore, balancing exploration and explanation. Additionally, a button in this panel directs the user to the second data visualization, where the same data is presented in a more digestible way.
+         </p>
+         <p>
+            <strong>Zoom and Pan Features:</strong> The map allows for zooming in and out, as well as panning across regions of space. These features align with the exploration theme and provide an intuitive way to manage a large dataset. Preattentive attributes like zoom allow users to adjust their perspective, ensuring they don't feel overwhelmed by the vast number of exoplanets.
+         </p>
+         <p>
+            <strong>Cluster Visualization:</strong> Initially, exoplanets are grouped into clusters to prevent clutter, especially when viewing a large portion of the map. As users zoom in, clusters break apart to reveal individual exoplanets. Clustering supports visual hierarchy, enabling users to start with a broad overview before diving into detailed exploration.
+         </p>
+         <p>
+            <strong>Zoom-Based Detail Unfolding:</strong> As users zoom further into the map, more exoplanets and their associated data are revealed in greater detail. This progressive unfolding enhances the storytelling element, encouraging users to engage deeper with the data over time.
+         </p>
+         
+         <!-- Data Visual 2: Bubble Chart -->
+         <h3>Data Visual 2: Bubble Chart</h3>
+         <div class="centered-image-container">
+             <img src="/WSOA3029A_2549309/assets/images/wireframes/D2.png" alt="Wireframe of data visual two on design page">
+         </div>
+         
+         <p>
+            <strong>Bubble Chart as the Main Visualization:</strong> The bubble chart is used to represent exoplanets, where the size of the bubbles correlates with attributes like the planet's size or habitability potential, while the position on the axes represents other relevant data points (e.g., distance from Earth, temperature, or mass). Bubble charts mimic the shape of planets, aligning with the space exploration theme. This form of visualization is ideal for representing multiple variables at once, offering a rich, multidimensional view.
+         </p>
+         <p>
+            <strong>Tooltips on Hover (for Bubbles and Axes):</strong> Hovering over a bubble reveals a tooltip with key information (e.g., exoplanet name, size, distance, and habitability potential). Similarly, tooltips on the axes provide context about what each axis represents.
+         </p>
+         <p>
+            <strong>Filter by Category:</strong> Users can filter bubbles by various categories, allowing them to focus on specific subsets of exoplanets. This helps reduce cognitive load by narrowing the scope of the data presented.
+         </p>
+         <p>
+            <strong>Highlighting Categories on Hover (Legend Interaction):</strong> Hovering over a category in the legend highlights all bubbles associated with that category on the chart, while dimming the other bubbles for visual focus. This feature enhances usability and provides a clean visual focus for comparing data across categories.
+         </p>
+         <p>
+            <strong>Zoom Functionality:</strong> The zoom feature allows users to zoom in on densely packed or overlapping bubbles, making it easier to view and interact with the data. This encourages deeper exploration of the data, making sure users can explore the information without overwhelming them.
+         </p>
       
       <!-- Blog navigation container for Next/Previous buttons -->
       <div id="blog-nav"></div>
         
-         <!-- Back to Top Button -->
-<button id="back-to-top" title="Go to top">↑</button>
-</main>
+      <!-- Back to Top Button -->
+      <button id="back-to-top" title="Go to top">↑</button>
+    </main>
 
-<!-- JS file for navigation -->
-<script src="../../../assets/js/navigation.js" ></script>
-<script src="../../../assets/js/tabs.js" ></script>
+    <!-- JS file for navigation -->
+    <script src="../../../assets/js/navigation.js"></script>
+    <script src="../../../assets/js/tabs.js"></script>
+</body>
 </html>

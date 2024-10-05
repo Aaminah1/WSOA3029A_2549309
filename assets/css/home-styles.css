@@ -93,6 +93,17 @@
     transform: translateX(-50%);
     animation: bounceArrow 2s infinite;
 }
+/* Button hover effect */
+.scroll-down-arrow:hover {
+    transform: scale(2); /* Slightly increase size */
+   
+}
+
+/* Button active (click) effect */
+.scroll-down-arrow:active {
+    transform: scale(2); /* Slightly smaller to simulate click */
+    
+}
 
 /* Bouncing animation */
 @keyframes bounceArrow {

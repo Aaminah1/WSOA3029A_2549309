@@ -79,46 +79,47 @@
 
 /* Active state for the button */
 #filter-btn:enabled {
-    background-color: #48cae4; /* Active background */
+    background-color: #FFD700; /* Active background */
     cursor: pointer;
 }
 
 /* Hover effect for the active button */
 #filter-btn:enabled:hover {
-    background-color: #36b0c2; /* Slightly darker on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.8); /* More pronounced glow effect with yellow */
+    background-color: #FFC700; /* Slightly darker yellow on hover */
 }
 
 /* Active (clicked) state */
 #filter-btn:enabled:active {
-    background-color: #2a8ca1; /* Even darker when clicked */
+    background-color: #E6B800; /* Darker gold when clicked */
     transform: translateY(2px); /* Simulate button press */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow on click */
 }
 
 /* Show All button */
 .show-all-btn {
-    background-color: #ff6f61;
+    background-color: #48cae4; /* Button color */
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     margin-left: 20px;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: opacity 0.3s ease;
 }
 
 /* Hover effect for Show All button */
 .show-all-btn:hover {
-    background-color: #ff5c4e; /* Darker shade on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
 }
 
 /* Active (clicked) state for Show All button */
 .show-all-btn:active {
-    background-color: #ff483a; /* Darker when clicked */
-    transform: translateY(2px); /* Simulate button press */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+    background-color: #36b0c2; /* Darker teal color */
+    transform: scale(0.98); /* Slightly smaller to simulate click */
+    box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
 }
 
 
@@ -142,20 +143,6 @@ button[data-tooltip]:hover::after {
 
 
 
-.show-all-btn {
-    background-color: #ff6f61;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px;
-}
-
-.show-all-btn:hover {
-    background-color: #e65b50;
-}
 
 .gallery-container {
     display: flex;
@@ -238,7 +225,7 @@ button[data-tooltip]:hover::after {
 
 
 .close {
-    color: #aaa;
+   color: #48cae4; /* Initial arrow color */
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -247,9 +234,11 @@ button[data-tooltip]:hover::after {
 
 .close:hover,
 .close:focus {
-    color: #fff;
+   
     text-decoration: none;
     cursor: pointer;
+    transform: scale(1.5); /* Slightly increase size */
+  color: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
 }
 
 #message {

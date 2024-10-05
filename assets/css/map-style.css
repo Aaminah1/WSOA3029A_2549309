@@ -69,9 +69,18 @@
     transition: background-color 0.3s ease;
 }
 
+
+/* Button hover effect */
 #search-button:hover {
-    background-color: #FFD700;
-}
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
+  }
+  
+  #search-button:active {
+    background-color: #36b0c2; /* Darker teal color */
+    transform: scale(0.98); /* Slightly smaller to simulate click */
+    box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
+  }
 
 /* Legend container */
 #legend-container,#chart-legend-container  {

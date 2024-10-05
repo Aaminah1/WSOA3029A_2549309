@@ -10,7 +10,7 @@
 body {
   font-family: 'Arial', sans-serif;
   background-color: #121212; /* Space-like dark background */
-  color: #ffffff;
+  color: #bfbfbf;
   margin: 0;
   padding: 0;
 }
@@ -177,7 +177,7 @@ p a:hover {
   background-color: #48cae4;
   color: white;
   padding: 10px 20px; /* Reduced padding */
-  border-radius: 20px; /* Slightly smaller radius */
+  border-radius: 8px; /* Slightly smaller radius */
   font-size: 1rem; /* Reduced font size */
   text-transform: uppercase;
   text-decoration: none;
@@ -188,14 +188,17 @@ p a:hover {
   cursor: pointer;
 }
 
+/* Hover state: button gets slightly bigger and glows */
 .button:hover {
-  box-shadow: 0 0 20px rgba(72, 202, 228, 1);
-  transform: translateY(-3px);
+  transform: scale(1.05); /* Slightly increase size */
+  box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
 }
 
+/* Active (click) state: button darkens slightly */
 .button:active {
-  transform: translateY(0);
-  box-shadow: 0 0 8px rgba(72, 202, 228, 0.8);
+  background-color: #36b0c2; /* Darker teal color */
+  transform: scale(0.98); /* Slightly smaller to simulate click */
+  box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
 }
 
 /* Navbar Styles */
@@ -597,8 +600,17 @@ html {
 
 /* Button hover effect */
 #back-to-top:hover {
-  background-color: #FFD700; /* Hover color */
+  transform: scale(1.05); /* Slightly increase size */
+  box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
 }
+
+#back-to-top:active {
+  background-color: #36b0c2; /* Darker teal color */
+  transform: scale(0.98); /* Slightly smaller to simulate click */
+  box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
+}
+
+
 
 /* Show the button when it's visible */
 #back-to-top.show {

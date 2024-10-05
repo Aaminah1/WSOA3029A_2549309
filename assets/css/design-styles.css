@@ -1,4 +1,5 @@
 /*BLOGS ON THEORY TAB STYLES*/
+/*NAVIGATIONAL RELATED STYLES*/
 .breadcrumb {
   font-family: 'Roboto', sans-serif;
   background-color: #121212; /* Matches the background theme */
@@ -26,7 +27,8 @@
 }
 
 .breadcrumb a:hover {
-  color: #00ffff;
+  color: #FFD700;
+    transform: scale(1.05); /* Slightly increase size */
 }
 
 .breadcrumb li::after {
@@ -51,7 +53,14 @@
 }
 
 .nav-button:hover {
-  background-color: #36b0c2;
+  transform: scale(1.05); /* Slightly increase size */
+  box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
+}
+
+.nav-button:active {
+  background-color: #36b0c2; /* Darker teal color */
+  transform: scale(0.98); /* Slightly smaller to simulate click */
+  box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
 }
 
 .prev-button {
@@ -87,6 +96,99 @@
   }
 }
 
+/*BLOG PAGES CONTENT STYLES*/
+
+/* Main Blog Content Styling */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  line-height: 1.8;
+  color: #eeeeee;
+}
+
+/* Headings */
+main h2, main h3, main h4 {
+  font-family: 'Exo 2', sans-serif;
+  color: #48cae4;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* List Styling */
+main ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 2rem;
+}
+
+main ul li {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column; /* Makes the <strong> and <p> align properly */
+}
+
+/* Bold elements in lists */
+main ul li strong {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #FFD700; /* Optional: Change color of strong elements */
+}
+
+/* Paragraph in lists */
+main ul li p {
+  margin-left: 0;
+  padding-left: 0;
+  font-size: 1rem;
+}
+
+/* General Paragraphs */
+main p {
+  margin: 1.5rem 0;
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #cccccc;
+}
+/* Strong elements */
+main strong {
+  color: #FFD700; /* Emphasize key points */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+
+/* Blog Navigation Styling */
+#blog-nav {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+@media (max-width: 768px) {
+  #blog-nav {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  #blog-nav .nav-button {
+      width: 80%;
+      margin: 10px 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 /* Container for centering images */
 .centered-image-container {
   display: flex;
@@ -119,13 +221,7 @@
 
 
 
-
-
-
-
-
-
-
+/*TAB STYLES*/
 /* Style the tab container and links */
 .tab-content {
     display: none; /* Hide content that is not active */
@@ -153,9 +249,9 @@
 .tab-links button:hover, .tab-links button.active {
     background-color: rgba(72, 202, 228, 1);  /* Slightly lighter on hover and for active tab */
     transform: translateY(-2px);  /* Slight lift effect on hover and active state */
+    transform: scale(1.05); /* Slightly increase size */
+ 
 }
-
-
 
 .tab-links {
     display: flex;        /* Use flexbox */
@@ -232,18 +328,19 @@ dd {
     text-decoration: none;
     position: absolute;
     top: 70%; /* Center vertically relative to gallery */
-    transform: translateY(-50%);
+    transition: opacity 0.3s ease;
     cursor: pointer; /* Indicates that the element is clickable */
 }
 
 .scroll-arrow:hover, .scroll-arrow:focus {
-    color: #a5c2ce; /* Lighter shade for hover */
-    transform: scale(1.5); /* Enlarges the arrow */
+  transform: scale(1.05); /* Slightly increase size */
+  box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
 }
 
 .scroll-arrow:active {
-    color: #FFD700; /* Different color on click to show feedback */
-    transform: scale(1.5); /* Keeps the arrow enlarged on click */
+  background-color: #36b0c2; /* Darker teal color */
+  transform: scale(0.98); /* Slightly smaller to simulate click */
+  box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
 }
 
 
