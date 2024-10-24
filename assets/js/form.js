@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("formModal");
     const openFormBtn = document.getElementById("openFormBtn");
     const closeBtn = document.getElementsByClassName("closeBtn")[0];
+    const footerContactLink = document.getElementById("footerContactLink"); // Wait until DOM is ready
     const form = document.getElementById('contactForm');
     const submitBtn = document.getElementById('submitBtn');
     const passwordStrength = document.getElementById('passwordStrength');
@@ -16,6 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
         utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Utility script for validation
     });
 
+    // Open Modal when "Contact" in the footer is clicked
+    if (footerContactLink) { // Check if the element exists before adding the event listener
+        footerContactLink.onclick = function () {
+            modal.style.display = "block";
+        }
+    }
     // Open Modal
     openFormBtn.onclick = function () {
         modal.style.display = "block";
