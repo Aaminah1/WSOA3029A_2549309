@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Visualization</title>
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/solarSystem-styles.css">
+</head>
+<body>
+ <h2>Journey Through the Solar System</h2>
+  
+  <!-- Solar System Visualization Container with Flexbox -->
+  <div id="solar-system-container">
+    
+    <!-- Left side (Controls) -->
+    <div id="left-controls">
+      <!-- Zoom Controls -->
+      <div id="zoom-controls">
+          <button id="zoom_in">+</button>
+          <input type="range" id="zoom_slider" min="0.5" max="10" step="0.1" value="1">
+          <button id="zoom_out">-</button>
+      </div>
+
+      <!-- Pause/Resume Controls -->
+      <div id="controls">
+          <button id="pauseBtn" style="font-size: 24px;">&#10074;&#10074;</button> <!-- Pause symbol -->
+          <button id="resumeBtn" style="font-size: 24px; display:none;">&#9658;</button> <!-- Play symbol -->
+      </div>
+
+      <!-- Checkbox Controls -->
+      <div id="checkbox-controls">
+        <div class="checkbox-container">
+          <input type="checkbox" id="toggleLabelsCheckbox" checked>
+          <label for="toggleLabelsCheckbox">Show Planet Labels</label>
+        </div>
+        <div class="checkbox-container">
+          <input type="checkbox" id="toggleOrbitsCheckbox" checked>
+          <label for="toggleOrbitsCheckbox">Show Orbits</label>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Center (Solar System Visualization) -->
+    <div id="center-visualization">
+      <!-- SVG for the solar system -->
+      <svg id="solarSystem" width="800" height="600"></svg>
+    </div>
+
+    <!-- Right side (Info Panels) -->
+    <div id="right-panels">
+      <!-- Info Panels -->
+      <div id="planet-details-panel"></div>
+      <div id="orbit-info-box"></div>
+      <div id="tooltip"></div>
+    </div>
+
+  </div>
+
+  <!-- D3.js library -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Script file -->
+  <script src="../../assets/js/navigation.js"></script>
+  <script src="../../assets/js/solarSystem.js"></script>
+</body>
+</html>

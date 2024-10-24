@@ -33,8 +33,43 @@
 /* Section Images */
 .section-image img {
     max-width: 400px;
+    max-height: 300px;
     animation: slideIn 2s ease-in-out;
 }
+
+/* Styling for Contact Button */
+.contact-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #48cae4;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect */
+.contact-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(72, 202, 228, 0.7);
+}
+
+/* Responsive Button */
+@media (max-width: 768px) {
+    .contact-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+
+
+
+
 
 /* Timeline Introduction Styling */
 .timeline-intro {
@@ -223,5 +258,196 @@
 
     .milestone p {
         font-size: 0.9rem;
+    }
+}
+
+/*FORM STYLES*/
+
+
+/* Open Form Button */
+/* Modal Background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Improved transparency */
+    overflow: hidden; /* Prevent page scrolling when modal is open */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    margin: auto; /* Center horizontally and vertically */
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%; /* Adjusted for responsiveness */
+    max-width: 500px; /* Maximum width for larger screens */
+    max-height: 90vh; /* Max height for smaller screens */
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 50%; /* Start from the middle of the screen */
+    transform: translateY(-45%); /* Vertically center the modal */
+    overflow-y: auto; /* Allow scrolling if content is taller than the modal */
+}
+
+/* Modal Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Close Button */
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color:#48cae4;;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.closeBtn:hover {
+    cursor: pointer;
+    transform: scale(1.5); /* Slightly increase size */
+  color: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.5);
+    outline: none;
+}
+
+/* Password Strength Meter */
+.password-strength {
+    margin-top: 5px;
+    height: 10px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    position: relative;
+}
+
+.password-strength::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 5px;
+    background-color: red;
+    width: 0;
+    transition: width 0.3s ease;
+}
+
+/* Submit Button */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #999;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: not-allowed;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+}
+
+button[type="submit"]:enabled {
+    background-color: #FFD700; /* Active background */
+    cursor: pointer
+}
+/* Hover effect when the button is enabled */
+button[type="submit"]:enabled:hover {
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.8); /* More pronounced glow effect with yellow */
+    background-color: #FFC700; /* Slightly darker yellow on hover */
+  
+}
+
+/* Error Messages */
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+    margin-top: 5px;
+}
+
+/* Success Message */
+#successMessage {
+    margin-top: 15px;
+    color: green;
+    font-size: 14px;
+}
+/* Apply a transition effect to the dropdown */
+.iti__country-list {
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: scroll; /* Make it scrollable if the content exceeds the height */
+    transition: max-height 0.3s ease-in-out; /* Smooth transition for the dropdown */
+}
+
+.iti__selected-dial-code {
+    transition: transform 0.2s ease;
+}
+
+.iti--open .iti__country-list {
+    max-height: 400px; /* Increase max height when dropdown is open */
+}
+
+/* Add any additional custom styling for the dropdown */
+.iti__flag-container {
+    border-radius: 5px; /* Round the edges for better design */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for better distinction */
+}
+
+
+/* Media Queries for Tablet and Mobile */
+
+/* For tablets (max width 1024px) */
+@media screen and (max-width: 1024px) {
+    .modal-content {
+        width: 80%;
+        top: 50%; /* Keep it centered vertically */
+        transform: translateY(-45%); /* Perfect center for tablet */
+    }
+}
+
+/* For mobile phones (max width 768px) */
+@media screen and (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        top: 50%;
+        transform: translateY(-45%); /* Perfect center for mobile */
+    }
+
+    input, textarea, button[type="submit"] {
+        font-size: 16px; /* Slightly larger text for better readability */
     }
 }

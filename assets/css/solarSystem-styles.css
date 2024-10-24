@@ -1,0 +1,320 @@
+
+
+/* Container for Solar System Visualization */
+#solar-system-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  
+  #solarSystem {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+  }
+  
+  
+  .planet-label {
+    font-family: Arial, sans-serif;
+    font-size: calc(12px + 0.5vw); /* Font size scales with viewport width */
+    fill: white; /* Color of the text */
+    pointer-events: none; /* Make the text non-interactive */
+  }
+  
+  
+  
+  /* Zoom controls positioning and styling */
+  #zoom-controls {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center; /* Align controls horizontally */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+    transition: transform 0.3s ease;
+  }
+  
+  #zoom-controls button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px; /* Space between the buttons and the slider */
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  #zoom-controls button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1); /* Slight scale up on hover */
+  }
+  
+  #zoom-controls input[type="range"] {
+    margin: 10px 0;
+    width: 120px;
+    cursor: pointer;
+  }
+  
+ 
+  
+  /* Pause/Resume controls positioning and styling */
+  #controls {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px;
+  }
+  
+  #controls button {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #controls button:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  
+  /* Tooltip styling */
+  #tooltip {
+    position: absolute;
+    text-align: center;
+    width: 50px;
+    padding: 8px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #000;
+    border-radius: 5px;
+    display: none;
+    z-index: 100; /* Ensures tooltip appears above everything */
+  }
+  
+  #orbit-info-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.307);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: none; /* Initially hidden */
+    z-index: 10; /* Ensure it stays on top */
+    font-size: 14px; /* Adjust font size for readability */
+    color: white; /* White text */
+    width: 260px; /* Adjust width */
+  }
+  
+  #orbit-info-box button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 18px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #orbit-info-box button:hover {
+    color: #ff0000; /* Red on hover */
+  }
+  
+  #planet-details-panel {
+    position: absolute;
+    top: 200px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.307);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: none; /* Initially hidden */
+    z-index: 10; /* Ensure it stays on top */
+    font-size: 14px; /* Adjust font size for readability */
+    color: white; /* White text */
+    width: 260px; /* Adjust width */
+  }
+  
+  #planet-details-panel button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 18px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  #planet-details-panel button:hover {
+    color: #ff0000; /* Red hover effect for close button */
+  }
+  
+  #planet-details-panel img {
+    width: 100px;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  #planet-details-panel img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    
+    animation: bounce 0.5s ease infinite;
+  }
+  
+  @media (max-width: 768px) {
+    #planet-details-panel img {
+        width: 80px;
+    }
+  }
+  
+  /* Optional bounce effect (if you want to make it bouncy on hover) */
+  @keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+  }
+  
+  /* Tooltip styling */
+  .hint {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 5px;
+    font-size: 10px;
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  #planet-details-panel img:hover + .hint {
+    opacity: 1;
+  }
+  
+  @media (max-width: 480px) {
+    #controls, #zoom-controls, #orbit-info-box {
+      font-size: 12px;
+      padding: 5px;
+    }
+  
+    #planet-details-panel {
+      width: 95%;
+      bottom: 10px;
+    }
+  
+    #planet-details-panel img {
+      width: 80px;
+    }
+  }
+  
+  
+  
+  
+  #planet-details-panel div {
+    font-size: 14px;
+    line-height: 1.5; /* Improve text spacing */
+  }
+  
+  
+  
+  /* Checkbox styling */
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  
+  .checkbox-container input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #00b300; /* Color for the checked state */
+  }
+  
+  .checkbox-container label {
+    color: white;
+    font-size: 16px;
+    margin-left: 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .checkbox-container label:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Hover effect */
+    color: black;
+  }
+  
+  /* Checkbox container styling for planet labels and orbits */
+  #checkbox-controls {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  #checkbox-controls .checkbox-container {
+    margin-bottom: 10px;
+  }
+  
+  /* Define the pulse animation */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Class for the animation */
+  .pulse-animation {
+    animation: pulse 2s infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Hover effect for image */
+  .pulse-animation:hover {
+    transform: scale(1.2);
+    
+  }
+  

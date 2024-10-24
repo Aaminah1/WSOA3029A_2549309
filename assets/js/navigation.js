@@ -153,6 +153,7 @@ function createFooter() {
       <li><a href="/WSOA3029A_2549309/pages/about/index.html">| About</a></li>
       <li><a href="/WSOA3029A_2549309/pages/data-visualisation/index.html">| Discoveries</a></li>
       <li><a href="/WSOA3029A_2549309/pages/gallery/index.html">| Gallery</a></li>
+       <li><a href="">| Contact</a></li>
     </ul>
   `;
 
