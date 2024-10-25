@@ -1,0 +1,65 @@
+h2, h3 {
+    scroll-margin-top: 100px; /* Adjust this value based on the height of your navbar */
+  }
+  
+.toc-container {
+    position: fixed;
+    top: 120px; /* Adjust depending on your navbar height */
+    left: 10px;
+    width: 200px;
+    font-family: 'Arial', sans-serif;
+    background-color: transparent; /* Remove background */
+    padding: 8px;
+    border-right: 3px solid #48cae4; /* Add a line on the left */
+    box-shadow: none; /* Remove box shadow */
+    
+  }
+  
+  #toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #toc li {
+    margin-bottom: 4px;
+  }
+  
+  #toc a {
+    text-decoration: none;
+    color:  #ccc;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 5px 0;
+  }
+  
+  #toc a:hover {
+    color:  #ccc;
+    background-color: #3498db;
+    transform: scale(1.05); /* Slightly increase size */
+  box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
+  border-radius: 5px;
+  }
+
+  #toc a.active{
+    background-color: #3498db; /* Darker teal color */
+    transform: scale(0.98); /* Slightly smaller to simulate click */
+ border-radius: 5px;
+  }
+  
+  /* Ensure content doesn't overlap */
+  #content {
+    margin-left: 240px;
+  }
+  
+  @media (max-width: 768px) {
+    .toc-container {
+      display: none; /* Hide TOC for smaller screens */
+    }
+  }
+/* Make sure the ToC stops above the footer */
+.footer {
+    position: relative;
+    z-index: 1;
+}

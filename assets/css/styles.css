@@ -12,7 +12,7 @@ body {
   background-color: #121212; /* #282828 Space-like dark background */
   color: #bfbfbf;
   margin: 0;
-  padding: 0;
+  padding-top: 70px;
   line-height: 1.6; 
 }
 /* Ensure the main layout takes up the full height of the page */
@@ -239,10 +239,10 @@ p a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: rgba(26, 37, 47, 0.2); /* Transparent background */
-  backdrop-filter: blur(8px); /* Subtle frosted glass effect */
+  background-color: #10161b;
+  backdrop-filter: none; /* Remove the frosted glass effect */
   color: #ffffff;
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
@@ -468,11 +468,12 @@ html {
 /* Footer styling */
 .footer {
   background: rgba(26, 37, 47, 0.2); /* Transparent with subtle gradient */
-  backdrop-filter: blur(6px); /* Frosted glass effect */
+  backdrop-filter: none; /* not anymore for now Frosted glass effect */
   color: #cccccc;
   padding: 2rem 0;
   text-align: center;
   width: 100%;
+  bottom: 0;
 }
 
 .footer-content {
@@ -543,6 +544,8 @@ html {
   font-size: 0.9rem;
   color: #888;
   text-align: center;
+ 
+  
 }
 
 /* Responsive Footer for Smaller Screens */
