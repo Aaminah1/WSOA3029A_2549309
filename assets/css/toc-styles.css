@@ -4,7 +4,7 @@ h2, h3 {
   
 .toc-container {
     position: fixed;
-    top: 120px; /* Adjust depending on your navbar height */
+    top: 130px; /* Adjust depending on your navbar height */
     left: 10px;
     width: 200px;
     font-family: 'Arial', sans-serif;
@@ -12,7 +12,7 @@ h2, h3 {
     padding: 8px;
     border-right: 3px solid #48cae4; /* Add a line on the left */
     box-shadow: none; /* Remove box shadow */
-    
+z-index: 2;
   }
   
   #toc ul {
@@ -51,6 +51,7 @@ h2, h3 {
   /* Ensure content doesn't overlap */
   #content {
     margin-left: 240px;
+    
   }
   
   @media (max-width: 768px) {

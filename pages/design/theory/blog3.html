@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="../../../assets/css/design-styles.css">
     <link rel="stylesheet" href="../../../assets/css/about-styles.css">
     <link rel="stylesheet" href="../../../assets/css/blog-styles.css">
+    <link rel="stylesheet" href="../../../assets/css/toc-styles.css">
+
     <!-- Font Awesome for icons (optional) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -27,13 +29,16 @@
     <!-- Navbar will be injected here -->
     <header id="navbar"></header>
     <nav id="breadcrumb" aria-label="Breadcrumb" class="breadcrumb"></nav>
+    <div class="toc-container">
+        <nav id="toc"></nav>
+      </div>
     <main id="content">
         <article>
-            <h2>Getting started </h2>
+            <h1>Getting started </h1>
             <div class="starry-line"></div>
 
             <section>
-                <h3>Folder structure</h3>
+                <h2>Folder structure</h2>
               
                 <p>The first step and challenge were to figure out the appropriate folder structure to ensure that the
                     site is
@@ -54,18 +59,18 @@
                 </div>
             </section>
             <section>
-                <h2>Why This Structure Works</h2>
+                <h3>Why This Structure Works</h3>
 
-                <h3>Keeps the Root Directory Clean</h3>
+                <h4>Keeps the Root Directory Clean</h4>
                 <p>By only keeping essential files in the root (such as index.html), the root directory stays organized
                     and
                     easy to navigate. All other files are stored in relevant subfolders, avoiding clutter.</p>
 
-                <h3>Logical Grouping</h3>
+                <h4>Logical Grouping</h4>
                 <p>Storing CSS, JavaScript, and images within an /assets folder ensures that all non-HTML resources are
                     grouped together logically, making it easier to manage these files as the project scales.</p>
 
-                <h3>Index Files for Folders and Clean URLs</h3>
+                <h4>Index Files for Folders and Clean URLs</h4>
                 <p>Each section has its own folder with an index.html file. This not only keeps the structure organized
                     but
                     also allows for clean URLs (e.g., website.com/about/ instead of website.com/about.html).</p>
@@ -101,7 +106,7 @@
                 <p>This structure easily supports the addition of new sections or pages without major restructuring.</p>
             </section>
             <section>
-                <h3>User Flow</h3>
+                <h2>User Flow</h2>
                 <p>This flow diagram show the information architecture.</p>
                 <div class="centered-image-container">
                     <figure>

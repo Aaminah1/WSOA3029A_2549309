@@ -289,46 +289,48 @@ document.addEventListener("DOMContentLoaded", function () {
   const toc = document.getElementById("toc");
   const headers = document.querySelectorAll("h2, h3");
   const tocList = document.createElement("ul");
-  
+
   headers.forEach((header) => {
     const listItem = document.createElement("li");
     const link = document.createElement("a");
     const headerId = header.innerText.toLowerCase().replace(/\s+/g, "-");
-    
+
     // Set IDs on headers for linking
     header.setAttribute("id", headerId);
-    
+
     link.href = `#${headerId}`;
     link.textContent = header.innerText;
-    link.addEventListener('click', function (e) {
+    link.addEventListener("click", function (e) {
       e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
       });
     });
-    
+
     listItem.appendChild(link);
     tocList.appendChild(listItem);
-    
+
     // Indent H3 elements
     if (header.tagName === "H3") {
       listItem.style.marginLeft = "20px";
     }
   });
-  
+
   toc.appendChild(tocList);
 
   // Highlight the active section on scroll
   window.addEventListener("scroll", () => {
     let currentActive = null;
     headers.forEach((header) => {
-      const sectionTop = header.offsetTop;
-      if (window.scrollY >= sectionTop - 100) {
+      const sectionTop = header.getBoundingClientRect().top + window.scrollY;
+      if (window.scrollY >= sectionTop - 150) {
         currentActive = header;
       }
     });
+
     const links = document.querySelectorAll("#toc a");
-    links.forEach(link => link.classList.remove("active"));
+    links.forEach((link) => link.classList.remove("active"));
     if (currentActive) {
       const activeLink = document.querySelector(`#toc a[href="#${currentActive.id}"]`);
       if (activeLink) {
@@ -337,6 +339,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+//footer overall issue with toc attempt to fix with this function
 document.addEventListener('DOMContentLoaded', function () {
   const tocContainer = document.querySelector('.toc-container');
   const footer = document.querySelector('footer');
@@ -350,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
       tocContainer.style.bottom = '0'; // Make it stop just above the footer
     } else {
       tocContainer.style.position = 'fixed';
-      tocContainer.style.top = '100px'; // Reset to original position
+      tocContainer.style.top = '120px'; // Reset to original position
     }
   }
   
