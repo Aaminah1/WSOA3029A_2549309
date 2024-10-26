@@ -232,6 +232,7 @@ p a:hover {
 
 .navbar-logo .logo-link:hover i {
   transform: rotate(20deg); /* Slight tilt for the icon on hover */
+  
 }
 
 .navbar {
@@ -397,6 +398,7 @@ p a:hover {
   .navbar-links.active {
     transform: translateX(0); /* Slide-in menu */
   }
+  
 
   .navbar-links ul {
     flex-direction: column;
@@ -439,6 +441,7 @@ p a:hover {
 .navbar-links a:hover {
   color: #48cae4;
   opacity: 1;
+  
 }
 
 .navbar-links i {
@@ -449,6 +452,7 @@ p a:hover {
 /* Show icons when hovering on a link */
 .navbar-links a:hover i {
   opacity: 1; /* Show icons on hover */
+  transform: scale(1.05); /* Slightly increase size */
 }
 
 
