@@ -15,6 +15,7 @@
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/map-style.css">
+    <link rel="stylesheet" href="../../assets/css/solarSystem-styles.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -27,10 +28,61 @@
     <header id="navbar"></header>
 
     <main id="content">
-        
+          <h1>Discoveries</h1>
+          <h2>Journey Through the Solar System</h2>
+<!-- Solar System Visualization Container with Flexbox -->
+<div id="solar-system-container">
+    
+    <!-- Left side (Controls) -->
+<div id="control-panel">
+  <!-- Zoom Controls -->
+  <div id="zoom-controls">
+    <button id="zoom_in">+</button>
+    <input type="range" id="zoom_slider" min="0.5" max="10" step="0.1" value="1">
+    <button id="zoom_out">-</button>
+  </div>
+
+  <!-- Pause/Resume Controls -->
+  <div id="controls">
+    <button id="pauseBtn">&#10074;&#10074;</button> <!-- Pause symbol -->
+    <button id="resumeBtn" style="display:none;">&#9658;</button> <!-- Play symbol -->
+  </div>
+
+  <!-- Checkbox Controls -->
+  <div id="checkbox-controls">
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggleLabelsCheckbox" checked>
+      <label for="toggleLabelsCheckbox">Show Planet Labels</label>
+    </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggleOrbitsCheckbox" checked>
+      <label for="toggleOrbitsCheckbox">Show Orbits</label>
+    </div>
+  </div>
+</div>
+
+    
+    <!-- Center (Solar System Visualization) -->
+    <div id="center-visualization">
+      <!-- SVG for the solar system -->
+      <svg id="solarSystem" width="800" height="600"></svg>
+    </div>
+
+    <!-- Right side (Info Panels) -->
+    <div id="right-panels">
+      <!-- Info Panels -->
+      <div id="planet-details-panel"></div>
+      <div id="orbit-info-box"></div>
+      <div id="tooltip"></div>
+    </div>
+
+  </div>
         <!-- INTERACTIVE MAP-->
         <section id="map-info">
-            <h1>Discoveries</h1>
+          
+
+
+
             <h2>Explore the Wonders of Distant Exoplanets</h2>
         </section>
 
@@ -123,9 +175,9 @@
         </section>
         </div>
         <div>
-<h2>Journey Through the Solar System</h2>
 
-            <button onclick="openTestPage()">solar system tester</button>
+  <!-- testing 
+           <button onclick="openTestPage()">solar system tester</button>
     
             <script>
               function openTestPage() {
@@ -134,7 +186,7 @@
             </script></div>
 
         <button id="back-to-top" title="Go to top" aria-label="Scroll back to top">↑</button>
-
+-->
     </main>
 
 
@@ -143,6 +195,7 @@
     <script type="module" src="../../assets/js/map.js"></script>
     <script type="module" src="../../assets/js/bubbleChart.js"></script>
     <script type="module" src="../../assets/js/dataManager.js"></script>
+    <script src="../../assets/js/solarSystem.js"></script>
     
 </body>
 

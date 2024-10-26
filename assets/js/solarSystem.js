@@ -218,7 +218,7 @@ function showOrbitDetails(planet) {
            .style("background-color", planetColors[planet.englishName] || "gray")  // Match planet color
            .html(`
                 <button id="closeInfoBox" onclick="hideInfoBox()">&#x2715;</button> <!-- X symbol for close -->
-                <strong>Orbit Details for ${planet.englishName}:</strong><br>
+                <h3>Orbit Details for ${planet.englishName}:</h3><br>
                 Eccentricity: ${planet.eccentricity}<br>
                 Semi-major Axis: ${planet.semimajorAxis.toLocaleString()} km<br>
                 Orbital Period: ${planet.sideralOrbit} days<br>
@@ -257,7 +257,8 @@ function showPlanetDetails(planet) {
                     <img src="${planetImageSrc}" alt="${planet.englishName}" id="planetImage" class="pulse-animation" style="width: 100px; height: 70px; object-fit: contain; margin-right: 10px;">
                 </a>
                 <div>
-                    <strong>${planet.englishName}</strong><br>
+                    
+                      <h3>Planet ${planet.englishName}:</h3><br>
                      Radius: ${planet.meanRadius} km<br>
                     Mass: ${planet.mass.massValue} x 10^${planet.mass.massExponent} kg<br>
                     Density: ${planet.density} g/cm³<br>
