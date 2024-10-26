@@ -93,7 +93,7 @@
   }
 }
 
-/* Floating Animation */
+/* Floating Animation 
 @keyframes floatUp {
   0%, 100% {
     transform: translateY(0);
@@ -118,7 +118,7 @@
 
 .planet-container .planet:nth-child(even) {
   animation: floatDown 5s ease-in-out infinite;
-}
+}*/
 
 /* Responsive Design */
 @media (max-width: 1024px) {
