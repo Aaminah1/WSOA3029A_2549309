@@ -80,14 +80,20 @@ function addClusterMarkers() {
     const imgWidth = 3000;
     const imgHeight = 1500;
 
-    // Create cluster data by grouping exoplanets (random positions for simplicity)
+    // Create cluster data
     const clusters = d3.range(30).map(() => ({
         x: Math.random() * imgWidth,
         y: Math.random() * imgHeight,
-        size: Math.floor(Math.random() * 50 + 20) // Random cluster size
+        size: Math.floor(Math.random() * 50 + 20)
     }));
 
-    // Add cluster markers for low zoom levels
+    // Add tooltip
+   // Create a reusable tooltip element with the CSS class
+const tooltip = d3.select("body").append("div")
+.attr("class", "tooltip") // Apply the tooltip CSS class
+.style("display", "none"); // Initial hidden state
+
+    // Add cluster markers
     g.selectAll('.cluster-marker')
         .data(clusters)
         .enter()
@@ -99,7 +105,19 @@ function addClusterMarkers() {
         .attr('fill', '#808080')
         .attr('stroke', '#fff')
         .attr('stroke-width', 2)
-        .attr('display', 'block');
+        .attr('display', 'block')
+        .on('mouseover', (event, d) => {
+            d3.select(event.currentTarget).attr('fill', '#FFD700'); // Highlight on hover
+            tooltip.style("display", "block").text("Zoom to explore");
+        })
+        .on('mousemove', (event) => {
+            tooltip.style("left", (event.pageX + 10) + "px")
+                   .style("top", (event.pageY + 10) + "px");
+        })
+        .on('mouseout', (event) => {
+            d3.select(event.currentTarget).attr('fill', '#808080'); // Remove highlight
+            tooltip.style("display", "none");
+        });
 }
 
 // Function to add exoplanet markers to the map

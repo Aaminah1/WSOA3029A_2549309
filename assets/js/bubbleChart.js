@@ -75,7 +75,7 @@ function createBubbleChart(data) {
         .domain([0, d3.max(data, d => d.mass)])
         .range([5, 50]);
 
-    // Create axes
+   /* // Create axes
     svg.append("g")
         .attr("transform", `translate(0,${height})`)
         .call(d3.axisBottom(x))
@@ -97,7 +97,7 @@ function createBubbleChart(data) {
         .attr("text-anchor", "middle")
         .attr("stroke", "black")
         .text("Temperature (K)");
-
+*/
     // Tooltip for bubbles
     const tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -167,7 +167,7 @@ const xAxis = svg.append("g")
 .call(d3.axisBottom(x));
 
 xAxis.append("text")
-.attr("y", 40) // Position it below the axis
+.attr("y", 50) // Position it below the axis
 .attr("x", width / 2)
 .attr("text-anchor", "middle")
 
@@ -176,7 +176,7 @@ xAxis.append("text")
 .on("mouseover", function(event) {
     d3.select("#axis-tooltip")
         .style("left", `${event.pageX + 5}px`)
-        .style("top", `${event.pageY - 28}px`)
+        .style("top", `${event.pageY - 19}px`)
         .style("opacity", 1)
         .html("Radius of the exoplanet in Earth radii. The larger the radius, the bigger the planet.");
 })
@@ -191,7 +191,7 @@ const yAxis = svg.append("g")
 
 yAxis.append("text")
 .attr("transform", "rotate(-90)")
-.attr("y", -60) // Move the label further away
+.attr("y", -70) // Move the label further away
 .attr("x", -height / 2)
 .attr("dy", "1em")
 .attr("text-anchor", "middle")

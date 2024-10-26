@@ -31,6 +31,11 @@
 }
 
 
+.cluster-marker:hover {
+    fill: #FFD700; /* Highlight color */
+    stroke: #fff;
+    stroke-width: 2px;
+}
 
 
 
@@ -221,13 +226,13 @@ input[type="checkbox"]:active {
 /* Info panel styling */
 #planet-info-panel {
     position: absolute;
-    right: 0;
+    right: 30px; 
     top: 20px;
-    width: 280px; /* Slightly wider for better readability */
+    width: 240px !important;
     max-height: 85vh;
     background-color: rgba(30, 30, 30, 0.95); /* Darker background for better contrast */
     color: #fff8e7;
-    padding: 25px; /* Increase padding */
+    padding: 15px; /* Increase padding */
     box-sizing: border-box;
     border-left: 3px solid #FFD700; /* Brighter border to enhance focus */
     overflow-y: auto;
@@ -237,7 +242,7 @@ input[type="checkbox"]:active {
 
 /* Planet name styling */
 #planet-info-panel h3 {
-    font-size: 22px; /* Larger font size */
+    font-size: 18px; /* Larger font size */
     margin-bottom: 15px;
     color: #FFD700; /* Keep the golden color */
     text-align: center; /* Center-align for focus */
@@ -246,7 +251,7 @@ input[type="checkbox"]:active {
 
 /* Planet details styling */
 #planet-details p {
-    font-size: 16px; /* Slightly larger font */
+    font-size: 14px; /* Slightly larger font */
     line-height: 1.8; /* Increase line height for better spacing */
     margin-bottom: 10px;
 }
@@ -268,16 +273,7 @@ input[type="checkbox"]:active {
     margin-bottom: 12px;
 }
 
-/* Tooltip style adjustment */
-#tooltip {
-    background-color: rgba(30, 30, 30, 0.9); /* Match the panel's background */
-    padding: 10px;
-    border: 1px solid #FFD700; /* Consistent with panel border */
-    border-radius: 5px;
-    color: #fff;
-    font-size: 13px;
-    z-index: 1000;
-}
+
 
 /* Button styling inside the info panel */
 #more-info-btn {
@@ -453,11 +449,13 @@ input[type="checkbox"]:active {
 
 
 /* Axis Labels */
+/* Make axis labels larger and brighter */
 .axis-label {
-    font-size: 16px; /* Increase to 16px for better visibility */
-    font-family: 'Roboto', sans-serif;
-    fill: #ddd;
+    font-size: 18px; /* Increase font size */
+    fill: #ffffff; /* Brighter color for contrast */
+    font-weight: bold; /* Make it stand out */
 }
+
 /* Tooltip for Axis Titles */
 #axis-tooltip {
     position: absolute;
