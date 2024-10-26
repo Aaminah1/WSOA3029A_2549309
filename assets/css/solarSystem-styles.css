@@ -33,9 +33,9 @@
   /* Zoom controls positioning and styling */
   #zoom-controls {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    background: rgba(0, 0, 0, 0.8); /* Darker background for better contrast */
+    top: 450px;
+    left: -140px;
+    background:#333333; /* Darker background for better contrast */
     color: white;
     padding: 10px;
     border-radius: 10px;
@@ -76,20 +76,23 @@
   
   /* Pause/Resume controls positioning and styling */
   #controls {
+    
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+    top: 450px;
+    left: 140px;
+    background: #333333; /* Darker background for better contrast */
+    color: white;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
-    flex-direction: column; /* Stack buttons vertically */
-    gap: 10px;
+    align-items: center; /* Align controls horizontally */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+    transition: transform 0.3s ease;
   }
   
   #controls button {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 50%;
@@ -101,6 +104,7 @@
   
   #controls button:hover {
     background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1); /* Slight scale up on hover */
   }
   
   /* Tooltip styling */
@@ -120,10 +124,10 @@
   #orbit-info-box {
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: -140px;
     background: rgba(255, 255, 255, 0.307);
     padding: 10px;
-    border: 1px solid #ccc;
+    border-left: 3px solid #FFD700; /* Brighter border to enhance focus */
     border-radius: 8px;
     display: none; /* Initially hidden */
     z-index: 10; /* Ensure it stays on top */
@@ -145,16 +149,18 @@
   }
   
   #orbit-info-box button:hover {
-    color: #ff0000; /* Red on hover */
+    cursor: pointer;
+    transform: scale(1.5); /* Slightly increase size */
+  color: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
   }
   
   #planet-details-panel {
     position: absolute;
     top: 200px;
-    right: 20px;
+    right: -140px;
     background: rgba(255, 255, 255, 0.307);
     padding: 10px;
-    border: 1px solid #ccc;
+    border-left: 3px solid #FFD700; /* Brighter border to enhance focus */
     border-radius: 8px;
     display: none; /* Initially hidden */
     z-index: 10; /* Ensure it stays on top */
@@ -162,6 +168,38 @@
     color: white; /* White text */
     width: 260px; /* Adjust width */
   }
+  /* Planet name styling */
+#planet-details-panel h3 {
+  font-size: 18px; /* Larger font size */
+  margin-bottom: 15px;
+  color: #FFD700; /* Keep the golden color */
+  text-align: center; /* Center-align for focus */
+  letter-spacing: 1px; /* Add letter-spacing for readability */
+}
+
+/* Planet details styling */
+#planet-details p {
+  font-size: 14px; /* Slightly larger font */
+  line-height: 1.8; /* Increase line height for better spacing */
+  margin-bottom: 10px;
+}
+
+/* Planet details strong (category titles) */
+#planet-details strong {
+  color: #FFD700; /* Highlight category titles */
+  font-weight: bold;
+}
+
+/* Add custom styling for each section */
+#planet-details p span {
+  color: #fff8e7; /* Keep data text white for readability */
+  font-weight: normal;
+}
+
+/* Add better spacing between details */
+#planet-details p {
+  margin-bottom: 12px;
+}
   
   #planet-details-panel button {
     background-color: transparent;
@@ -176,8 +214,9 @@
   }
   
   #planet-details-panel button:hover {
-    color: #ff0000; /* Red hover effect for close button */
-  }
+    cursor: pointer;
+    transform: scale(1.5); /* Slightly increase size */
+  color: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */  }
   
   #planet-details-panel img {
     width: 100px;
@@ -260,35 +299,64 @@
     margin: 5px 0;
   }
   
-  .checkbox-container input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    accent-color: #00b300; /* Color for the checked state */
-  }
-  
-  .checkbox-container label {
-    color: white;
-    font-size: 16px;
-    margin-left: 8px;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 6px 10px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .checkbox-container label:hover {
-    background-color: rgba(255, 255, 255, 0.8); /* Hover effect */
-    color: black;
-  }
+  /* Apply custom checkbox styles */
+.checkbox-container input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #222;
+  border: 2px solid #fff;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  border-radius: 3px;
+  position: relative;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  order: 1; /* Position checkbox to the right */
+  margin-left: 10px; /* Optional spacing to fine-tune the look */
+}
+
+.checkbox-container input[type="checkbox"]:hover {
+  background-color: #FFC700;
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.8);
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #FFD700;
+}
+
+.checkbox-container input[type="checkbox"]:checked::before {
+  content: '✓';
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.checkbox-container input[type="checkbox"]:active {
+  transform: scale(0.95);
+}
+
+/* Label styling to match the custom checkbox */
+.checkbox-container label {
+  color: white;
+  font-size: 1rem;
+  margin-left: 8px;
+ 
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
   
   /* Checkbox container styling for planet labels and orbits */
   #checkbox-controls {
     position: absolute;
-    bottom: 100px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+    top: 20px;
+    left: -140px;
+    background-color:rgba(0, 0, 0, 0.7);
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);

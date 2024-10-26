@@ -14,32 +14,33 @@
   <div id="solar-system-container">
     
     <!-- Left side (Controls) -->
-    <div id="left-controls">
-      <!-- Zoom Controls -->
-      <div id="zoom-controls">
-          <button id="zoom_in">+</button>
-          <input type="range" id="zoom_slider" min="0.5" max="10" step="0.1" value="1">
-          <button id="zoom_out">-</button>
-      </div>
+<div id="control-panel">
+  <!-- Zoom Controls -->
+  <div id="zoom-controls">
+    <button id="zoom_in">+</button>
+    <input type="range" id="zoom_slider" min="0.5" max="10" step="0.1" value="1">
+    <button id="zoom_out">-</button>
+  </div>
 
-      <!-- Pause/Resume Controls -->
-      <div id="controls">
-          <button id="pauseBtn" style="font-size: 24px;">&#10074;&#10074;</button> <!-- Pause symbol -->
-          <button id="resumeBtn" style="font-size: 24px; display:none;">&#9658;</button> <!-- Play symbol -->
-      </div>
+  <!-- Pause/Resume Controls -->
+  <div id="controls">
+    <button id="pauseBtn">&#10074;&#10074;</button> <!-- Pause symbol -->
+    <button id="resumeBtn" style="display:none;">&#9658;</button> <!-- Play symbol -->
+  </div>
 
-      <!-- Checkbox Controls -->
-      <div id="checkbox-controls">
-        <div class="checkbox-container">
-          <input type="checkbox" id="toggleLabelsCheckbox" checked>
-          <label for="toggleLabelsCheckbox">Show Planet Labels</label>
-        </div>
-        <div class="checkbox-container">
-          <input type="checkbox" id="toggleOrbitsCheckbox" checked>
-          <label for="toggleOrbitsCheckbox">Show Orbits</label>
-        </div>
-      </div>
+  <!-- Checkbox Controls -->
+  <div id="checkbox-controls">
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggleLabelsCheckbox" checked>
+      <label for="toggleLabelsCheckbox">Show Planet Labels</label>
     </div>
+    <div class="checkbox-container">
+      <input type="checkbox" id="toggleOrbitsCheckbox" checked>
+      <label for="toggleOrbitsCheckbox">Show Orbits</label>
+    </div>
+  </div>
+</div>
+
     
     <!-- Center (Solar System Visualization) -->
     <div id="center-visualization">
