@@ -33,7 +33,7 @@
 /* Section Images */
 .section-image img {
     max-width: 400px;
-    max-height: 500px;
+ 
     animation: slideIn 2s ease-in-out;
 }
 
