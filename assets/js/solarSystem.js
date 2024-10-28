@@ -7,15 +7,33 @@ let selectedOrbit = null; // Keep track of the currently selected orbit
 let orbitsVisible = true; // Track if orbits are visible
 
 async function fetchPlanets() {
-    const endpoint = 'https://api.le-systeme-solaire.net/rest/bodies/';
-    const response = await fetch(endpoint);
-    if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+    const loadingContainer = document.getElementById('loading-container');
+    const solarSystemSvg = document.getElementById('solarSystem');
+
+    // Show the loading container initially
+    loadingContainer.style.display = 'flex';
+    solarSystemSvg.style.display = 'none';
+
+    try {
+        const endpoint = 'https://api.le-systeme-solaire.net/rest/bodies/';
+        const response = await fetch(endpoint);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        planetsData = data.bodies.filter(body => body.isPlanet);
+
+        // Hide loading container and show the SVG
+        loadingContainer.style.display = 'none';
+        solarSystemSvg.style.display = 'block';
+
+        return planetsData;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        loadingContainer.innerHTML = "<p>Failed to load data. Please try again later.</p>";
     }
-    const data = await response.json();
-    planetsData = data.bodies.filter(body => body.isPlanet); // Store planets data globally
-    return planetsData;
 }
+
 
 function setupSVG() {
     const svg = d3.select('#solarSystem')

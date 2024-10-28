@@ -254,6 +254,33 @@ button[data-tooltip]:hover::after {
     font-size: 24px;
     color: #FFD700;
 }
+#loading-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #FFD700;
+    display: flex;
+    align-items: center;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #FFD700;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
 /* General layout adjustments for smaller screens */
 @media (max-width: 1200px) {
     .gallery-container {
