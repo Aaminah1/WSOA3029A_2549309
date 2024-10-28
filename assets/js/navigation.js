@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
       'blog2.html': 'Predesign decision',
       'blog3.html': 'Getting started',
       'blog4.html': 'Design decisions',
-      'blog5.html': 'Reflection',
+      'blog5.html': 'Critical Reflection Essay',
       // Add more blog pages and their titles as needed
   };
 
@@ -258,7 +258,7 @@ const blogPosts = [
   { title: "Predesign decision", url: "/WSOA3029A_2549309/pages/design/theory/blog2.html" },
   { title: "Getting started", url: "/WSOA3029A_2549309/pages/design/theory/blog3.html" },
   { title: "Design decisions", url: "/WSOA3029A_2549309/pages/design/theory/blog4.html" },
-  { title: "Reflection", url: "/WSOA3029A_2549309/pages/design/theory/blog5.html" }
+  { title: "Critical Reflection Essay", url: "/WSOA3029A_2549309/pages/design/theory/blog5.html" }
 ];
 
 const currentPath = window.location.pathname;
