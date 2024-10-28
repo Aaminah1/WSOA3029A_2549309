@@ -361,3 +361,26 @@ document.addEventListener('DOMContentLoaded', function () {
   
   window.addEventListener('scroll', adjustTOCPosition);
 });
+
+
+//function to animation on home page upon scroll
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".section");
+
+  const options = {
+      threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              observer.unobserve(entry.target);
+          }
+      });
+  }, options);
+
+  sections.forEach(section => {
+      observer.observe(section);
+  });
+});

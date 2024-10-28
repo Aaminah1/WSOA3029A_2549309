@@ -166,8 +166,18 @@ html {
     text-align: left;
     flex-direction: row;
     z-index: 1;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+    will-change: opacity, transform;
+}
+.section.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
+/*style above for animation upon load, working with function in navigation.js*/
 .section.reverse {
     flex-direction: row-reverse;
 }
@@ -176,10 +186,15 @@ html {
 .content {
     max-width: 50%;
     animation: fadeIn 2s ease;
+   
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Soft shadow */
 }
 
 .content h2 {
     font-size: 2.5rem;
+      line-height: 1.6;
     color: #48cae4;
     margin-bottom: 20px;
 }
@@ -188,6 +203,7 @@ html {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 20px;
+    
 }
 
 /* Image Styling */
@@ -224,7 +240,10 @@ html {
         text-align: center;
         margin-top: 20px;
     }
-
+    .content {
+        max-width: 90%;
+        padding: 15px;
+    }
     .content h2 {
         font-size: 2rem;
     }
