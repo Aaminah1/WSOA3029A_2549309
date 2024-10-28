@@ -3,7 +3,7 @@
 /* Section layout styling for larger screens (default) */
 .section {
     display: flex;
-    padding: 50px 50px; 
+    padding: 10px 50px; 
     align-items: center;
     justify-content: space-between;
 }
