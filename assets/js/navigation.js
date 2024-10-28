@@ -178,6 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
   createFooter();
 });
 
+
+
+
+
 //scrolling
 window.addEventListener('scroll', function() {
   const overviewItems = document.querySelectorAll('.overview-item');
