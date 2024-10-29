@@ -306,7 +306,8 @@
     width: 100px;
     height: auto; /* Maintain aspect ratio */
     object-fit: contain;
-    align-content: center;
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
     transition: transform 0.3s ease-in-out;
   }
   
