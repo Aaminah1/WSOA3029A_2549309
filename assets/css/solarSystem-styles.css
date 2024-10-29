@@ -4,7 +4,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    border: 4px solid rgba(255, 255, 255, 0.3);
+   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -17,17 +17,43 @@
     height: 100vh;
     display: block;
   }
+/* Container to hold both visualization and control panel */
+#visualization-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* Set a maximum width for visualization area */
+  position: relative;
+}
+
+/* Position control panel below the SVG */
+#control-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px; /* Space between visualization and controls */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #visualization-wrapper {
+      max-width: 100%; /* Expand visualization for smaller screens */
+  }
+}
 
   /*Loading indicator*/
   #loading-container {
     position: absolute;
-    top: 50%;
+    top: 80px;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #FFD700;
     display: flex;
     align-items: center;
+    z-index: 10;
+   
 }
 
 .spinner {
@@ -38,6 +64,7 @@
     height: 24px;
     animation: spin 1s linear infinite;
     margin-right: 8px;
+    z-index: 10;
 }
 
 @keyframes spin {
@@ -60,8 +87,8 @@
   /* Zoom controls positioning and styling */
   #zoom-controls,#controls {
     position: absolute;
-    top: 450px;
-    left: -140px;
+    top: 690px;
+    left: 280px;
     background:#333333; /* Darker background for better contrast */
     color: white;
     padding: 10px;
@@ -70,7 +97,7 @@
     align-items: center; /* Align controls horizontally */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
     transition: transform 0.3s ease;
-    z-index: 10;
+    z-index: 9;
   }
   
   #zoom-controls button {
@@ -106,8 +133,8 @@
   #controls {
     
     position: absolute;
-    top: 450px;
-    left: 140px;
+    top: -20px;
+    left: 380px;
     background: #333333; /* Darker background for better contrast */
     color: white;
     padding: 10px;
@@ -116,6 +143,7 @@
     align-items: center; /* Align controls horizontally */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
     transition: transform 0.3s ease;
+    z-index: 9;
   }
   
   #controls button {
@@ -390,8 +418,8 @@
   /* Checkbox container styling for planet labels and orbits */
   #checkbox-controls {
     position: absolute;
-    top: 20px;
-    left: -140px;
+    top: -20px;
+    left: -340px;
     background-color:rgba(0, 0, 0, 0.7);
     padding: 10px;
     border-radius: 8px;
