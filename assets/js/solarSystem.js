@@ -296,7 +296,7 @@ function showPlanetDetails(planet) {
            
 
                       <h3>Planet ${planet.englishName}</h3>
-                       <a href="#" id="planetImageLink" target="_blank" title="Click to explore more images!">
+                       <a href="#" id="planetImageLink" target="_blank" title="Click to learn more!">
                     <img src="${planetImageSrc}" alt="${planet.englishName}" id="planetImage" class="pulse-animation" >
                 </a>
                       <p><strong>Radius:</strong> ${planet.meanRadius} km</p>
