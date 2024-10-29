@@ -37,8 +37,8 @@ async function fetchPlanets() {
 
 function setupSVG() {
     const svg = d3.select('#solarSystem')
-    .attr("viewBox", `0 0 ${window.innerWidth} ${window.innerHeight}`)
-    .attr("preserveAspectRatio", "xMidYMid meet");
+        .attr("viewBox", `0 0 ${window.innerWidth} ${window.innerHeight}`)
+        .attr("preserveAspectRatio", "xMidYMid meet");
 
     const width = svg.node().getBoundingClientRect().width;
     const height = svg.node().getBoundingClientRect().height;
@@ -60,7 +60,7 @@ function setupSVG() {
     // Zoom controls
     document.getElementById('zoom_in').addEventListener('click', () => adjustZoom(1.1, zoom, svg));
     document.getElementById('zoom_out').addEventListener('click', () => adjustZoom(0.9, zoom, svg));
-    document.getElementById('zoom_slider').addEventListener('input', function() {
+    document.getElementById('zoom_slider').addEventListener('input', function () {
         updateZoom(parseFloat(this.value), zoom, svg);
     });
 
@@ -78,14 +78,14 @@ function setupSVG() {
 }
 
 
-document.getElementById('toggleOrbitsCheckbox').addEventListener('change', function() {
+document.getElementById('toggleOrbitsCheckbox').addEventListener('change', function () {
     let isChecked = this.checked;
-    
+
     // Show or hide orbits based on the checkbox state
     d3.selectAll('circle.orbit').style('display', isChecked ? 'block' : 'none');
 
-     // Add event listener to toggle planet labels
-     document.getElementById('toggleLabelsCheckbox').addEventListener('change', togglePlanetLabels);
+    // Add event listener to toggle planet labels
+    document.getElementById('toggleLabelsCheckbox').addEventListener('change', togglePlanetLabels);
 });
 
 
@@ -129,37 +129,37 @@ function renderPlanets(planets, container, centerX, centerY) {
 
     // Add hover interaction to orbit lines
     orbitSelection
-        .on("mouseover", function(event, d) {
+        .on("mouseover", function (event, d) {
             if (selectedOrbit !== this) {  // Only apply hover effect if it's not the selected orbit
                 d3.select(this)
-                  .style("stroke", "white") // Change color on hover
-                  .style("stroke-width", "2.5px") // Thicken the stroke for emphasis
-                  .style("stroke-opacity", "1.0"); // Make it fully opaque
+                    .style("stroke", "white") // Change color on hover
+                    .style("stroke-width", "2.5px") // Thicken the stroke for emphasis
+                    .style("stroke-opacity", "1.0"); // Make it fully opaque
             }
         })
-        .on("mouseout", function(event, d) {
+        .on("mouseout", function (event, d) {
             if (selectedOrbit !== this) {  // Only revert if it's not the selected orbit
                 d3.select(this)
-                  .style("stroke", "white") // Revert to original color
-                  .style("stroke-width", "1px") // Revert stroke width
-                  .style("stroke-opacity", "0.5"); // Revert opacity
+                    .style("stroke", "white") // Revert to original color
+                    .style("stroke-width", "1px") // Revert stroke width
+                    .style("stroke-opacity", "0.5"); // Revert opacity
             }
         })
-        .on("click", function(event, d) {
+        .on("click", function (event, d) {
             if (selectedOrbit) {
                 // Reset the previously selected orbit's style
                 d3.select(selectedOrbit)
-                  .style("stroke", "white")
-                  .style("stroke-width", "1px")
-                  .style("stroke-opacity", "0.5");
+                    .style("stroke", "white")
+                    .style("stroke-width", "1px")
+                    .style("stroke-opacity", "0.5");
             }
 
             // Highlight the clicked orbit
             selectedOrbit = this;
             d3.select(this)
-              .style("stroke", "yellow")
-              .style("stroke-width", "3px")
-              .style("stroke-opacity", "1.0");
+                .style("stroke", "yellow")
+                .style("stroke-width", "3px")
+                .style("stroke-opacity", "1.0");
 
             showOrbitDetails(d); // Display orbit details in the info box
         });
@@ -176,53 +176,47 @@ function renderPlanets(planets, container, centerX, centerY) {
 
     // Add hover interaction for planets (same as before)
     planetSelection
-        .on("mouseover", function(event, d) {
+        .on("mouseover", function (event, d) {
             d3.select(this)
-              .transition()
-              .duration(200)
-              .attr("r", d => scaleSize(d.meanRadius) * 1.5)
-              .style("filter", "url(#glow)")
-              .style("stroke", "white")
-              .style("stroke-width", "2px");
+                .transition()
+                .duration(200)
+                .attr("r", d => scaleSize(d.meanRadius) * 1.5)
+                .style("filter", "url(#glow)")
+                .style("stroke", "white")
+                .style("stroke-width", "2px");
 
-            // Display planet's tooltip and set its color to match the planet
-            d3.select('#tooltip')
-                .style('left', `${event.pageX}px`)
-                .style('top', `${event.pageY + 20}px`)
-                .style('display', 'block')
-                .style('background-color', planetColors[d.englishName] || "gray") // Set tooltip color
-                .html(`<strong>${d.englishName}`);
+
         })
-        .on("mouseout", function() {
+        .on("mouseout", function () {
             d3.select(this)
-              .transition()
-              .duration(200)
-              .attr("r", d => scaleSize(d.meanRadius))
-              .style("stroke-width", "0px");
+                .transition()
+                .duration(200)
+                .attr("r", d => scaleSize(d.meanRadius))
+                .style("stroke-width", "0px");
 
             d3.select('#tooltip').style('display', 'none');
         })
 
-        .on("click", function(event, d) {
+        .on("click", function (event, d) {
             // Show planet details when clicked
             showPlanetDetails(d);
         });
 
-        
-         // Create planet name labels
+
+    // Create planet name labels
     const planetLabels = container.selectAll("text.planet-label")
-    .data(planets)
-    .enter()
-    .append("text")
-    .attr("class", "planet-label")
-    .attr("x", centerX) // Set initial x position
-    .attr("y", centerY) // Set initial y position
-    .attr("text-anchor", "middle")
-    .attr("dy", "-1em") // Position the text slightly above the planet
-    .style("fill", "white")
-    .style("font-size", "12px")
-    .style("visibility", document.getElementById('toggleLabelsCheckbox').checked ? 'visible' : 'hidden') // Toggle based on checkbox
-    .text(d => d.englishName); // Add the planet name
+        .data(planets)
+        .enter()
+        .append("text")
+        .attr("class", "planet-label")
+        .attr("x", centerX) // Set initial x position
+        .attr("y", centerY) // Set initial y position
+        .attr("text-anchor", "middle")
+        .attr("dy", "-1em") // Position the text slightly above the planet
+        .style("fill", "white")
+        .style("font-size", "12px")
+        .style("visibility", document.getElementById('toggleLabelsCheckbox').checked ? 'visible' : 'hidden') // Toggle based on checkbox
+        .text(d => d.englishName); // Add the planet name
 }
 
 // Function to display orbit details in the info box
@@ -230,18 +224,18 @@ function showOrbitDetails(planet) {
     const speed = (2 * Math.PI * planet.semimajorAxis) / planet.sideralOrbit;
 
     const infoBox = d3.select("#orbit-info-box");
-    
+
     // Set the background color of the info box to match the planet's color
     infoBox.style("display", "block")
-           .style("background-color", planetColors[planet.englishName] || "gray")  // Match planet color
-           .html(`
+        .style("border-left", `3px solid ${planetColors[planet.englishName] || "gray"}`)
+        .html(`
                 <button id="closeInfoBox" onclick="hideInfoBox()">&#x2715;</button> <!-- X symbol for close -->
-                <h3>Orbit Details for ${planet.englishName}:</h3><br>
-                Eccentricity: ${planet.eccentricity}<br>
-                Semi-major Axis: ${planet.semimajorAxis.toLocaleString()} km<br>
-                Orbital Period: ${planet.sideralOrbit} days<br>
-                Orbital Speed: ${speed.toFixed(2)} km/day<br>
-                Inclination: ${planet.inclination} degrees
+                <h3>Orbit Details for ${planet.englishName}</h3>
+                 <p><strong>Eccentricity:</strong> ${planet.eccentricity}</p>
+                 <p><strong>Semi-major Axis:</strong> ${planet.semimajorAxis.toLocaleString()} km</p>
+                 <p><strong>Orbital Period:</strong> ${planet.sideralOrbit} days</p>
+                 <p><strong>Orbital Speed:</strong> ${speed.toFixed(2)} km/day</p>
+                 <p><strong>Inclination:</strong> ${planet.inclination} degrees</p>
             `);
 }
 
@@ -251,15 +245,14 @@ function hideInfoBox() {
     if (selectedOrbit) {
         // Revert the style of the selected orbit
         d3.select(selectedOrbit)
-          .style("stroke", "white")
-          .style("stroke-width", "1px")
-          .style("stroke-opacity", "0.5");
+            .style("stroke", "white")
+            .style("stroke-width", "1px")
+            .style("stroke-opacity", "0.5");
         selectedOrbit = null; // Clear the selected orbit
     }
 }
 
 
-// Function to display planet details in a panel with clickable image
 // Function to display planet details in a panel with clickable image
 function showPlanetDetails(planet) {
     const planetImageSrc = `/WSOA3029A_2549309/assets/images/planets/${planet.englishName.toLowerCase()}.png`; // Path to planet images
@@ -267,24 +260,22 @@ function showPlanetDetails(planet) {
 
     const planetDetailsPanel = d3.select("#planet-details-panel");
     planetDetailsPanel.style("display", "block")
-        .style("background-color", planetColor) // Set background color to planet's color
+        .style("border-left", `3px solid ${planetColor}`) // Set border-left to planet color
         .html(`
             <button id="closePlanetDetails" onclick="hidePlanetDetails()">&#x2715;</button> <!-- Close button -->
-            <div style="display: flex; align-items: center;">
-                <a href="#" id="planetImageLink" target="_blank" title="Click to explore more images!">
-                    <img src="${planetImageSrc}" alt="${planet.englishName}" id="planetImage" class="pulse-animation" style="width: 100px; height: 70px; object-fit: contain; margin-right: 10px;">
+           
+
+                      <h3>Planet ${planet.englishName}</h3>
+                       <a href="#" id="planetImageLink" target="_blank" title="Click to explore more images!">
+                    <img src="${planetImageSrc}" alt="${planet.englishName}" id="planetImage" class="pulse-animation" >
                 </a>
-                <div>
-                    
-                      <h3>Planet ${planet.englishName}:</h3><br>
-                     Radius: ${planet.meanRadius} km<br>
-                    Mass: ${planet.mass.massValue} x 10^${planet.mass.massExponent} kg<br>
-                    Density: ${planet.density} g/cm³<br>
-                    Gravity: ${planet.gravity} m/s²<br>
-                    Distance from Sun: ${planet.perihelion.toLocaleString()} km<br>
-                    Temperature: ${planet.avgTemp} K<br>
-                </div>
-            </div>
+                      <p><strong>Radius:</strong> ${planet.meanRadius} km</p>
+                      <p><strong>Mass:</strong> ${planet.mass.massValue} x 10^${planet.mass.massExponent} kg</p>
+                      <p><strong>Density:</strong> ${planet.density} g/cm³</p>
+                      <p><strong>Gravity:</strong> ${planet.gravity} m/s²</p>
+                      <p><strong>Distance from Sun:</strong> ${planet.perihelion.toLocaleString()} km</p>
+                      <p><strong>Temperature: </strong>${planet.avgTemp} K</p>
+             
         `);
 
     // Ensure the link is in the DOM before adding attributes
@@ -330,16 +321,16 @@ function animatePlanets(planets, container, centerX, centerY) {
         timer.stop();
     }
 
-    timer = d3.timer(function(elapsed) {
+    timer = d3.timer(function (elapsed) {
         const totalElapsed = lastElapsedTime + elapsed; // Calculate total elapsed time since start
 
         planetSelection
-            .attr("cx", function(d) {
+            .attr("cx", function (d) {
                 const angle = (totalElapsed / timeScale(d.sideralOrbit)) * 2 * Math.PI; // Calculate angle based on orbital period
                 const x = centerX + scaleDistance(d.semimajorAxis) * Math.cos(angle);
                 return x;
             })
-            .attr("cy", function(d) {
+            .attr("cy", function (d) {
                 const angle = (totalElapsed / timeScale(d.sideralOrbit)) * 2 * Math.PI;
                 const y = centerY + scaleDistance(d.semimajorAxis) * Math.sin(angle);
                 return y;
@@ -347,12 +338,12 @@ function animatePlanets(planets, container, centerX, centerY) {
 
         // Update planet labels to follow planets
         planetLabels
-            .attr("x", function(d) {
+            .attr("x", function (d) {
                 const angle = (totalElapsed / timeScale(d.sideralOrbit)) * 2 * Math.PI;
                 const x = centerX + scaleDistance(d.semimajorAxis) * Math.cos(angle);
                 return x;
             })
-            .attr("y", function(d) {
+            .attr("y", function (d) {
                 const angle = (totalElapsed / timeScale(d.sideralOrbit)) * 2 * Math.PI;
                 const y = centerY + scaleDistance(d.semimajorAxis) * Math.sin(angle);
                 return y - 20; // Position the text slightly above the planet

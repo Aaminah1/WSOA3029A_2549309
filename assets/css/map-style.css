@@ -249,6 +249,7 @@ input[type="checkbox"]:active {
     overflow-y: auto;
     border-radius: 10px; /* Smoother corners */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Add shadow for more depth */
+    display: none; /* Initially hidden */
 }
 
 /* Planet name styling */
