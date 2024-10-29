@@ -72,7 +72,8 @@
     100% { transform: rotate(360deg); }
 }
 
-  
+
+
 
 /*planet labels*/
   .planet-label {
@@ -81,7 +82,14 @@
     fill: white; /* Color of the text */
     pointer-events: none; /* Make the text non-interactive */
   }
-  
+
+  /*sun glowing effect*/
+  .sun {
+  fill: yellow;
+  filter: drop-shadow(0 0 10px rgba(255, 223, 0, 0.8)) 
+          drop-shadow(0 0 20px rgba(255, 223, 0, 0.6)) 
+          drop-shadow(0 0 30px rgba(255, 223, 0, 0.4));
+}
   
   /*INTERACTIVITY - ZOOM,PAUSE/RESUME*/
   /* Zoom controls positioning and styling */

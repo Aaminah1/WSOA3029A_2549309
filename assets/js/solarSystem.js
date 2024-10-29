@@ -40,6 +40,8 @@ function setupSVG() {
         .attr("viewBox", `0 0 ${window.innerWidth} ${window.innerHeight}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
 
+        
+
     const width = svg.node().getBoundingClientRect().width;
     const height = svg.node().getBoundingClientRect().height;
     const centerX = width / 2;
@@ -105,6 +107,16 @@ const planetColors = {
 };
 
 function renderPlanets(planets, container, centerX, centerY) {
+    
+     // Add the Sun at the center
+     container.append("circle")
+     .attr("class", "sun")
+     .attr("cx", centerX)
+     .attr("cy", centerY)
+     .attr("r", 30) // Adjust the radius as needed
+     .style("fill", "yellow")
+    .attr("r", 30);; // Add a glow effect if available
+
     const scaleDistance = d3.scaleLinear()
         .domain([0, d3.max(planets, d => d.semimajorAxis)])
         .range([100, Math.min(centerX, centerY) - 50]); // Increased distance
@@ -125,7 +137,8 @@ function renderPlanets(planets, container, centerX, centerY) {
         .style("fill", "none")
         .style("stroke", "white")
         .style("stroke-opacity", "0.5")
-        .style("stroke-dasharray", "8,3");
+        .style("stroke-dasharray", "8,3")
+        .style("cursor", "pointer");
 
     // Add hover interaction to orbit lines
     orbitSelection
@@ -134,7 +147,8 @@ function renderPlanets(planets, container, centerX, centerY) {
                 d3.select(this)
                     .style("stroke", "white") // Change color on hover
                     .style("stroke-width", "2.5px") // Thicken the stroke for emphasis
-                    .style("stroke-opacity", "1.0"); // Make it fully opaque
+                    .style("stroke-opacity", "1.0") // Make it fully opaque
+                    ;
             }
         })
         .on("mouseout", function (event, d) {
@@ -172,7 +186,8 @@ function renderPlanets(planets, container, centerX, centerY) {
         .attr("class", "planet")
         .attr("r", d => scaleSize(d.meanRadius))
         .style("fill", d => planetColors[d.englishName] || "gray") // Apply colors
-        .style("filter", "url(#glow)");
+        .style("filter", "url(#glow)")
+        .style("cursor", "pointer");
 
     // Add hover interaction for planets (same as before)
     planetSelection
