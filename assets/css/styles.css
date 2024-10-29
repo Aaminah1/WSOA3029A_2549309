@@ -471,13 +471,14 @@ html {
 
 /* Footer styling */
 .footer {
-  background: rgba(26, 37, 47, 0.2); /* Transparent with subtle gradient */
+  background-color: #10161b;
   backdrop-filter: none; /* not anymore for now Frosted glass effect */
   color: #cccccc;
   padding: 2rem 0;
   text-align: center;
   width: 100%;
   bottom: 0;
+  
 }
 
 .footer-content {

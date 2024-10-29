@@ -136,12 +136,46 @@
   animation: floatDown 5s ease-in-out infinite;
 }*/
 
-/* Responsive Design */
+/* Responsive Design for Tablet */
 @media (max-width: 1024px) {
-  /* Tablet */
+  .planet-container {
+    flex-direction: row; /* Row layout to use space better */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 30px;
+  }
+
+  .planet {
+    width: 150px; /* Increase size for better prominence */
+    margin: 20px;
+  }
+
+  .planet img {
+    width: 100px; /* Larger images */
+  }
+
+  .planet-title {
+    font-size: 1.3rem;
+  }
+
+  .visit-button {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
   .planet-container {
     flex-direction: column;
-    margin: 50px 20px;
+    margin: 20px;
+    align-items: center; /* Center items on small screens */
+  }
+
+  .planet {
+    width: 100%; /* Full width for mobile */
+    max-width: 200px; /* Limit width */
+    margin: 15px 0;
   }
 
   .planet img {
@@ -154,31 +188,9 @@
 
   .visit-button {
     font-size: 0.9rem;
+    padding: 8px 12px;
   }
 }
-
-@media (max-width: 768px) {
-  /* Mobile */
-  .planet-container {
-    flex-direction: column;
-    margin: 20px;
-  }
-
-  .planet img {
-    width: 60px;
-  }
-
-  .planet-title {
-    font-size: 1rem;
-  }
-
-  .visit-button {
-    font-size: 0.8rem;
-    padding: 6px 10px;
-  }
-}
-
-
 
 
 .grid-container {
