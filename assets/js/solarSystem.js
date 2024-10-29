@@ -40,7 +40,7 @@ function setupSVG() {
         .attr("viewBox", `0 0 ${window.innerWidth} ${window.innerHeight}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
 
-        
+
 
     const width = svg.node().getBoundingClientRect().width;
     const height = svg.node().getBoundingClientRect().height;
@@ -107,15 +107,17 @@ const planetColors = {
 };
 
 function renderPlanets(planets, container, centerX, centerY) {
-    
-     // Add the Sun at the center
-     container.append("circle")
-     .attr("class", "sun")
-     .attr("cx", centerX)
-     .attr("cy", centerY)
-     .attr("r", 30) // Adjust the radius as needed
-     .style("fill", "yellow")
-    .attr("r", 30);; // Add a glow effect if available
+
+    // Add the Sun at the center
+    container.append("circle")
+        .attr("class", "sun")
+        .attr("cx", centerX)
+        .attr("cy", centerY)
+        .attr("r", 30)
+        .style("fill", "yellow")
+        .attr("r", 30);; //glow effect 
+
+
 
     const scaleDistance = d3.scaleLinear()
         .domain([0, d3.max(planets, d => d.semimajorAxis)])
@@ -232,6 +234,19 @@ function renderPlanets(planets, container, centerX, centerY) {
         .style("font-size", "12px")
         .style("visibility", document.getElementById('toggleLabelsCheckbox').checked ? 'visible' : 'hidden') // Toggle based on checkbox
         .text(d => d.englishName); // Add the planet name
+
+    // Add a label for the Sun
+    container.append("text")
+        .attr("class", "sun-label")
+        .attr("x", centerX)
+        .attr("y", centerY - 40) // Adjust the position above the Sun
+        .attr("text-anchor", "middle")
+        .style("fill", "white")
+        .style("font-size", "12px")
+        .text("Sun");
+
+
+
 }
 
 // Function to display orbit details in the info box
@@ -353,6 +368,7 @@ function animatePlanets(planets, container, centerX, centerY) {
 
         // Update planet labels to follow planets
         planetLabels
+
             .attr("x", function (d) {
                 const angle = (totalElapsed / timeScale(d.sideralOrbit)) * 2 * Math.PI;
                 const x = centerX + scaleDistance(d.semimajorAxis) * Math.cos(angle);
@@ -368,7 +384,7 @@ function animatePlanets(planets, container, centerX, centerY) {
 
 function togglePlanetLabels() {
     const showLabels = document.getElementById('toggleLabelsCheckbox').checked;
-    d3.selectAll(".planet-label")
+    d3.selectAll(".planet-label,.sun-label")
         .style("visibility", showLabels ? 'visible' : 'hidden');
 }
 

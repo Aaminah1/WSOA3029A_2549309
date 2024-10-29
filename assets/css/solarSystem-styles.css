@@ -81,7 +81,16 @@
     font-size: calc(12px + 0.5vw); /* Font size scales with viewport width */
     fill: white; /* Color of the text */
     pointer-events: none; /* Make the text non-interactive */
+    z-index: 10;
   }
+  .sun-label {
+    font-family: Arial, sans-serif;
+    font-size: calc(12px + 0.5vw); /* Font size scales with viewport width */
+    fill: white; /* Color of the text */
+    pointer-events: none; /* Make the text non-interactive */
+    z-index: 10;
+  }
+
 
   /*sun glowing effect*/
   .sun {
