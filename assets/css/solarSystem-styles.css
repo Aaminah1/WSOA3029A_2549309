@@ -4,7 +4,7 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-   
+    border: 4px solid rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -294,7 +294,7 @@
     }
   }
   
-  /* Optional bounce effect (if you want to make it bouncy on hover) */
+  /* bounce effect (bouncy on hover) */
   @keyframes bounce {
     0%, 100% {
         transform: translateY(0);
@@ -468,16 +468,21 @@
       flex-direction: column;
   }
   #control-panel, #right-panels {
-      width: 100%;
+      width: 60%;
       order: 2;
+      align-items: center;
   }
   #center-visualization {
-      width: 100%;
+      width: 60%;
       order: 1;
+      align-items: center;
+   
+    
   }
   #zoom-controls, #controls {
       position: static;
       margin: 10px auto;
+      
   }
   #orbit-info-box, #planet-details-panel {
       position: static;
@@ -492,7 +497,9 @@
       width: 30px;
       height: 30px;
       font-size: 18px;
+      align-items: center;
   }
+  
   #zoom-controls input[type="range"] {
       width: 80px;
   }

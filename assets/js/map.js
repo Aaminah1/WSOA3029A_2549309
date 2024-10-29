@@ -14,8 +14,8 @@ function initializeZoomPan() {
     const g = svg.append('g'); // Group element to hold all elements
 
     // Set up image dimensions and position
-    const imgWidth = 3000; // Adjust according to the actual image dimensions
-    const imgHeight = 1500; // Adjust according to the actual image dimensions
+    const imgWidth = 3000; 
+    const imgHeight = 1500; 
 
     // Load the galaxy image and append it to the group
     g.append('image')
