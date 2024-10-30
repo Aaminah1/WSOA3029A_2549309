@@ -34,13 +34,11 @@ async function fetchPlanets() {
     }
 }
 
-
+//function for interactivity for solar system
 function setupSVG() {
     const svg = d3.select('#solarSystem')
         .attr("viewBox", `0 0 ${window.innerWidth} ${window.innerHeight}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
-
-
 
     const width = svg.node().getBoundingClientRect().width;
     const height = svg.node().getBoundingClientRect().height;
@@ -49,12 +47,26 @@ function setupSVG() {
 
     const container = svg.append('g').attr('id', 'container');
 
-    // Define zoom
+    const boundaryWidth = width * 1.5;
+    const boundaryHeight = height * 1.5;
+
     const zoom = d3.zoom()
-        .scaleExtent([0.5, 5]) // Set zoom boundaries
+        .scaleExtent([1, 5]) // Set zoom boundaries
         .on('zoom', (event) => {
-            container.attr('transform', event.transform);
-            document.getElementById('zoom_slider').value = event.transform.k;
+            const transform = event.transform;
+            const scale = transform.k;
+
+            // Calculate dynamic panning limits based on zoom level
+            const maxPanX = ((boundaryWidth * scale) - width) / 2;
+            const maxPanY = ((boundaryHeight * scale) - height) / 2;
+
+            // Apply clamping to restrict panning within bounds
+            const limitedX = Math.max(Math.min(transform.x, maxPanX), -maxPanX);
+            const limitedY = Math.max(Math.min(transform.y, maxPanY), -maxPanY);
+
+            // Apply clamped transform to the container
+            container.attr('transform', `translate(${limitedX}, ${limitedY}) scale(${scale})`);
+            document.getElementById('zoom_slider').value = scale;
         });
 
     svg.call(zoom);
@@ -76,8 +88,39 @@ function setupSVG() {
     // Add event listeners for pause, resume, and toggle buttons
     document.getElementById('pauseBtn').addEventListener('click', pauseAnimation);
     document.getElementById('resumeBtn').addEventListener('click', resumeAnimation);
-
 }
+
+//function to reset positioning of solar system
+function resetSolarSystem() {
+    // Reset zoom and pan to initial view
+    d3.select('#solarSystem')
+        .transition()
+        .duration(500)
+        .call(d3.zoom().transform, d3.zoomIdentity); // Reset to initial zoom and pan
+ // Update the zoom slider value to the default (assuming default is 1)
+ document.getElementById('zoom_slider').value = 1;
+    // Clear and re-render planets
+    d3.select('#container').remove(); // Remove existing content
+    setupSVG(); // Re-initialize and re-render the solar system
+    // Set checkboxes to their default checked state
+    document.getElementById('toggleOrbitsCheckbox').checked = true;
+    document.getElementById('toggleLabelsCheckbox').checked = true;
+
+    // Show orbits and labels based on the reset checkbox values
+    d3.selectAll('circle.orbit').style('display', 'block'); // Show orbits
+    d3.selectAll('.planet-label').style('visibility', 'visible'); // Show labels
+
+    // Reset the Pause/Resume button to "Pause" state if animation is running
+    paused = false;
+    document.getElementById('pauseBtn').style.display = 'inline';
+    document.getElementById('resumeBtn').style.display = 'none';
+
+    // Hide the orbit and planet detail panels
+    d3.select("#orbit-info-box").style("display", "none");
+    d3.select("#planet-details-panel").style("display", "none");
+}
+document.getElementById('resetBtn').addEventListener('click', resetSolarSystem);
+
 
 
 document.getElementById('toggleOrbitsCheckbox').addEventListener('change', function () {

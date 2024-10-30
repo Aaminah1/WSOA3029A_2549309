@@ -17,6 +17,40 @@
     height: 100vh;
     display: block;
   }
+
+
+  #resetBtn {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.2s;
+    position: absolute;
+   top: 700px;
+    left: 500px;
+    
+    font-style: bold;
+}
+
+#resetBtn:hover {
+    background-color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+
+#resetBtn:active {
+    transform: scale(1.05);
+}
+
+
+
 /* Container to hold both visualization and control panel */
 #visualization-wrapper {
   display: flex;
@@ -105,14 +139,14 @@
   #zoom-controls,#controls {
     position: absolute;
     top: 690px;
-    left: 280px;
-    background:#333333; /* Darker background for better contrast */
+    left: 240px;
+   /* background:#333333;  Darker background for better contrast */
     color: white;
     padding: 10px;
     border-radius: 10px;
     display: flex;
     align-items: center; /* Align controls horizontally */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+   /*  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); Add shadow for better visibility */
     transition: transform 0.3s ease;
     z-index: 9;
   }
@@ -152,13 +186,13 @@
     position: absolute;
     top: -20px;
     left: 380px;
-    background: #333333; /* Darker background for better contrast */
+     /*background: #333333; Darker background for better contrast */
     color: white;
     padding: 10px;
     border-radius: 10px;
     display: flex;
     align-items: center; /* Align controls horizontally */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);  Add shadow for better visibility */
     transition: transform 0.3s ease;
     z-index: 9;
   }

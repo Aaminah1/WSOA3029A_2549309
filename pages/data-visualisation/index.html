@@ -50,21 +50,25 @@
           <div id="control-panel">
             <!-- Zoom Controls -->
             <div id="zoom-controls">
-              <button id="zoom_in">+</button>
+              <button id="zoom_in" aria-label="zoom in">+</button>
               <input type="range" id="zoom_slider" min="0.5" max="10" step="0.1" value="1">
-              <button id="zoom_out">-</button>
+              <button id="zoom_out" aria-label="zoom out">-</button>
             </div>
+            <!-- reset button -->
+            <button id="resetBtn" aria-label="reset button">
+              &#8635; <!-- Unicode for circular arrow symbol -->
+            </button>
 
             <!-- Pause/Resume Controls -->
             <div id="controls">
-              <button id="pauseBtn">&#10074;&#10074;</button>
-              <button id="resumeBtn" style="display:none;">&#9658;</button>
+              <button id="pauseBtn" aria-label="pause button">&#10074;&#10074;</button>
+              <button id="resumeBtn"aria-label="resume button" style="display:none;">&#9658;</button>
             </div>
 
             <!-- Checkbox Controls -->
             <div id="checkbox-controls">
 
-               <div class="checkbox-container">
+              <div class="checkbox-container">
                 <input type="checkbox" id="toggleOrbitsCheckbox" checked>
                 <label for="toggleOrbitsCheckbox">Show Orbits</label>
               </div>
@@ -149,7 +153,7 @@
           <div id="planet-details">
 
           </div>
-          <button id="more-info-btn" onclick="scrollToChart()">View Related Visualization</button>
+          <button id="more-info-btn" aria-label="related visualisation" onclick="scrollToChart()">View Related Visualization</button>
         </div>
 
         <!-- Tooltip for displaying exoplanet info on hover -->
@@ -199,8 +203,8 @@
 -->
 
 
- <!-- Back to Top Button -->
- <button id="back-to-top" title="Go to top" aria-label="Scroll back to top">↑</button>
+        <!-- Back to Top Button -->
+        <button id="back-to-top" title="Go to top" aria-label="Scroll back to top">↑</button>
   </main>
 
 
