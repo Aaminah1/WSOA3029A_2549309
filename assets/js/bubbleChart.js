@@ -50,7 +50,7 @@ function prepareDataset(data) {
 function createBubbleChart(data) {
 
 
-    
+
     const margin = { top: 40, right: 30, bottom: 80, left: 80 }; // Adjusted margins for axis titles
     const width = document.getElementById('chart').clientWidth - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;
@@ -75,29 +75,29 @@ function createBubbleChart(data) {
         .domain([0, d3.max(data, d => d.mass)])
         .range([5, 50]);
 
-   /* // Create axes
-    svg.append("g")
-        .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(x))
-        .append("text")
-        .attr("y", 40)
-        .attr("x", width / 2)
-        .attr("text-anchor", "middle")
-        .attr("stroke", "black")
-        .text("Radius (Earth radii)");
-        
-
-    svg.append("g")
-        .call(d3.axisLeft(y))
-        .append("text")
-        .attr("transform", "rotate(-90)")
-        .attr("y", -60)
-        .attr("x", -height / 2)
-        .attr("dy", "1em")
-        .attr("text-anchor", "middle")
-        .attr("stroke", "black")
-        .text("Temperature (K)");
-*/
+    /* // Create axes
+     svg.append("g")
+         .attr("transform", `translate(0,${height})`)
+         .call(d3.axisBottom(x))
+         .append("text")
+         .attr("y", 40)
+         .attr("x", width / 2)
+         .attr("text-anchor", "middle")
+         .attr("stroke", "black")
+         .text("Radius (Earth radii)");
+         
+ 
+     svg.append("g")
+         .call(d3.axisLeft(y))
+         .append("text")
+         .attr("transform", "rotate(-90)")
+         .attr("y", -60)
+         .attr("x", -height / 2)
+         .attr("dy", "1em")
+         .attr("text-anchor", "middle")
+         .attr("stroke", "black")
+         .text("Temperature (K)");
+ */
     // Tooltip for bubbles
     const tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -121,11 +121,13 @@ function createBubbleChart(data) {
             tooltip.transition()
                 .duration(200)
                 .style("opacity", .9);
-            tooltip.html(`<strong>Exoplanet:</strong> ${d.name}<br>
-                <strong>Category:</strong> <b>${d.category}</b><br>
-                <strong>Radius:</strong> <b>${d.radius.toFixed(2)}</b> Earth radii<br>
-                <strong>Temperature:</strong> <b>${d.temperature}</b> K<br>
-                <strong>Mass:</strong> ${d.mass} Jupiter masses`)
+            tooltip.html(`
+                    <div><strong>Exoplanet:</strong> ${d.name}</div>
+                    <div><strong>Category:</strong> <b>${d.category}</b></div>
+                    <div><strong>Radius:</strong> <b>${d.radius.toFixed(2)}</b> Earth radii</div>
+                    <div><strong>Temperature:</strong> <b>${d.temperature}</b> K</div>
+                    <div><strong>Mass:</strong> ${d.mass} Jupiter masses</div>
+                `)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
@@ -143,7 +145,7 @@ function createBubbleChart(data) {
     // Add hover behavior to the legend items
     d3.selectAll('#filters label').on('mouseover', function () {
         const hoveredCategory = d3.select(this).text().trim();
-        
+
         // Highlight the bubbles of the hovered category
         svg.selectAll(".bubble")
             .transition()
@@ -152,69 +154,69 @@ function createBubbleChart(data) {
             .attr("stroke", d => d.category === hoveredCategory ? "#FFD700" : "#333") // Highlight border
             .attr("stroke-width", d => d.category === hoveredCategory ? 2 : 1); // Increase border width for highlight
     })
-    .on('mouseout', function () {
-        // Reset bubble appearance on mouseout
-        svg.selectAll(".bubble")
-            .transition()
-            .duration(200)
-            .style("opacity", 0.8)
-            .attr("stroke", "#333")
-            .attr("stroke-width", 1);
-    });
+        .on('mouseout', function () {
+            // Reset bubble appearance on mouseout
+            svg.selectAll(".bubble")
+                .transition()
+                .duration(200)
+                .style("opacity", 0.8)
+                .attr("stroke", "#333")
+                .attr("stroke-width", 1);
+        });
     // Add x-axis with hover for additional info
-const xAxis = svg.append("g")
-.attr("transform", `translate(0,${height})`)
-.call(d3.axisBottom(x));
+    const xAxis = svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
 
-xAxis.append("text")
-.attr("y", 50) // Position it below the axis
-.attr("x", width / 2)
-.attr("text-anchor", "middle")
+    xAxis.append("text")
+        .attr("y", 50) // Position it below the axis
+        .attr("x", width / 2)
+        .attr("text-anchor", "middle")
 
-.attr("class", "axis-label")
-.text("Radius (Earth radii)")
-.on("mouseover", function(event) {
-    d3.select("#axis-tooltip")
-        .style("left", `${event.pageX + 5}px`)
-        .style("top", `${event.pageY - 19}px`)
-        .style("opacity", 1)
-        .html("Radius of the exoplanet in Earth radii. The larger the radius, the bigger the planet.");
-})
-.on("mouseout", function() {
-    d3.select("#axis-tooltip")
+        .attr("class", "axis-label")
+        .text("Radius (Earth radii)")
+        .on("mouseover", function (event) {
+            d3.select("#axis-tooltip")
+                .style("left", `${event.pageX + 5}px`)
+                .style("top", `${event.pageY - 19}px`)
+                .style("opacity", 1)
+                .html("Radius of the exoplanet in Earth radii. The larger the radius, the bigger the planet.");
+        })
+        .on("mouseout", function () {
+            d3.select("#axis-tooltip")
+                .style("opacity", 0);
+        });
+
+    // Add y-axis with hover for additional info
+    const yAxis = svg.append("g")
+        .call(d3.axisLeft(y));
+
+    yAxis.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -70) // Move the label further away
+        .attr("x", -height / 2)
+        .attr("dy", "1em")
+        .attr("text-anchor", "middle")
+
+        .attr("class", "axis-label")
+        .text("Temperature (K)")
+        .on("mouseover", function (event) {
+            d3.select("#axis-tooltip")
+                .style("left", `${event.pageX + 5}px`)
+                .style("top", `${event.pageY - 28}px`)
+                .style("opacity", 1)
+                .html("Temperature of the exoplanet in Kelvin. Higher values indicate hotter planets.");
+        })
+        .on("mouseout", function () {
+            d3.select("#axis-tooltip")
+                .style("opacity", 0);
+        });
+
+    // Tooltip container for the axis information
+    d3.select("body").append("div")
+        .attr("id", "axis-tooltip")
+        .attr("class", "tooltip")
         .style("opacity", 0);
-});
-
-// Add y-axis with hover for additional info
-const yAxis = svg.append("g")
-.call(d3.axisLeft(y));
-
-yAxis.append("text")
-.attr("transform", "rotate(-90)")
-.attr("y", -70) // Move the label further away
-.attr("x", -height / 2)
-.attr("dy", "1em")
-.attr("text-anchor", "middle")
-
-.attr("class", "axis-label")
-.text("Temperature (K)")
-.on("mouseover", function(event) {
-    d3.select("#axis-tooltip")
-        .style("left", `${event.pageX + 5}px`)
-        .style("top", `${event.pageY - 28}px`)
-        .style("opacity", 1)
-        .html("Temperature of the exoplanet in Kelvin. Higher values indicate hotter planets.");
-})
-.on("mouseout", function() {
-    d3.select("#axis-tooltip")
-        .style("opacity", 0);
-});
-
-// Tooltip container for the axis information
-d3.select("body").append("div")
-.attr("id", "axis-tooltip")
-.attr("class", "tooltip")
-.style("opacity", 0);
 
 }
 
@@ -225,7 +227,7 @@ function applyFilters() {
     const showRocky = document.getElementById("rocky-filter").checked;
     const showOther = document.getElementById("other-filter").checked;
 
-    const filteredData = originalData.filter(d => 
+    const filteredData = originalData.filter(d =>
         (showHabitable && d.category === 'Potentially Habitable') ||
         (showHotJupiter && d.category === 'Hot Jupiter') ||
         (showRocky && d.category === 'Rocky Planet') ||

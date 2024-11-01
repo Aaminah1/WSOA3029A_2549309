@@ -1,184 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-    <meta name="description" content="Explore the possibilities of life beyond Earth with our interactive data visualizations and insights into space research.">
+    <meta name="description"
+        content="Explore the possibilities of life beyond Earth with our interactive data visualizations and insights into space research.">
     <meta name="author" content="Aaminah Habib">
     <meta name="keywords" content="space, exoplanets, life beyond earth, universe, space research">
     <meta property="og:title" content="Life Beyond">
-    <meta property="og:description" content="Discover life beyond earth with interactive content and in-depth analysis.">
+    <meta property="og:description"
+        content="Discover life beyond earth with interactive content and in-depth analysis.">
     <meta property="og:type" content="website">
     <link rel="stylesheet" href="../../assets/css/styles.css">
     <link rel="stylesheet" href="../../assets/css/about-styles.css">
-        <!-- Font Awesome for icons  -->
+    <!-- Font Awesome for icons  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
+
 <body>
 
     <!-- Navbar will be injected here -->
     <header id="navbar"></header>
 
     <main id="about-content">
-       
-         <!-- Section 1: Mission Overview -->
-    <section class="section">
-        <div class="section-text">
-            <h1>About</h1>
-            <h2>Our Mission to Explore the Cosmos</h2>
-            <p>At Life Beyond, our mission is to uncover the mysteries of the cosmos by exploring exoplanets—worlds that exist beyond our solar system. We aim to answer humanity's profound questions:<strong> Are we alone in the universe?</strong></p>
-        
-         
-        <!-- Contact Button to open the form modal -->
-<button id="openFormBtn" class="button cta-button"  aria-label="Contact Us">Contact Us</button>
+
+        <!-- Section 1: Mission Overview -->
+        <section class="section">
+            <div class="section-text">
+                <h1>About</h1>
+                <h2>Our Mission to Explore the Cosmos</h2>
+                <p>At Life Beyond, our mission is to uncover the mysteries of the cosmos by exploring exoplanets—worlds
+                    that exist beyond our solar system. We aim to answer humanity's profound questions:<strong> Are we
+                        alone in the universe?</strong></p>
 
 
-<!-- Modal for the form -->
-<div id="formModal" class="modal">
-    <div class="modal-content">
-        <span class="closeBtn" aria-label="Close">&times;</span> <!-- Close button -->
-        <h2>Contact Us</h2>
-        <form id="contactForm" autocomplete="off">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                <small class="error-message" id="nameError"></small>
-            </div>
+                <!-- Contact Button to open the form modal -->
+                <button id="openFormBtn" class="button cta-button" aria-label="Contact Us">Contact Us</button>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                <small class="error-message" id="emailError"></small>
-            </div>
 
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter a strong password" required>
-                <small class="error-message" id="passwordError"></small>
-                <div class="password-strength" id="passwordStrength">
-                    <div style="width: 0%; height: 100%;"></div>
+                <!-- Modal for the form -->
+                <div id="formModal" class="modal">
+                    <div class="modal-content">
+                        <span class="closeBtn" aria-label="Close">&times;</span> <!-- Close button -->
+                        <h2>Contact Us</h2>
+                        <form id="contactForm" autocomplete="off">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                                <small class="error-message" id="nameError"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                                <small class="error-message" id="emailError"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password"
+                                    placeholder="Enter a strong password" required>
+                                <small class="error-message" id="passwordError"></small>
+                                <div class="password-strength" id="passwordStrength">
+                                    <div style="width: 0%; height: 100%;"></div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                                <small class="error-message" id="phoneError"></small>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="message">Message:</label>
+                                <textarea id="message" name="message" placeholder="Write your message (max 200 chars)"
+                                    maxlength="200" required></textarea>
+                                <small class="error-message" id="messageError"></small>
+                            </div>
+
+                            <button type="submit" id="submitBtn" disabled>Submit</button>
+                            <p id="successMessage" style="display: none; color: green;">Form submitted successfully! We
+                                will reach out soon.</p>
+                        </form>
+                    </div>
                 </div>
+
             </div>
-
-            
-            <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
-                <small class="error-message" id="phoneError"></small>
-            </div>
-            
-
-            <div class="form-group">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Write your message (max 200 chars)" maxlength="200" required></textarea>
-                <small class="error-message" id="messageError"></small>
-            </div>
-
-            <button type="submit" id="submitBtn" disabled>Submit</button>
-            <p id="successMessage" style="display: none; color: green;">Form submitted successfully! We will reach out soon.</p>
-        </form>
-    </div>
-</div>
-
-        </div>
-        <div class="section-image">
-            <figure>
-                <img src="/WSOA3029A_2549309/assets/images/exoplanet2.png" alt="image of atronaut on yellow exoplanet" class="milestone-image">
-        <!-- image credits-https://www.cleanpng.com/png-transitmethode-exoplanet-astronomy-6503883/ 
+            <div class="section-image">
+                <figure>
+                    <img src="/WSOA3029A_2549309/assets/images/exoplanet2.png"
+                        alt="image of atronaut on yellow exoplanet" class="milestone-image">
+                    <!-- image credits-https://www.cleanpng.com/png-transitmethode-exoplanet-astronomy-6503883/ 
          or https://www.cleanpng.com/png-planet-water-planet-blue-planet-swirling-clouds-ov-8135178/download-png.html-->
-            </figure>
-            
-    </div>
-    </section>
+                </figure>
 
-    <!-- Section 2: What Are Exoplanets -->
-    <section class="section reverse">
-        <div class="section-text">
-            <h2>What Are Exoplanets?</h2>
-            <p>Exoplanets are planets that orbit stars outside of our solar system. Since the first discovery in 1992, scientists have identified more than 5,300 exoplanets in thousands of star systems.</p>
-        </div>
-        <div class="section-image">
-          
-    <figure>
-        <figure>
-            <img src="/WSOA3029A_2549309/assets/images/exoplanet.png" alt="image of purple exoplanet" class="milestone-image">
-            <!-- image credits-https://www.cleanpng.com/png-halo-close-up-of-moon-with-pink-halo-8139968/download-png.html -->
-    </figure>
-        </div>
-    </section>
-   <!-- Section 3: Timeline Introduction -->
-   <section class="timeline-intro">
-    <h2>Exoplanet Discovery Timeline</h2>
-    <p>Explore the key milestones in the search for exoplanets and the discovery of distant worlds beyond our solar system.</p>
-</section>
+            </div>
+        </section>
 
- <!-- Section 3: Timeline of Discoveries -->
- <section class="timeline">
-    <div class="milestone left">
-        <h2>1992 - First Exoplanet Discovery</h2>
-        <p>The first exoplanet was discovered orbiting a pulsar, marking the beginning of exoplanet exploration.</p>
-        <a href="https://en.wikipedia.org/wiki/Exoplanet" class="button cta-button" aria-label="learn more button" target="_blank">Learn More</a>
-    </div>
+        <!-- Section 2: What Are Exoplanets -->
+        <section class="section reverse">
+            <div class="section-text">
+                <h2>What Are Exoplanets?</h2>
+                <p>Exoplanets are planets that orbit stars outside of our solar system. Since the first discovery in
+                    1992, scientists have identified more than 5,300 exoplanets in thousands of star systems.</p>
+            </div>
+            <div class="section-image">
 
-    <div class="milestone right">
-        <h2>1995 - First Exoplanet Around a Sun-like Star</h2>
-        <p>51 Pegasi b, the first exoplanet found orbiting a sun-like star, was discovered by Michel Mayor and Didier Queloz.</p>
-        <a href="https://www.nasa.gov/feature/jpl/51-pegasi-b-first-exoplanet-around-a-sun-like-star" aria-label="learn more button" class="button cta-button" target="_blank">Learn More</a>
-    </div>
+                <figure>
+                    <figure>
+                        <img src="/WSOA3029A_2549309/assets/images/exoplanet.png" alt="image of purple exoplanet"
+                            class="milestone-image">
+                        <!-- image credits-https://www.cleanpng.com/png-halo-close-up-of-moon-with-pink-halo-8139968/download-png.html -->
+                    </figure>
+            </div>
+        </section>
+        <!-- Section 3: Timeline Introduction -->
+        <section class="timeline-intro">
+            <h2>Exoplanet Discovery Timeline</h2>
+            <p>Explore the key milestones in the search for exoplanets and the discovery of distant worlds beyond our
+                solar system.</p>
+        </section>
 
-    <div class="milestone left">
-        <h2>2009 - Kepler Space Telescope Launched</h2>
-        <p>The Kepler mission began searching for Earth-like planets using the transit method, finding thousands of exoplanets.</p>
-        <a href="https://www.nasa.gov/mission_pages/kepler/overview/index.html" aria-label="learn more button" class="button cta-button" target="_blank">Learn More</a>
-    </div>
+        <!-- Section 3: Timeline of Discoveries -->
+        <section class="timeline">
+            <div class="milestone left">
+                <h2>1992 - First Exoplanet Discovery</h2>
+                <p>The first exoplanet was discovered orbiting a pulsar, marking the beginning of exoplanet exploration.
+                </p>
+                <a href="https://en.wikipedia.org/wiki/Exoplanet" class="button cta-button"
+                    aria-label="learn more button" target="_blank">Learn More</a>
+            </div>
 
-    <div class="milestone right">
-        <h2>2015 - Discovery of Kepler-452b</h2>
-        <p>Kepler-452b, often referred to as Earth's "older cousin," was found orbiting in the habitable zone of a sun-like star.</p>
-        <a href="https://www.nasa.gov/keplerbriefing0723" class="button cta-button" aria-label="learn more button" target="_blank">Learn More</a>
-    </div>
+            <div class="milestone right">
+                <h2>1995 - First Exoplanet Around a Sun-like Star</h2>
+                <p>51 Pegasi b, the first exoplanet found orbiting a sun-like star, was discovered by Michel Mayor and
+                    Didier Queloz.</p>
+                <a href="https://www.nasa.gov/feature/jpl/51-pegasi-b-first-exoplanet-around-a-sun-like-star"
+                    aria-label="learn more button" class="button cta-button" target="_blank">Learn More</a>
+            </div>
 
-    <div class="milestone left">
-        <h2>2017 - TRAPPIST-1 System Discovered</h2>
-        <p>Astronomers found seven Earth-sized planets orbiting TRAPPIST-1, three of which lie in the habitable zone.</p>
-        <a href="https://www.nasa.gov/mission_pages/spitzer/news/spitzer20170222.html" aria-label="learn more button" class="button cta-button" target="_blank">Learn More</a>
-    </div>
+            <div class="milestone left">
+                <h2>2009 - Kepler Space Telescope Launched</h2>
+                <p>The Kepler mission began searching for Earth-like planets using the transit method, finding thousands
+                    of exoplanets.</p>
+                <a href="https://www.nasa.gov/mission_pages/kepler/overview/index.html" aria-label="learn more button"
+                    class="button cta-button" target="_blank">Learn More</a>
+            </div>
 
-    <div class="milestone right">
-        <h2>2018 - TESS Launched</h2>
-        <p>TESS began surveying nearby stars for exoplanets, continuing the search for habitable worlds beyond our solar system.</p>
-        <a href="https://www.nasa.gov/tess-transiting-exoplanet-survey-satellite" aria-label="learn more button" class="button cta-button" target="_blank">Learn More</a>
-    </div>
+            <div class="milestone right">
+                <h2>2015 - Discovery of Kepler-452b</h2>
+                <p>Kepler-452b, often referred to as Earth's "older cousin," was found orbiting in the habitable zone of
+                    a sun-like star.</p>
+                <a href="https://www.nasa.gov/keplerbriefing0723" class="button cta-button"
+                    aria-label="learn more button" target="_blank">Learn More</a>
+            </div>
 
-    <div class="milestone left">
-        <h2>2021 - JWST Launched</h2>
-        <p>JWST, the most powerful space telescope, was launched to study exoplanet atmospheres in unprecedented detail.</p>
-        <a href="https://www.nasa.gov/jwst" aria-label="learn more button"class="button cta-button" target="_blank">Learn More</a>
-    </div>
+            <div class="milestone left">
+                <h2>2017 - TRAPPIST-1 System Discovered</h2>
+                <p>Astronomers found seven Earth-sized planets orbiting TRAPPIST-1, three of which lie in the habitable
+                    zone.</p>
+                <a href="https://www.nasa.gov/mission_pages/spitzer/news/spitzer20170222.html"
+                    aria-label="learn more button" class="button cta-button" target="_blank">Learn More</a>
+            </div>
 
-    <div class="milestone right">
-        <h2>2022 - First Exoplanet Atmosphere Imaging</h2>
-        <p>JWST provided the first direct images of exoplanet atmospheres, analyzing their chemical compositions for signs of life.</p>
-        <a href="https://www.nasa.gov/jwst/first-exoplanet-images" aria-label="learn more button" class="button cta-button" target="_blank">Learn More</a>
-    </div>
-</section>
-<!-- Back to Top Button -->
-<button id="back-to-top" title="Go to top" aria-label="Scroll back to top">↑</button>
+            <div class="milestone right">
+                <h2>2018 - TESS Launched</h2>
+                <p>TESS began surveying nearby stars for exoplanets, continuing the search for habitable worlds beyond
+                    our solar system.</p>
+                <a href="https://www.nasa.gov/tess-transiting-exoplanet-survey-satellite" aria-label="learn more button"
+                    class="button cta-button" target="_blank">Learn More</a>
+            </div>
+
+            <div class="milestone left">
+                <h2>2021 - JWST Launched</h2>
+                <p>JWST, the most powerful space telescope, was launched to study exoplanet atmospheres in unprecedented
+                    detail.</p>
+                <a href="https://www.nasa.gov/jwst" aria-label="learn more button" class="button cta-button"
+                    target="_blank">Learn More</a>
+            </div>
+
+            <div class="milestone right">
+                <h2>2022 - First Exoplanet Atmosphere Imaging</h2>
+                <p>JWST provided the first direct images of exoplanet atmospheres, analyzing their chemical compositions
+                    for signs of life.</p>
+                <a href="https://www.nasa.gov/jwst/first-exoplanet-images" aria-label="learn more button"
+                    class="button cta-button" target="_blank">Learn More</a>
+            </div>
+        </section>
+        <!-- Back to Top Button -->
+        <button id="back-to-top" title="Go to top" aria-label="Scroll back to top">↑</button>
 
 
-</main>
+    </main>
 
     <!-- JS file for navigation -->
     <script src="../../assets/js/navigation.js" defer></script>
-    <script src="../../assets/js/form.js" defer ></script>
+    <script src="../../assets/js/form.js" defer></script>
 
     <!-- Include the intl-tel-input CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
 
-<!-- Include the intl-tel-input JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <!-- Include the intl-tel-input JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
 </body>
+
 </html>
