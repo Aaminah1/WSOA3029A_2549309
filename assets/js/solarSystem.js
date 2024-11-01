@@ -304,11 +304,11 @@ function showOrbitDetails(planet) {
         .html(`
                 <button id="closeInfoBox" onclick="hideInfoBox()">&#x2715;</button> <!-- X symbol for close -->
                 <h3>Orbit Details for ${planet.englishName}</h3>
-                 <p><strong>Eccentricity:</strong> ${planet.eccentricity}</p>
-                 <p><strong>Semi-major Axis:</strong> ${planet.semimajorAxis.toLocaleString()} km</p>
-                 <p><strong>Orbital Period:</strong> ${planet.sideralOrbit} days</p>
-                 <p><strong>Orbital Speed:</strong> ${speed.toFixed(2)} km/day</p>
-                 <p><strong>Inclination:</strong> ${planet.inclination} degrees</p>
+                 <p><b>Eccentricity:</b> ${planet.eccentricity}</p>
+                 <p><b>Semi-major Axis:</b> ${planet.semimajorAxis.toLocaleString()} km</p>
+                 <p><b>Orbital Period:</b> ${planet.sideralOrbit} days</p>
+                 <p><b>Orbital Speed:</b> ${speed.toFixed(2)} km/day</p>
+                 <p><b>Inclination:</b> ${planet.inclination} degrees</p>
             `);
 }
 
@@ -342,12 +342,12 @@ function showPlanetDetails(planet) {
                        <a href="#" id="planetImageLink" target="_blank" title="Click to learn more!">
                     <img src="${planetImageSrc}" alt="${planet.englishName}" id="planetImage" class="pulse-animation" >
                 </a>
-                      <p><strong>Radius:</strong> ${planet.meanRadius} km</p>
-                      <p><strong>Mass:</strong> ${planet.mass.massValue} x 10^${planet.mass.massExponent} kg</p>
-                      <p><strong>Density:</strong> ${planet.density} g/cm³</p>
-                      <p><strong>Gravity:</strong> ${planet.gravity} m/s²</p>
-                      <p><strong>Distance from Sun:</strong> ${planet.perihelion.toLocaleString()} km</p>
-                      <p><strong>Temperature: </strong>${planet.avgTemp} K</p>
+                      <p><b>Radius:</b> ${planet.meanRadius} km</p>
+                      <p><b>Mass:</b> ${planet.mass.massValue} x 10^${planet.mass.massExponent} kg</p>
+                      <p><bDensity:</b> ${planet.density} g/cm³</p>
+                      <p><b>Gravity:</b> ${planet.gravity} m/s²</p>
+                      <p><b>Distance from Sun:</b> ${planet.perihelion.toLocaleString()} km</p>
+                      <p><b>Temperature: </b>${planet.avgTemp} K</p>
              
         `);
 

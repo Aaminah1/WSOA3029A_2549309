@@ -122,11 +122,11 @@ function createBubbleChart(data) {
                 .duration(200)
                 .style("opacity", .9);
             tooltip.html(`
-                    <div><strong>Exoplanet:</strong> ${d.name}</div>
-                    <div><strong>Category:</strong> <b>${d.category}</b></div>
-                    <div><strong>Radius:</strong> <b>${d.radius.toFixed(2)}</b> Earth radii</div>
-                    <div><strong>Temperature:</strong> <b>${d.temperature}</b> K</div>
-                    <div><strong>Mass:</strong> ${d.mass} Jupiter masses</div>
+                    <div><b>Exoplanet:</b> ${d.name}</div>
+                    <div><b>Category:</b> ${d.category}</div>
+                    <div><bRadius:</b> ${d.radius.toFixed(2)} Earth radii</div>
+                    <div><b>Temperature:</b> ${d.temperature} K</div>
+                    <div><bMass:</b> ${d.mass} Jupiter masses</div>
                 `)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");

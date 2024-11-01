@@ -145,7 +145,7 @@ function addExoplanetMarkers(data) {
         .attr('stroke-width', 1)
         .attr('display', 'none')
         .on('mouseover', (event, d) => {
-            tooltip.style("display", "block").html(`<strong>  ${d.name || 'Unknown'}</strong>`);
+            tooltip.style("display", "block").html(`<b>  ${d.name || 'Unknown'}</b>`);
         })
         .on('mousemove', (event) => {
             const zoomTransform = d3.zoomTransform(g.node());
@@ -332,12 +332,12 @@ function showExoplanetInfo(planet) {
     // Fill the panel with exoplanet information
     document.getElementById('planet-name').textContent = planet.name || 'Unknown';
     planetDetails.innerHTML = `
-        <p><strong>Category:</strong> ${categorizePlanet(planet)}</p>
-        <p><strong>Distance:</strong> ${planet['system_distance'] || 'Unknown'} light-years</p>
-        <p><strong>Discovery Year:</strong> ${planet['discoveryyear']}</p>
-        <p><strong>Temperature:</strong> ${planet['temperature'] || planet['hoststar_temperature']} K</p>
-        <p><strong>Radius:</strong> ${planet['radius']} Earth radii</p>
-        <p><strong>Mass:</strong> ${planet['mass']} Jupiter masses</p>
+        <p><b>Category:</b> ${categorizePlanet(planet)}</p>
+        <p><b>Distance:</b> ${planet['system_distance'] || 'Unknown'} light-years</p>
+        <p><b>Discovery Year:</b> ${planet['discoveryyear']}</p>
+        <p><b>Temperature:</b> ${planet['temperature'] || planet['hoststar_temperature']} K</p>
+        <p><b>Radius:</b> ${planet['radius']} Earth radii</p>
+        <p><b>Mass:</b> ${planet['mass']} Jupiter masses</p>
     `;
 
     // Show the panel

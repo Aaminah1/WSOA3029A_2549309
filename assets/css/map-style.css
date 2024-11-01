@@ -269,7 +269,7 @@ input[type="checkbox"]:active {
 }
 
 /* Planet details strong (category titles) */
-#planet-details strong {
+#planet-details b {
     color: #FFD700; /* Highlight category titles */
     font-weight: bold;
 }

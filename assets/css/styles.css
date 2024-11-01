@@ -140,6 +140,11 @@ h6 {
   }
 }
 
+/* Class to replace <strong> styling */
+.highlight {
+  font-weight: bold;
+  color: #48cae4; /* Adjust color if needed */
+}
 /* General body paragraph styling */
 p {
   font-family: 'Roboto', sans-serif; /* Clean, modern font */

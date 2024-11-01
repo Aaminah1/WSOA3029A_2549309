@@ -252,7 +252,7 @@
 }
 
 /* Planet details strong (category titles) */
-#orbit-info-box strong {
+#orbit-info-box b {
   color: #FFD700; /* Highlight category titles */
   font-weight: bold;
 }
@@ -312,7 +312,7 @@
 
 /* Planet details strong (category titles) */
 
-#planet-details-panel strong  {
+#planet-details-panel b  {
   color: #FFD700; /* Highlight category titles */
   font-weight: bold;
 }
