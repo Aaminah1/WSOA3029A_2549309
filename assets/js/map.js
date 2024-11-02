@@ -1,7 +1,7 @@
 import { fetchExoplanets } from './dataManager.js';
 
 // Function to initialize the D3 zoomable and pannable container
-function initializeZoomPan() {
+const initializeZoomPan = () => {
     const mapContainer = document.getElementById('map-container');
     const containerWidth = mapContainer.clientWidth;
     const containerHeight = mapContainer.clientHeight;
@@ -46,10 +46,10 @@ function initializeZoomPan() {
     const initialX = (containerWidth - imgWidth) / 2;
     const initialY = (containerHeight - imgHeight) / 2;
     svg.call(zoom.transform, d3.zoomIdentity.translate(initialX, initialY).scale(1));
-}
+};
 
 // Function to dynamically adjust the behavior of clusters and exoplanets based on zoom level
-function adjustClusterBehavior(g, zoomLevel) {
+const adjustClusterBehavior = (g, zoomLevel) => {
     const maxClusterSize = 40; // Maximum size for clusters before they burst
     const maxExoplanetSize = 8; // Maximum size for exoplanets
 
@@ -65,7 +65,7 @@ function adjustClusterBehavior(g, zoomLevel) {
         .attr('fill', d => adjustMarkerColor(d))
         .attr('stroke', '#fff') // Add a white stroke for better visibility
         .attr('stroke-width', 1.5); // Thicker stroke for clearer distinction
-}
+};
 
 // Function to fetch the exoplanet data and add cluster/exoplanet markers
 fetchExoplanets().then((data) => {
@@ -75,7 +75,7 @@ fetchExoplanets().then((data) => {
 });
 
 // Function to add cluster markers to the map
-function addClusterMarkers() {
+const addClusterMarkers = () => {
     const g = d3.select('#map-container svg g');
     const imgWidth = 3000;
     const imgHeight = 1500;
@@ -118,10 +118,10 @@ const tooltip = d3.select("body").append("div")
             d3.select(event.currentTarget).attr('fill', '#808080'); // Remove highlight
             tooltip.style("display", "none");
         });
-}
+};
 
 // Function to add exoplanet markers to the map
-function addExoplanetMarkers(data) {
+const addExoplanetMarkers = (data) => {
     const g = d3.select('#map-container svg g');
     const imgWidth = 3000;
     const imgHeight = 1500;
@@ -169,11 +169,11 @@ function addExoplanetMarkers(data) {
         .on('click', (event, d) => {
             showExoplanetInfo(d); // Show planet info when clicked
         });
-}
+};
 
 
-
-function getCustomShape(d) {
+//function for generating shapes symbols for categories of exoplanets
+const getCustomShape = d => {
     let category;
     
     // Check if the input is an object (exoplanet data), otherwise use the category directly
@@ -197,11 +197,11 @@ function getCustomShape(d) {
         default: 
             return d3.symbol().type(d3.symbolCircle).size(50)(); // Default circle if undefined
     }
-}
+};
 
 
 // Function to dynamically adjust marker color based on category
-function adjustMarkerColor(data) {
+const adjustMarkerColor = data => {
     // Change color based on category or data attributes
     switch (categorizePlanet(data)) {
         case 'potentially-habitable': return '#32CD32'; // Green for habitable
@@ -210,10 +210,10 @@ function adjustMarkerColor(data) {
         case 'rocky-planet': return '#FFD700'; // Gold for rocky-planet
         default: return '#D3D3D3'; // Grey for others
     }
-}
+};
 
 //  categorizePlanet function 
-function categorizePlanet(data) {
+const categorizePlanet = data => {
     const radius = data['radius'] || 1; // Default to 1 Earth radius if missing
     const temperature = data['temperature'] || data['hoststar_temperature'] || 300; // Use host star temperature or default to 300K
     const mass = data['mass'] || 1; // Default to 1 Jupiter mass
@@ -230,10 +230,10 @@ function categorizePlanet(data) {
     } else {
         return 'other';
     }
-}
+};
 
 // Function to filter exoplanets based on legend selections
-function applyGlobalFilter() {
+const applyGlobalFilter = () => {
     const habitableChecked = document.getElementById('filter-habitable').checked;
     const hotJupiterChecked = document.getElementById('filter-hot-jupiter').checked;
     const coldGiantChecked = document.getElementById('filter-cold-giant').checked;
@@ -255,7 +255,7 @@ function applyGlobalFilter() {
     });
 
     updateSelectAllButton(); // Update the "Select All" button state dynamically
-}
+};
 
 // Add event listeners for the filter checkboxes
 document.getElementById('filter-habitable').addEventListener('change', applyGlobalFilter);
@@ -266,16 +266,16 @@ document.getElementById('filter-other').addEventListener('change', applyGlobalFi
 document.getElementById('select-all').addEventListener('click', () => toggleSelectAll());
 
 // Function to check if all category filters are checked
-function areAllCategoriesChecked() {
-    return document.getElementById('filter-habitable').checked &&
-           document.getElementById('filter-hot-jupiter').checked &&
-           document.getElementById('filter-cold-giant').checked &&
-           document.getElementById('filter-rocky').checked &&
-           document.getElementById('filter-other').checked;
-}
+const areAllCategoriesChecked = () => (
+    document.getElementById('filter-habitable').checked &&
+    document.getElementById('filter-hot-jupiter').checked &&
+    document.getElementById('filter-cold-giant').checked &&
+    document.getElementById('filter-rocky').checked &&
+    document.getElementById('filter-other').checked
+);
 
 // Function to toggle between Select All and Deselect All
-function updateSelectAllButton() {
+const updateSelectAllButton = () => {
     const selectAllButton = document.getElementById('select-all');
     const allChecked = areAllCategoriesChecked();
 
@@ -284,10 +284,10 @@ function updateSelectAllButton() {
     } else {
         selectAllButton.textContent = 'Select All';
     }
-}
+};
 
 // Function to select/deselect all categories
-function toggleSelectAll() {
+const toggleSelectAll = () => {
     const allChecked = areAllCategoriesChecked();
     const select = !allChecked; // Toggle based on the current state
     document.getElementById('filter-habitable').checked = select;
@@ -296,9 +296,9 @@ function toggleSelectAll() {
     document.getElementById('filter-rocky').checked = select;
     document.getElementById('filter-other').checked = select;
     applyGlobalFilter(); // Re-filter after selection
-}
+};
 
-function createLegendSymbols() {
+const createLegendSymbols = () => {
     const legendShapes = [
         { id: 'filter-habitable', category: 'potentially-habitable', color: '#32CD32' },
         { id: 'filter-hot-jupiter', category: 'hot-jupiter', color: '#FF4500' },
@@ -323,8 +323,9 @@ function createLegendSymbols() {
             .attr('stroke', '#fff')
             .attr('stroke-width', 1.5);  // Ensure a clear border
     });
-}
-function showExoplanetInfo(planet) {
+};
+//function to show planet detail panel when clicked
+const showExoplanetInfo = planet => {
     const panel = document.getElementById('planet-info-panel');
     const planetDetails = document.getElementById('planet-details');
     const moreInfoBtn = document.getElementById('more-info-btn'); // The button
@@ -345,7 +346,7 @@ function showExoplanetInfo(planet) {
 
     // Show the button when a planet is selected
     moreInfoBtn.style.display = 'block';
-}
+};
 
 
 

@@ -6,7 +6,7 @@ let maxRadius = 0;
 let maxTemperature = 0;
 
 // Fetch data from the centralized script (dataManager.js)
-fetchExoplanets().then((data) => {
+fetchExoplanets().then(data => {
     originalData = prepareDataset(data); // Prepare the dataset
     maxRadius = d3.max(originalData, d => d.radius); // Get max radius for x-axis
     maxTemperature = d3.max(originalData, d => d.temperature); // Get max temperature for y-axis
@@ -14,7 +14,7 @@ fetchExoplanets().then((data) => {
 }).catch(error => console.error('Error fetching data:', error));
 
 // Function to categorize planets based on given attributes
-function categorizePlanet(planet) {
+const categorizePlanet = planet => {
     const radius = planet.radius || 1; // Default to 1 Earth radius if missing
     const temperature = planet.temperature || planet.hoststar_temperature || 300; // Use host star temperature or default to 300K
     const mass = planet.mass || 1; // Default to 1 Jupiter mass
@@ -31,26 +31,21 @@ function categorizePlanet(planet) {
     } else {
         return 'Other';
     }
-}
+};
 
 // Function to filter and prepare the dataset (radius, temperature, and mass)
-function prepareDataset(data) {
-    return data
-        .filter(planet => planet.radius && planet.hoststar_temperature && planet.mass) // Only include planets with valid radius, temp, and mass
-        .map(planet => ({
-            name: planet.name || 'Unknown',
-            radius: planet.radius || 1, // Apply default value for radius
-            temperature: planet.temperature || planet.hoststar_temperature || 300, // Apply default temperature
-            mass: planet.mass || 1, // Apply default value for mass
-            category: categorizePlanet(planet) // Categorize the planet
-        }));
-}
+const prepareDataset = data => data
+    .filter(planet => planet.radius && planet.hoststar_temperature && planet.mass) // Only include planets with valid radius, temp, and mass
+    .map(planet => ({
+        name: planet.name || 'Unknown',
+        radius: planet.radius || 1, // Apply default value for radius
+        temperature: planet.temperature || planet.hoststar_temperature || 300, // Apply default temperature
+        mass: planet.mass || 1, // Apply default value for mass
+        category: categorizePlanet(planet) // Categorize the planet
+    }));
 
 // Function to create the D3 interactive bubble chart with transition support
-function createBubbleChart(data) {
-
-
-
+const createBubbleChart = data => {
     const margin = { top: 40, right: 30, bottom: 80, left: 80 }; // Adjusted margins for axis titles
     const width = document.getElementById('chart').clientWidth - margin.left - margin.right;
     const height = 500 - margin.top - margin.bottom;
@@ -75,29 +70,6 @@ function createBubbleChart(data) {
         .domain([0, d3.max(data, d => d.mass)])
         .range([5, 50]);
 
-    /* // Create axes
-     svg.append("g")
-         .attr("transform", `translate(0,${height})`)
-         .call(d3.axisBottom(x))
-         .append("text")
-         .attr("y", 40)
-         .attr("x", width / 2)
-         .attr("text-anchor", "middle")
-         .attr("stroke", "black")
-         .text("Radius (Earth radii)");
-         
- 
-     svg.append("g")
-         .call(d3.axisLeft(y))
-         .append("text")
-         .attr("transform", "rotate(-90)")
-         .attr("y", -60)
-         .attr("x", -height / 2)
-         .attr("dy", "1em")
-         .attr("text-anchor", "middle")
-         .attr("stroke", "black")
-         .text("Temperature (K)");
- */
     // Tooltip for bubbles
     const tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -122,12 +94,12 @@ function createBubbleChart(data) {
                 .duration(200)
                 .style("opacity", .9);
             tooltip.html(`
-                    <div><b>Exoplanet:</b> ${d.name}</div>
-                    <div><b>Category:</b> ${d.category}</div>
-                    <div><bRadius:</b> ${d.radius.toFixed(2)} Earth radii</div>
-                    <div><b>Temperature:</b> ${d.temperature} K</div>
-                    <div><bMass:</b> ${d.mass} Jupiter masses</div>
-                `)
+                <div><b>Exoplanet:</b> ${d.name}</div>
+                <div><b>Category:</b> ${d.category}</div>
+                <div><b>Radius:</b> ${d.radius.toFixed(2)} Earth radii</div>
+                <div><b>Temperature:</b> ${d.temperature} K</div>
+                <div><b>Mass:</b> ${d.mass} Jupiter masses</div>
+            `)
                 .style("left", (event.pageX + 10) + "px")
                 .style("top", (event.pageY - 28) + "px");
         })
@@ -153,16 +125,16 @@ function createBubbleChart(data) {
             .style("opacity", d => d.category === hoveredCategory ? 1 : 0.1) // Highlight matching, fade others
             .attr("stroke", d => d.category === hoveredCategory ? "#FFD700" : "#333") // Highlight border
             .attr("stroke-width", d => d.category === hoveredCategory ? 2 : 1); // Increase border width for highlight
-    })
-        .on('mouseout', function () {
-            // Reset bubble appearance on mouseout
-            svg.selectAll(".bubble")
-                .transition()
-                .duration(200)
-                .style("opacity", 0.8)
-                .attr("stroke", "#333")
-                .attr("stroke-width", 1);
-        });
+    }).on('mouseout', () => {
+        // Reset bubble appearance on mouseout
+        svg.selectAll(".bubble")
+            .transition()
+            .duration(200)
+            .style("opacity", 0.8)
+            .attr("stroke", "#333")
+            .attr("stroke-width", 1);
+    });
+
     // Add x-axis with hover for additional info
     const xAxis = svg.append("g")
         .attr("transform", `translate(0,${height})`)
@@ -172,17 +144,16 @@ function createBubbleChart(data) {
         .attr("y", 50) // Position it below the axis
         .attr("x", width / 2)
         .attr("text-anchor", "middle")
-
         .attr("class", "axis-label")
         .text("Radius (Earth radii)")
-        .on("mouseover", function (event) {
+        .on("mouseover", event => {
             d3.select("#axis-tooltip")
                 .style("left", `${event.pageX + 5}px`)
                 .style("top", `${event.pageY - 19}px`)
                 .style("opacity", 1)
                 .html("Radius of the exoplanet in Earth radii. The larger the radius, the bigger the planet.");
         })
-        .on("mouseout", function () {
+        .on("mouseout", () => {
             d3.select("#axis-tooltip")
                 .style("opacity", 0);
         });
@@ -197,17 +168,16 @@ function createBubbleChart(data) {
         .attr("x", -height / 2)
         .attr("dy", "1em")
         .attr("text-anchor", "middle")
-
         .attr("class", "axis-label")
         .text("Temperature (K)")
-        .on("mouseover", function (event) {
+        .on("mouseover", event => {
             d3.select("#axis-tooltip")
                 .style("left", `${event.pageX + 5}px`)
                 .style("top", `${event.pageY - 28}px`)
                 .style("opacity", 1)
                 .html("Temperature of the exoplanet in Kelvin. Higher values indicate hotter planets.");
         })
-        .on("mouseout", function () {
+        .on("mouseout", () => {
             d3.select("#axis-tooltip")
                 .style("opacity", 0);
         });
@@ -217,11 +187,10 @@ function createBubbleChart(data) {
         .attr("id", "axis-tooltip")
         .attr("class", "tooltip")
         .style("opacity", 0);
-
-}
+};
 
 // Filter logic
-function applyFilters() {
+const applyFilters = () => {
     const showHabitable = document.getElementById("habitable-filter").checked;
     const showHotJupiter = document.getElementById("hot-jupiter-filter").checked;
     const showRocky = document.getElementById("rocky-filter").checked;
@@ -235,7 +204,7 @@ function applyFilters() {
     );
 
     createBubbleChart(filteredData); // Update chart with filtered data
-}
+};
 
 // Attach event listeners for filter checkboxes
 document.getElementById("habitable-filter").addEventListener("change", applyFilters);

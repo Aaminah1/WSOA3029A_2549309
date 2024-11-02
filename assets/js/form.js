@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("formModal");
     const openFormBtn = document.getElementById("openFormBtn");
     const closeBtn = document.getElementsByClassName("closeBtn")[0];
@@ -11,73 +11,69 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initialize intl-tel-input on phone input
     const phoneInputField = document.querySelector("#phone");
     const phoneInput = window.intlTelInput(phoneInputField, {
-        initialCountry: "us", // Default country code
-        preferredCountries: ["us", "gb", "za", "in"], // Preferred country codes
-        separateDialCode: true, // Show country code separately
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js", // Utility script for validation
+        initialCountry: "za",
+        preferredCountries: ["us", "gb", "za", "in"],
+        separateDialCode: true,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
     });
 
     // Open Modal when "Contact" in the footer is clicked
-    if (footerContactLink) { // Check if the element exists before adding the event listener
-        footerContactLink.onclick = function () {
+    if (footerContactLink) {
+        footerContactLink.onclick = () => {
             modal.style.display = "block";
-        }
+        };
     }
+
     // Open Modal
-    openFormBtn.onclick = function () {
+    openFormBtn.onclick = () => {
         modal.style.display = "block";
-    }
+    };
 
     // Close Modal and reset the form
-    closeBtn.onclick = function () {
+    closeBtn.onclick = () => {
         modal.style.display = "none";
-        resetForm(); // Reset form when modal is closed
-    }
+        resetForm();
+    };
 
     // Close Modal on outside click and reset the form
-    window.onclick = function (event) {
-        if (event.target == modal) {
+    window.onclick = (event) => {
+        if (event.target === modal) {
             modal.style.display = "none";
-            resetForm(); // Reset form when clicking outside modal
+            resetForm();
         }
-    }
+    };
 
     // Reset form fields and success message
-    function resetForm() {
-        form.reset(); // Reset the form fields
-        successMessage.style.display = 'none'; // Hide success message
-        submitBtn.disabled = true; // Disable submit button again
-        // Hide all error messages
+    const resetForm = () => {
+        form.reset();
+        successMessage.style.display = 'none';
+        submitBtn.disabled = true;
         hideError('nameError');
         hideError('emailError');
         hideError('passwordError');
         hideError('phoneError');
         hideError('messageError');
 
-        // Reset the password strength meter
         if (passwordStrength) {
-            passwordStrength.firstElementChild.style.width = '0%'; // Reset password strength bar
+            passwordStrength.firstElementChild.style.width = '0%';
         }
-    }
+    };
 
     // Form input event to enable or disable the submit button based on validation
-    form.addEventListener('input', function () {
+    form.addEventListener('input', () => {
         let valid = validateForm();
-        submitBtn.disabled = !valid; // Enable submit button only when the form is valid
+        submitBtn.disabled = !valid;
     });
 
     // Form validation logic
-    function validateForm() {
+    const validateForm = () => {
         let valid = true;
-
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
         const message = document.getElementById('message').value;
-
-        // Extract the local part of the phone number (excluding country code)
         const phoneNumber = phoneInput.getNumber(intlTelInputUtils.numberFormat.E164);
-        const localNumber = phoneInputField.value.replace(/\D/g, ''); // Remove any non-digit characters
+        const localNumber = phoneInputField.value.replace(/\D/g, '');
 
         // Validate Name
         if (!/^[a-zA-Z\s]+$/.test(name) || name.trim() === '') {
@@ -98,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Validate Password (real-time strength check)
         const strength = checkPasswordStrength(password);
         if (passwordStrength) {
-            passwordStrength.firstElementChild.style.width = strength.percent + '%';
+            passwordStrength.firstElementChild.style.width = `${strength.percent}%`;
             passwordStrength.firstElementChild.style.backgroundColor = strength.color;
         }
 
@@ -129,10 +125,10 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         return valid;
-    }
+    };
 
     // Password strength checker
-    function checkPasswordStrength(password) {
+    const checkPasswordStrength = (password) => {
         let strength = { percent: 0, color: 'red' };
 
         if (password.length >= 8) strength.percent += 30;
@@ -146,30 +142,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         return strength;
-    }
+    };
 
     // Show and hide error functions
-    function showError(id, message) {
+    const showError = (id, message) => {
         const errorElement = document.getElementById(id);
         errorElement.textContent = message;
         errorElement.style.display = 'block';
-    }
+    };
 
-    function hideError(id) {
+    const hideError = (id) => {
         const errorElement = document.getElementById(id);
         errorElement.style.display = 'none';
-    }
+    };
 
     // On form submission
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', (event) => {
         event.preventDefault();
 
         if (validateForm()) {
-            const fullPhoneNumber = phoneInput.getNumber(); // Get the full phone number with country code
-            successMessage.style.display = 'block'; // Show success message
-            console.log("Submitted phone number:", fullPhoneNumber); // Log the full phone number to the console
-            form.reset(); // Reset the form fields after submission
-            submitBtn.disabled = true; // Disable the submit button again
+            const fullPhoneNumber = phoneInput.getNumber();
+            successMessage.style.display = 'block';
+            console.log("Submitted phone number:", fullPhoneNumber);
+            form.reset();
+            submitBtn.disabled = true;
         }
     });
 });

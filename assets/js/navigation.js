@@ -2,7 +2,7 @@
 const currentDepth = (window.location.pathname.match(/\//g) || []).length - 1;
 
 // Function to adjust the link paths dynamically based on current page location
-function adjustPath(link) {
+const adjustPath = (link) => {
   // If we are at the root level (index.html), no need to adjust
   if (currentDepth === 1) {
     return link;
@@ -14,7 +14,7 @@ function adjustPath(link) {
     adjustedPath += '../';
   }
   return adjustedPath + link;
-}
+};
 
 // Navigation data - dynamically populate with relative paths
 const navigationData = [
@@ -28,7 +28,7 @@ const navigationData = [
 
 
 // Function to create the navigation bar dynamically
-function createNavbar() {
+const createNavbar = () => {
   const navbar = document.createElement('nav');
   navbar.classList.add('navbar');
 
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //Function to create the footer dynamically 
-function createFooter() {
+const createFooter = () => {
   const footer = document.createElement('footer');
   footer.classList.add('footer');
 
@@ -204,13 +204,13 @@ window.onscroll = function() {
     scrollFunction();
 };
 
-function scrollFunction() {
+const scrollFunction = () => {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
         backToTopBtn.classList.add("show");
     } else {
         backToTopBtn.classList.remove("show");
     }
-}
+};
 
 // When the user clicks on the button, scroll to the top of the page
 backToTopBtn.addEventListener("click", function() {
@@ -264,7 +264,7 @@ const blogPosts = [
 const currentPath = window.location.pathname;
 let currentIndex = blogPosts.findIndex(post => post.url === currentPath);
 
-function generateNavButtons() {
+const generateNavButtons = () => {
   const navContainer = document.getElementById('blog-nav');
 
   if (currentIndex > 0) {
@@ -284,7 +284,7 @@ function generateNavButtons() {
       nextButton.classList.add('nav-button', 'next-button');
       navContainer.appendChild(nextButton);
   }
-}
+};
 
 document.addEventListener('DOMContentLoaded', generateNavButtons);
 
@@ -350,7 +350,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const tocContainer = document.querySelector('.toc-container');
   const footer = document.querySelector('footer');
   
-  function adjustTOCPosition() {
+  const adjustTOCPosition = () => {
     const footerPosition = footer.getBoundingClientRect().top;
     const tocPosition = tocContainer.getBoundingClientRect().bottom;
     

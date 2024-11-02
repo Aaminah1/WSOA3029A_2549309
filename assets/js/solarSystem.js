@@ -6,7 +6,7 @@ let startTime = 0; // To store the actual start time of the animation
 let selectedOrbit = null; // Keep track of the currently selected orbit
 let orbitsVisible = true; // Track if orbits are visible
 
-async function fetchPlanets() {
+const fetchPlanets = async () => {
     const loadingContainer = document.getElementById('loading-container');
     const solarSystemSvg = document.getElementById('solarSystem');
 
@@ -32,10 +32,10 @@ async function fetchPlanets() {
         console.error("Error fetching data:", error);
         loadingContainer.innerHTML = "<p>Failed to load data. Please try again later.</p>";
     }
-}
+};
 
 //function for interactivity for solar system
-function setupSVG() {
+const setupSVG = () => {
     const svg = d3.select('#solarSystem')
         .attr("viewBox", `0 0 ${window.innerWidth} ${window.innerHeight}`)
         .attr("preserveAspectRatio", "xMidYMid meet");
@@ -88,10 +88,10 @@ function setupSVG() {
     // Add event listeners for pause, resume, and toggle buttons
     document.getElementById('pauseBtn').addEventListener('click', pauseAnimation);
     document.getElementById('resumeBtn').addEventListener('click', resumeAnimation);
-}
+};
 
 //function to reset positioning of solar system
-function resetSolarSystem() {
+const resetSolarSystem = () => {
     // Reset zoom and pan to initial view
     d3.select('#solarSystem')
         .transition()
@@ -118,7 +118,7 @@ function resetSolarSystem() {
     // Hide the orbit and planet detail panels
     d3.select("#orbit-info-box").style("display", "none");
     d3.select("#planet-details-panel").style("display", "none");
-}
+};
 document.getElementById('resetBtn').addEventListener('click', resetSolarSystem);
 
 
@@ -149,7 +149,8 @@ const planetColors = {
     Pluto: "#eeeeee"  // Light Grey (if considered a planet in your data)
 };
 
-function renderPlanets(planets, container, centerX, centerY) {
+//function for plotting planets
+const renderPlanets = (planets, container, centerX, centerY) => {
 
     // Add the Sun at the center
     container.append("circle")
@@ -290,10 +291,10 @@ function renderPlanets(planets, container, centerX, centerY) {
 
 
 
-}
+};
 
 // Function to display orbit details in the info box
-function showOrbitDetails(planet) {
+const showOrbitDetails = (planet) => {
     const speed = (2 * Math.PI * planet.semimajorAxis) / planet.sideralOrbit;
 
     const infoBox = d3.select("#orbit-info-box");
@@ -310,10 +311,10 @@ function showOrbitDetails(planet) {
                  <p><b>Orbital Speed:</b> ${speed.toFixed(2)} km/day</p>
                  <p><b>Inclination:</b> ${planet.inclination} degrees</p>
             `);
-}
+};
 
 // Function to hide the info box and deselect orbit
-function hideInfoBox() {
+const hideInfoBox = () => {
     d3.select("#orbit-info-box").style("display", "none");
     if (selectedOrbit) {
         // Revert the style of the selected orbit
@@ -323,11 +324,11 @@ function hideInfoBox() {
             .style("stroke-opacity", "0.5");
         selectedOrbit = null; // Clear the selected orbit
     }
-}
+};
 
 
 // Function to display planet details in a panel with clickable image
-function showPlanetDetails(planet) {
+const showPlanetDetails = (planet) => {
     const planetImageSrc = `/WSOA3029A_2549309/assets/images/planets/${planet.englishName.toLowerCase()}.png`; // Path to planet images
     const planetColor = planetColors[planet.englishName] || "gray"; // Get the planet color from the planetColors object
 
@@ -360,27 +361,27 @@ function showPlanetDetails(planet) {
     } else {
         console.error('Planet image link element not found!');
     }
-}
+};
 
 
 
 // Function to close the planet details panel
-function closePlanetDetails() {
+const closePlanetDetails = () => {
     const detailsPanel = d3.select("#planet-details-panel");
     detailsPanel.style("display", "none");
-}
+};
 
-function togglePlanetLabels() {
+const togglePlanetLabels = () => {
     const showLabels = document.getElementById('toggleLabelsCheckbox').checked;
     d3.selectAll(".planet-label")
         .style("visibility", showLabels ? 'visible' : 'hidden');
-}
-function hidePlanetDetails() {
+};
+const hidePlanetDetails = () => {
     d3.select("#planet-details-panel").style("display", "none");
-}
+};
 
-// Animation function (unchanged)
-function animatePlanets(planets, container, centerX, centerY) {
+// Animation function 
+const animatePlanets = (planets, container, centerX, centerY) => {
     const scaleDistance = d3.scaleLinear()
         .domain([0, d3.max(planets, d => d.semimajorAxis)])
         .range([100, Math.min(centerX, centerY) - 50]);
@@ -423,17 +424,13 @@ function animatePlanets(planets, container, centerX, centerY) {
                 return y - 20; // Position the text slightly above the planet
             });
     });
-}
-
-function togglePlanetLabels() {
-    const showLabels = document.getElementById('toggleLabelsCheckbox').checked;
-    d3.selectAll(".planet-label,.sun-label")
-        .style("visibility", showLabels ? 'visible' : 'hidden');
-}
+};
 
 
-// Pause the animation (unchanged)
-function pauseAnimation() {
+
+
+// Pause the animation 
+const pauseAnimation = () => {
     if (!paused) {
         lastElapsedTime += Date.now() - startTime; // Manually calculate elapsed time when paused
         timer.stop(); // Stop the timer
@@ -441,10 +438,10 @@ function pauseAnimation() {
         document.getElementById('pauseBtn').style.display = 'none'; // Hide pause button
         document.getElementById('resumeBtn').style.display = 'inline'; // Show resume button
     }
-}
+};
 
-// Resume the animation (unchanged)
-function resumeAnimation() {
+// Resume the animation 
+const resumeAnimation = () => {
     if (paused) {
         paused = false;
         startTime = Date.now(); // Reset start time to now for correct elapsed time
@@ -452,21 +449,21 @@ function resumeAnimation() {
         document.getElementById('resumeBtn').style.display = 'none'; // Hide resume button
         document.getElementById('pauseBtn').style.display = 'inline'; // Show pause button
     }
-}
+};
 
-function adjustZoom(scaleFactor, zoom, svg) {
+const adjustZoom = (scaleFactor, zoom, svg) => {
     svg.transition()
         .duration(500)
         .call(zoom.scaleBy, scaleFactor);
-}
+};
 
-function updateZoom(newScale, zoom, svg) {
+const updateZoom = (newScale, zoom, svg) => {
     const width = svg.node().getBoundingClientRect().width;
     const height = svg.node().getBoundingClientRect().height;
     const centerX = width / 2;
     const centerY = height / 2;
     const newTransform = d3.zoomIdentity.translate(centerX, centerY).scale(newScale).translate(-centerX, -centerY);
     svg.transition().duration(500).call(zoom.transform, newTransform);
-}
+};
 
 document.addEventListener('DOMContentLoaded', setupSVG);

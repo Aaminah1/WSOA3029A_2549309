@@ -1,4 +1,4 @@
-function generateStarsAndPlanets(starCount, planetCount) {
+const generateStarsAndPlanets = (starCount, planetCount) => {
     const starsContainer = document.querySelector('.stars');
 
     // Generate stars
@@ -46,14 +46,14 @@ function generateStarsAndPlanets(starCount, planetCount) {
 
         starsContainer.appendChild(planet);
     }
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-    generateStarsAndPlanets(100, 3);  // Generate 100 stars and 3 planets
+    generateStarsAndPlanets(100, 3); // Generate 100 stars and 3 planets
 });
 
-//for theory section 
-document.addEventListener('DOMContentLoaded', function() {
+// For the theory section
+document.addEventListener('DOMContentLoaded', () => {
     const starsContainer = document.querySelector('.planet-container .stars'); // Target only the stars in planet-container
     if (starsContainer) {
         for (let i = 0; i < 100; i++) {
@@ -66,6 +66,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
-
-
-

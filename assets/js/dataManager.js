@@ -1,9 +1,8 @@
-// dataManager.js
 const API_URL = 'https://raw.githubusercontent.com/OpenExoplanetCatalogue/oec_tables/master/comma_separated/open_exoplanet_catalogue.txt';
 let exoplanetData = [];
 
 // Function to fetch and parse exoplanet data from the API
-async function fetchExoplanets() {
+const fetchExoplanets = async () => {
     if (exoplanetData.length > 0) return exoplanetData; // Return cached data if already fetched
 
     try {
@@ -16,6 +15,6 @@ async function fetchExoplanets() {
         console.error("Error fetching or parsing data:", error);
         return [];
     }
-}
+};
 
 export { fetchExoplanets };
