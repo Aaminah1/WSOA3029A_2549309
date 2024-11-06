@@ -312,6 +312,7 @@ input[type="checkbox"]:active {
 
 
 /* Tooltip styling */
+/*interactive map*/
 #tooltip {
     position: absolute;
     background-color: rgba(239, 234, 234, 0.8);
@@ -470,19 +471,34 @@ input[type="checkbox"]:active {
 
 /* Tooltip for Axis Titles */
 #axis-tooltip {
+  
     position: absolute;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 8px;
+    background: rgba(239, 234, 234, 0.8);
+    color: rgb(0, 0, 0);
+    padding: 10px;
     border-radius: 5px;
     font-size: 12px;
     pointer-events: none;
-    z-index: 10;
-    opacity: 0;
-    transition: opacity 0.2s;
+    z-index: 100;
+    transition: opacity 0.3s ease;
 }
 
-
+#temperature-legend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    font-family: 'Exo 2', sans-serif;
+    color: #cccccc;
+  }
+  
+  .gradient-bar {
+    width: 100px;
+    height: 10px;
+    background: linear-gradient(to right, #440154, #21908d, #f0f921); /* purple to green */
+    border-radius: 5px;
+  }
+  
 
 /* Chart filters styling */
 #filters {

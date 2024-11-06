@@ -15,6 +15,7 @@ fetchExoplanets().then(data => {
 
 // Function to categorize planets based on given attributes
 const categorizePlanet = planet => {
+    
     const radius = planet.radius || 1; // Default to 1 Earth radius if missing
     const temperature = planet.temperature || planet.hoststar_temperature || 300; // Use host star temperature or default to 300K
     const mass = planet.mass || 1; // Default to 1 Jupiter mass
@@ -31,6 +32,8 @@ const categorizePlanet = planet => {
     } else {
         return 'Other';
     }
+
+    
 };
 
 // Function to filter and prepare the dataset (radius, temperature, and mass)
@@ -112,7 +115,8 @@ const createBubbleChart = data => {
         .duration(750)
         .delay((d, i) => i * 3) // Delays for each bubble for cascading effect
         .attr("r", d => bubbleSize(d.mass)) // Animate radius growth
-        .attr("opacity", 0.8);
+        .attr("opacity", 0.8)
+        ;
 
     // Add hover behavior to the legend items
     d3.selectAll('#filters label').on('mouseover', function () {
@@ -187,6 +191,29 @@ const createBubbleChart = data => {
         .attr("id", "axis-tooltip")
         .attr("class", "tooltip")
         .style("opacity", 0);
+
+        // Select temperature legend and add hover tooltip
+const temperatureLegend = d3.select("#temperature-legend");
+
+// Create a tooltip for the legend
+const legendTooltip = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+// Add mouse events for hover tooltip on the temperature legend
+temperatureLegend.on("mouseover", (event) => {
+    legendTooltip.transition()
+        .duration(200)
+        .style("opacity", 0.9);
+    legendTooltip.html("Colours of bubbles represent planet's temperature.")
+        .style("left", (event.pageX + 10) + "px")
+        .style("top", (event.pageY - 28) + "px");
+}).on("mouseout", () => {
+    legendTooltip.transition()
+        .duration(500)
+        .style("opacity", 0);
+});
+
 };
 
 // Filter logic
