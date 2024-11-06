@@ -43,7 +43,7 @@
         <div id="visualization-wrapper">
           <!-- Solar System Visualization -->
           <div id="center-visualization">
-            <svg id="solarSystem" width="800" height="600"></svg>
+            <svg id="solarSystem" width="600" height="400"></svg>
           </div>
 
           <!-- Control Panel (Zoom, Pause/Resume, Checkboxes) -->
@@ -66,27 +66,30 @@
             </div>
 
             <!-- Checkbox Controls -->
-            <div id="checkbox-controls">
-
-              <div class="checkbox-container">
-                <input type="checkbox" id="toggleOrbitsCheckbox" checked>
-                <label for="toggleOrbitsCheckbox">Show Orbits</label>
-              </div>
-              <div class="checkbox-container">
-                <input type="checkbox" id="toggleLabelsCheckbox" checked>
-                <label for="toggleLabelsCheckbox">Show Planet Labels</label>
-              </div>
-
+          
+              
+              <div id="checkbox-controls">
+                <div id="title">Display Options</div>
+                <div class="checkbox-container">
+                  <input type="checkbox" id="toggleOrbitsCheckbox" checked>
+                  <label for="toggleOrbitsCheckbox">Show Orbits</label>
+                </div>
+                <div class="checkbox-container">
+                  <input type="checkbox" id="toggleLabelsCheckbox" checked>
+                  <label for="toggleLabelsCheckbox">Show Planet Labels</label>
+                </div>
+              
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Info Panels for Planets and Orbits -->
-        <div id="right-panels">
-          <div id="planet-details-panel"></div>
-          <div id="orbit-info-box"></div>
-          <div id="tooltip"></div>
-        </div>
+      <!-- Info Panels for Planets and Orbits -->
+      <div id="right-panels">
+        <div id="planet-details-panel"></div>
+        <div id="orbit-info-box"></div>
+        <div id="tooltip"></div>
+      </div>
       </div>
 
       <!-- INTERACTIVE MAP-->
@@ -119,7 +122,11 @@
         <!-- Legend container -->
 
         <div id="legend-container">
+            <!-- Legend Title -->
+    <div id="legend-title">Display Options</div>
+    
           <!-- Legend items -->
+         
           <div class="legend-item">
             <svg class="legend-symbol"></svg>
             <label for="filter-habitable">Potentially Habitable</label>
@@ -188,7 +195,7 @@
             <div class="gradient-bar"></div>
             <span>Warmer</span>
           </div>
-          
+
           <div id="chart-container">
             <div id="chart"></div> <!-- D3 Bubble Chart will render here -->
           </div>
