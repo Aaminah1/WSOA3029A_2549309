@@ -1,11 +1,13 @@
 /* Main Blog Content Styling */
 main {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     line-height: 1.8;
     color: #fff8e7;
+    text-align: justify; 
   }
+ 
   
   /* Headings */
   main h2 {
@@ -57,6 +59,8 @@ main {
     line-height: 1.8;
     font-size: 1rem;
     color: #cccccc;
+    text-align: justify; 
+    max-width: 1000px;
   }
   /* Strong elements */
   main strong {
@@ -65,7 +69,12 @@ main {
     margin-bottom: 0.5rem;
     display: block;
   }
-  
+  article {
+    padding: 10px 10%; /* Percentage based padding for more responsiveness */
+    max-width: 1000px; /* Sets a maximum width for the content area */
+    margin: auto; /* Automatically centers the content within its container */
+}
+
   
   /* Blog Navigation Styling */
   #blog-nav {
