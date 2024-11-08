@@ -43,16 +43,16 @@
         <div id="visualization-wrapper">
           <!-- Solar System Visualization -->
           <div id="center-visualization">
-            <svg id="solarSystem" width="800" height="600"></svg>
+            <svg id="solarSystem" width="600" height="400"></svg>
           </div>
 
           <!-- Control Panel (Zoom, Pause/Resume, Checkboxes) -->
-          <div id="control-panel">
+          <div class="control-panel">
             <!-- Zoom Controls -->
             <div id="zoom-controls">
-              <button id="zoom_in" aria-label="zoom in">-</button>
+              <button id="zoom_in" aria-label="zoom in">+</button>
               <input type="range" id="zoom_slider" min="0.5" max="10" step="0.1" value="1">
-              <button id="zoom_out" aria-label="zoom out">+</button>
+              <button id="zoom_out" aria-label="zoom out">-</button>
             </div>
             <!-- reset button -->
             <button id="resetBtn" aria-label="reset button">
@@ -82,7 +82,7 @@
             </div>
           </div>
         </div>
-      </div>
+     
 
       <!-- Info Panels for Planets and Orbits -->
       <div id="right-panels">
