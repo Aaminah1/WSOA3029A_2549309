@@ -503,14 +503,14 @@ dd {
 }
 
 .scroll-arrow:hover, .scroll-arrow:focus {
-  transform: scale(1.05); /* Slightly increase size */
-  box-shadow: 0 6px 15px rgba(72, 202, 228, 0.8); /* More pronounced glow effect */
+  transform: scale(1.2); /* Slightly increase size */
+ 
 }
 
 .scroll-arrow:active {
-  background-color: #36b0c2; /* Darker teal color */
+  color: rgba(72, 202, 228, 0.7); /* Darker teal color */
   transform: scale(0.98); /* Slightly smaller to simulate click */
-  box-shadow: 0 4px 8px rgba(72, 202, 228, 0.7); /* Maintain slight shadow on click */
+  
 }
 
 
