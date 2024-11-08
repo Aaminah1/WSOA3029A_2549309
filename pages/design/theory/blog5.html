@@ -43,7 +43,64 @@
                 <h2>How UI/UX designs create meaning</h2>
                 <h2>The role of interactivity</h2>
                 <h2>Challenges </h2>
+                <span class="highlight">UI Alignment and Flexbox Usage:</span>
+                <p>One of the most significant challenges encountered during the development was aligning interactive UI
+                    elements in a way that was intuitive from a design perspective, while also implementing it
+                    effectively through code. Specifically, the use of CSS Flexbox for positioning containers that
+                    included data visualizations alongside interactive controls proved particularly troublesome. This
+                    complexity was compounded by the responsiveness required, leading to occasional overlapping of
+                    elements that did not align with the intended design.</p>
+                    <span class="highlight">Integration of Live API Data:</span>
+                <p>Another pressing issue was the integration of live API data, particularly for the exoplanet
+                    interactive map. The initial implementation faced a synchronization problem where the search bar and
+                    the map markers could not display simultaneously. If the search bar was populated with planet names,
+                    the corresponding markers on the map would disappear, and vice versa. This significantly impacted
+                    the usability and functionality of the interactive map, a key feature of the website.
+                    To resolve this, I tried a global variable to manage the state of the displayed data across
+                    different UI components. By centralizing the data state, both the search bar and the map could react
+                    to changes in data without interfering with each other’s display. I also separated the concerns by
+                    using different scripts: one dedicated to handling the live data fetched from the API and another to
+                    manage the UI interactions. This still did not work though.
+
+
                 <h2>Alignment with professional practices</h2>
+                <span class="highlight">Security and data protection:</span>
+                <p>Once thing I didn’t have considering that users need to enter their email, phone number into the form
+                    I am aware that in profession practiced it would be beneficial to implement security practices to
+                    protect users’ data and make the site more trustworthy and reliable. But I mean since we are using
+                    GitHub to host our sites, there are https to show that is it secured to some extent. </p>
+                <span class="highlight">Code Maintainability and Scalability:</span>
+                <p>I practiced writing clean, commenting, consistency of formats and modular code to allow maintenance
+                    and future updates. This practice also involves using version control systems like Git to manage
+                    changes and potentially collaborate efficiently across distributed teams.</p>
+                <span class="highlight">Performance Optimization:</span>
+                <p>Effective load and speed of the website is important to prevent bounce rates, especially for
+                    commercial websites that rely on costumers.
+                    I tried to improve the speed and efficiency by using defer at places to help with the loading time
+                    in dedicated scripts for different pages. I also implemented lazy load that loads data as it comes
+                    into view rather than all at once, specifically for the home page that has many images. I also used
+                    simple shapes for the data visualizations to optimize D3 renderings.
+                </p>
+                <span class="highlight">Responsive Design:</span>
+                <p>Firstly, responsive design practices align with international web development standards, such as
+                    those set by the World Wide Web Consortium (W3C). These standards advocate for web accessibility and
+                    usability across different platforms and devices, ensuring a wider reach and inclusivity. I ensured
+                    that my site is usable on various devices, including desktops, tablets, and smartphones through
+                    flexbox and media queries in CSS to create a seamless experience across different screen sizes and
+                    orientations. This directly contributes to a positive UX, it prevents usability issues such as
+                    unreadable text, unclickable links, or distorted layouts, which can frustrate users and drive them
+                    away. Since search engines like Google have adapted their algorithms to prioritize mobile-friendly
+                    websites in their rankings. Responsive design is integral to SEO strategies as it helps in reducing
+                    bounce rates and increasing time on site by providing a better user experience. Moreover,
+                    maintaining a single responsive site rather than separate desktop and mobile versions simplifies URL
+                    structure and eliminates duplicate content, both of which are beneficial for SEO.</p>
+                <p>Considering that is a commercial website, from a business perspective, responsive design aligns with
+                    professional practices by being cost-effective. Maintaining one website that adapts to all devices,
+                    rather than separate sites for desktop and mobile, reduces development and maintenance costs. It
+                    simplifies the web development process and decreases the likelihood of inconsistencies between
+                    different versions of a site. As new devices with different screen sizes and resolutions come to
+                    market, a responsive website can adapt to these without needing a complete redesign. This
+                    future-proofing aspect makes responsive design a sustainable choice for long-term development.</p>
                 <h2>References</h2>
 
             </section>
