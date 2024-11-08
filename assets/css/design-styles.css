@@ -467,6 +467,15 @@ dd {
     margin-bottom: 10px; /* space between entries */
     padding-left: 20px; /* indent descriptions */
 }
+dl dd a {
+  color: #00aaff; /* Example of a brighter blue color */
+  text-decoration: none; /* Removes underline, optional */
+}
+
+dl dd a:hover {
+  color: #0088cc; /* Slightly darker blue when hovered over, for better interaction */
+  text-decoration: underline; /* Adds underline on hover, optional */
+}
 
 /*WIREFRAME TAB*/
 .wireframe-gallery img {
